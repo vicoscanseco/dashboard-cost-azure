@@ -134,6 +134,11 @@ body::before {
   font-size: var(--fs-sm);
   padding: var(--space-4) 0;
 }
+.card.flash { animation: flash 1.6s var(--ease) 0s 1 normal none; }
+@keyframes flash {
+  0%, 60% { border-color: var(--series-1); box-shadow: 0 0 0 4px rgba(var(--series-1-rgb), 0.18); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 :focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
 

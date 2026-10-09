@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { Chart } from 'chart.js/auto';
+import { loadChart } from '../lib/chart.js';
 import { cssVar, CAT_COLORS, fmtUSD } from '../lib/format.js';
 import { DONUT_TOP_N } from '../lib/calc.js';
 
@@ -12,7 +12,9 @@ const label = computed(() => {
 });
 let chartInst = null;
 
-function draw() {
+let drawId = 0;
+async function draw() {
+  const id = ++drawId;
   if (chartInst) { chartInst.destroy(); chartInst = null; }
   if (!props.groups.length || !canvasEl.value) return;
 
@@ -47,6 +49,8 @@ function draw() {
     }
   };
 
+  const Chart = await loadChart();
+  if (id !== drawId || !canvasEl.value) return;
   chartInst = new Chart(canvasEl.value, {
     type: 'doughnut',
     plugins: [centerText],
@@ -64,7 +68,7 @@ function draw() {
 }
 
 onMounted(() => nextTick(draw));
-onBeforeUnmount(() => { if (chartInst) chartInst.destroy(); });
+onBeforeUnmount(() => { drawId++; if (chartInst) chartInst.destroy(); });
 watch(() => props.groups, () => nextTick(draw), { deep: true });
 // el tema (claro/oscuro) cambia los colores que lee cssVar() al dibujar, así que hay que
 // redibujar el chart cuando cambia — igual que el render(lastData, lastAnalysis) completo

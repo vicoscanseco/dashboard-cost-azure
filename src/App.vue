@@ -44,6 +44,7 @@ onMounted(load);
 
       <div class="grid">
         <HeroCard
+          id="card-hero"
           class="col-8"
           :mtd="mtd"
           :history="monthHistory"
@@ -53,12 +54,12 @@ onMounted(load);
         />
         <AnalysisCard class="col-4" :text="state.analysisText" />
 
-        <TrendCard class="col-12" :history="monthHistory" />
+        <TrendCard class="col-12" :history="monthHistory" :monthly-budget="state.data.monthlyBudget" />
 
         <MonthByResourceCard class="col-8" :month-by-resource="state.data.monthByResource" :monthly-budget="state.data.monthlyBudget" :theme-tick="themeTick" />
         <DonutCard class="col-4" :groups="state.data.byResourceGroup || []" :theme-tick="themeTick" />
 
-        <GroupsCard class="col-6" :groups="state.data.byResourceGroup || []" />
+        <GroupsCard id="card-groups" class="col-6" :groups="state.data.byResourceGroup || []" />
         <ServicesCard class="col-6" :services="state.data.byService || []" />
 
         <HeatmapCard
@@ -71,7 +72,7 @@ onMounted(load);
           empty-msg="Aún no hay historial por grupo disponible. Se necesitan al menos 2 días registrados."
         />
 
-        <ResourcesTableCard class="col-7" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
+        <ResourcesTableCard id="card-resources" class="col-7" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
         <MonthsCard
           class="col-5"
           :history="monthHistory"

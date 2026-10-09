@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { Chart } from 'chart.js/auto';
+import { loadChart } from '../lib/chart.js';
 import { cssVar, fmtUSD, fmtUSDShort } from '../lib/format.js';
 import { computeMonthForecast } from '../lib/calc.js';
 
@@ -18,7 +18,9 @@ let chartInst = null;
 const fc = computed(() => (props.history.length ? computeMonthForecast(props.history, props.monthToDateSoFar, props.monthlyFinals) : null));
 const lastMonths = computed(() => (fc.value ? Object.keys(fc.value.byMonth).sort().slice(-6) : []));
 
-function draw() {
+let drawId = 0;
+async function draw() {
+  const id = ++drawId;
   if (chartInst) { chartInst.destroy(); chartInst = null; }
   if (!fc.value || lastMonths.value.length < 2 || !canvasEl.value) return;
 
@@ -35,6 +37,8 @@ function draw() {
   const surface = cssVar('--surface-1');
   const textPrimary = cssVar('--text-primary');
 
+  const Chart = await loadChart();
+  if (id !== drawId || !canvasEl.value) return;
   chartInst = new Chart(canvasEl.value, {
     type: 'bar',
     data: {
@@ -63,7 +67,7 @@ function draw() {
 }
 
 onMounted(() => nextTick(draw));
-onBeforeUnmount(() => { if (chartInst) chartInst.destroy(); });
+onBeforeUnmount(() => { drawId++; if (chartInst) chartInst.destroy(); });
 watch(() => [props.history, props.monthToDateSoFar, props.monthlyFinals], () => nextTick(draw), { deep: true });
 watch(() => props.themeTick, () => nextTick(draw));
 

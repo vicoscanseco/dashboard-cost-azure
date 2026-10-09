@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { Chart } from 'chart.js/auto';
+import { loadChart } from '../lib/chart.js';
 import { cssVar, CAT_COLORS, fmtUSD, fmtUSDShort, fmtDate, colorWithAlpha } from '../lib/format.js';
 
 const props = defineProps({
@@ -12,7 +12,9 @@ const props = defineProps({
 const canvasEl = ref(null);
 let chartInst = null;
 
-function draw() {
+let drawId = 0;
+async function draw() {
+  const id = ++drawId;
   if (chartInst) { chartInst.destroy(); chartInst = null; }
   const { days = [], series = [], othersDaily = [] } = props.monthByResource || {};
   if (!days.length || !series.length || !canvasEl.value) return;
@@ -71,6 +73,8 @@ function draw() {
     });
   }
 
+  const Chart = await loadChart();
+  if (id !== drawId || !canvasEl.value) return;
   chartInst = new Chart(canvasEl.value, {
     type: 'line',
     data: { labels, datasets },
@@ -94,7 +98,7 @@ function draw() {
 }
 
 onMounted(() => nextTick(draw));
-onBeforeUnmount(() => { if (chartInst) chartInst.destroy(); });
+onBeforeUnmount(() => { drawId++; if (chartInst) chartInst.destroy(); });
 watch(() => props.monthByResource, () => nextTick(draw), { deep: true });
 watch(() => props.themeTick, () => nextTick(draw));
 </script>
