@@ -129,7 +129,12 @@ onBeforeUnmount(() => cancelAnimationFrame(raf));
   border-color: color-mix(in srgb, var(--series-1) 28%, var(--border));
   box-shadow: var(--shadow-lg);
 }
-.spark { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 46%; pointer-events: none; opacity: 0.9; }
+.spark {
+  position: absolute; right: 0; top: 14%; width: 64%; height: 42%; pointer-events: none; opacity: 0.85;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%);
+  mask-image: linear-gradient(90deg, transparent, #000 45%);
+}
+@media (max-width: 640px) { .spark { width: 100%; top: 8%; opacity: 0.5; } }
 .hero-content { position: relative; display: flex; flex-direction: column; min-height: 100%; }
 .hero-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
 .hero-label { font-size: var(--fs-sm); color: var(--text-secondary); font-family: var(--mono); }

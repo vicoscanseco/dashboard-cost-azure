@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { PhSun, PhMoon } from '@phosphor-icons/vue';
+import { ref, computed, onMounted } from 'vue';
+import { PhSun, PhMoon, PhClockCounterClockwise } from '@phosphor-icons/vue';
 
 const props = defineProps({ generatedAt: { type: String, default: null } });
 const emit = defineEmits(['theme-change']);
@@ -19,6 +19,13 @@ function toggle() {
   emit('theme-change', next);
 }
 
+const STALE_HOURS = 24;
+const staleHours = computed(() => {
+  if (!props.generatedAt) return 0;
+  const h = (Date.now() - new Date(props.generatedAt).getTime()) / 36e5;
+  return h > STALE_HOURS ? Math.floor(h) : 0;
+});
+
 const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.generatedAt).toLocaleString('es-MX', { dateStyle: 'medium', timeStyle: 'short' }) : '');
 </script>
 
@@ -29,6 +36,10 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
       <h1>Costos Azure</h1>
     </div>
     <div class="topbar-right">
+      <span v-if="staleHours" class="stale" title="El pipeline no ha publicado datos nuevos">
+        <PhClockCounterClockwise :size="14" weight="bold" />
+        Datos de hace {{ staleHours >= 48 ? Math.floor(staleHours / 24) + ' días' : staleHours + ' h' }}
+      </span>
       <span class="updated">{{ updatedLabel() }}</span>
       <button class="theme-toggle" type="button" :aria-label="theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'" @click="toggle">
         <PhSun v-if="theme === 'dark'" :size="18" weight="bold" />
@@ -63,6 +74,10 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
 }
 .topbar h1 { font-size: var(--fs-lg); font-weight: 600; margin: 0; letter-spacing: -0.02em; white-space: nowrap; }
 .topbar-right { display: flex; align-items: center; gap: var(--space-3); }
+.stale {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px;
+  background: var(--warning-bg); color: var(--warning-text); font-size: var(--fs-xs); font-family: var(--mono); white-space: nowrap;
+}
 .updated { color: var(--text-muted); font-size: var(--fs-xs); font-family: var(--mono); }
 @media (max-width: 640px) { .updated { display: none; } }
 .theme-toggle {

@@ -8,12 +8,14 @@ const props = defineProps({
   rows: { type: Array, default: () => [] },
   keyField: { type: String, required: true },
   rowHeadLabel: { type: String, required: true },
-  emptyMsg: { type: String, required: true }
+  emptyMsg: { type: String, required: true },
+  themeTick: { type: Number, default: 0 }
 });
 
 const data = computed(() => buildHeatmapData(props.rows, props.keyField));
 
 function cellStyle(cost, t) {
+  void props.themeTick; // dependencia reactiva: recalcula colores al cambiar de tema
   if (!cost) return { background: 'transparent', color: cssVar('--text-primary') };
   const rgb = cssVar('--series-1-rgb');
   const alpha = 0.10 + t * 0.80;
@@ -21,6 +23,7 @@ function cellStyle(cost, t) {
 }
 const legendSteps = [0.1, 0.3, 0.5, 0.7, 0.9];
 function legendStyle(t) {
+  void props.themeTick;
   return { background: `rgba(${cssVar('--series-1-rgb')},${t.toFixed(2)})` };
 }
 </script>

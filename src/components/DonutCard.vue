@@ -24,13 +24,33 @@ function draw() {
     colors.push(cssVar('--text-muted'));
   }
 
+  const grand = sorted.reduce((s, g) => s + g.cost, 0);
+  const centerText = {
+    id: 'centerText',
+    afterDraw(chart) {
+      const { ctx, chartArea: a } = chart;
+      const cx = (a.left + a.right) / 2, cy = (a.top + a.bottom) / 2;
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = cssVar('--text-muted');
+      ctx.font = '12px ' + cssVar('--mono');
+      ctx.fillText('Total', cx, cy - 16);
+      ctx.fillStyle = cssVar('--text-primary');
+      ctx.font = '500 24px ' + cssVar('--mono');
+      ctx.fillText(fmtUSD(grand), cx, cy + 8);
+      ctx.restore();
+    }
+  };
+
   chartInst = new Chart(canvasEl.value, {
     type: 'doughnut',
+    plugins: [centerText],
     data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: cssVar('--surface-1'), borderWidth: 2, hoverOffset: 4 }] },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      cutout: '62%',
+      cutout: '70%',
       plugins: {
         legend: { position: 'bottom', labels: { color: cssVar('--text-secondary'), boxWidth: 9, boxHeight: 9, padding: 10, font: { size: 11 } } },
         tooltip: { callbacks: { label: (ctx) => ` ${ctx.label}: ${fmtUSD(ctx.parsed)}` } }

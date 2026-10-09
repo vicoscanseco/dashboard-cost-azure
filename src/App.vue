@@ -63,6 +63,7 @@ onMounted(load);
 
         <HeatmapCard
           class="col-12"
+          :theme-tick="themeTick"
           title="Mapa de calor diario"
           :rows="state.data.historyByGroup || []"
           key-field="resource_group"
@@ -82,6 +83,7 @@ onMounted(load);
 
         <HeatmapCard
           class="col-12"
+          :theme-tick="themeTick"
           title="Tendencia por tipo de servicio"
           :rows="state.data.historyByService || []"
           key-field="service_name"
