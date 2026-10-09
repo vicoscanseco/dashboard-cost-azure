@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-10-09T08:00:43.000Z",
+  "snapshotDate": "2026-10-08",
+  "total": 90.97,
+  "monthToDate": { "lastDate": "2026-10-08", "total": 90.97, "prevTotal": 132.22 },
+  "dailyHistory": [
+    { "date": "2026-10-01", "total": 9.1 },
+    { "date": "2026-10-02", "total": 11.4 },
+    { "date": "2026-10-03", "total": 8.7 },
+    { "date": "2026-10-04", "total": 12.9 },
+    { "date": "2026-10-05", "total": 10.2 },
+    { "date": "2026-10-06", "total": 13.8 },
+    { "date": "2026-10-07", "total": 14.1 },
+    { "date": "2026-10-08", "total": 10.77 }
+  ],
+  "monthByResource": { "days": [], "series": [], "othersDaily": [] },
+  "byResourceGroup": [
+    { "resource_group": "rg-produccion", "cost": 48.2, "prevCost": 40.1, "deltaPct": 20.2 },
+    { "resource_group": "rg-staging", "cost": 22.5, "prevCost": 21.0, "deltaPct": 7.1 },
+    { "resource_group": "rg-datos", "cost": 15.3, "prevCost": 14.8, "deltaPct": 3.4 },
+    { "resource_group": "(sin grupo)", "cost": 4.97, "prevCost": 4.1, "deltaPct": 21.2 }
+  ],
+  "resourceComparisons": [],
+  "monthlyFinals": {},
+  "monthlyBudget": 150
+}

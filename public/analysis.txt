@@ -1,0 +1,3 @@
+## Análisis de prueba
+
+Datos de ejemplo para validar el bundle de Vite+Vue antes de portar el resto de tarjetas.
