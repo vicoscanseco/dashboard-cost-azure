@@ -177,3 +177,22 @@ body::before {
   .skeleton { animation: shimmer 1.6s linear infinite; }
   @keyframes shimmer { to { background-position: -200% 0; } }
 }
+
+/* Impresión: tema claro, sin controles ni animaciones */
+@media print {
+  :root, :root[data-theme="dark"] {
+    --page: #ffffff; --surface-1: #ffffff; --surface-2: #f2f4f7;
+    --text-primary: #0e1520; --text-secondary: #475467; --text-muted: #5f6b7d;
+    --grid: #e6eaf0; --border: #cfd6e0; --border-strong: #cfd6e0;
+    --series-1: #0a7a90; --series-1-rgb: 10,122,144; --on-series: #ffffff;
+    --shadow-md: none; --shadow-lg: none;
+  }
+  body { padding: 0; }
+  body::before, .topbar .theme-toggle, .topbar .stale, .retry, .search, .anomaly-strip button { display: none !important; }
+  .topbar { position: static; backdrop-filter: none; -webkit-backdrop-filter: none; background: none; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; }
+  .wrap { max-width: none; }
+  .grid { display: block; }
+  .grid > * { margin-bottom: 12px; break-inside: avoid; animation: none !important; }
+  .card { box-shadow: none; }
+  .card-analysis .analysis-body { max-height: none; overflow: visible; }
+}

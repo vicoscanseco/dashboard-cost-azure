@@ -1,60 +1,85 @@
-# Azure Cost Dashboard — Vite + Vue 3 (en migración)
+# Azure Cost Dashboard
 
-## Qué es esto
-Prueba de concepto funcional de la migración del dashboard (`dashboard-template.html`) a
-una base modular con Vue 3 + Vite, manteniendo el 100% de los tokens de marca (colores,
-tipografía, dark/light) y la lógica de cálculo ya validada en producción.
+Dashboard de costos de Azure hecho con Vue 3, Vite y Chart.js. Lee `data.json` y
+`analysis.txt`, que n8n publica por SSH en vcubnt01. Es una migración de
+`dashboard-template.html` a una base modular, con la lógica de cálculo ya validada y un
+sistema visual nuevo.
 
-**El pipeline de publicación NO cambia**: n8n sigue publicando `data.json` y
-`analysis.txt` por SSH al mismo lugar en vcubnt01. Lo único que cambia es que, en vez de
-subir un `dashboard-template.html` de 310KB escrito a mano, subes la carpeta `dist/` que
-genera `npm run build` (HTML + CSS + JS compilados, rutas relativas, nada de build en el
-servidor).
+El pipeline de publicación no cambia: en vez de subir un HTML escrito a mano, se sube el
+contenido de `dist/` (HTML, CSS y JS compilados con rutas relativas). No hay build en el
+servidor.
 
-## Cómo correrlo
+## Comandos
 ```bash
 npm install
-npm run dev      # servidor de desarrollo con recarga en caliente, usa public/data.json
-npm run build    # genera dist/ listo para publicar
+npm run dev       # desarrollo con recarga en caliente, usa public/data.json
+npm run build     # genera dist/ listo para publicar
+npm test          # pruebas de la lógica de cálculo (Vitest)
 ```
 
-Para publicar: copia el contenido de `dist/` a la misma carpeta donde hoy vive
-`dashboard-template.html` en vcubnt01 (vía el mismo nodo SSH "Publicar dashboard" que ya
-existe — solo cambia qué archivos sube, no el mecanismo), y deja `data.json`/`analysis.txt`
-publicándose exactamente igual que hoy.
+Para publicar, copia `dist/` a la carpeta donde hoy vive `dashboard-template.html`, por el
+mismo nodo SSH "Publicar dashboard". `data.json` y `analysis.txt` se siguen publicando
+igual que hoy.
 
-## Qué ya está migrado (validado con Playwright, luz y oscuro)
-- `src/lib/calc.js` — toda la lógica de cálculo (dedupeByDate, computeMonthToDate,
-  computeMonthForecast, el ajuste por rezago de reconciliación de Azure) portada 1:1 desde
-  el `render()` original, con los mismos comentarios explicando cada bug ya resuelto.
-- `src/lib/useDashboard.js` — el equivalente reactivo del `render()` monolítico.
-- `TopBar.vue` — toggle de tema (persistido en localStorage, igual que antes).
-- `HeroCard.vue` — total del mes en curso + comparativo.
-- `TrendCard.vue` — gráfica de tendencia diaria (SVG a mano, con tooltip).
-- `DonutCard.vue` + `GroupsCard.vue` — distribución y lista por grupo de recursos.
+## Estructura
+```
+src/
+  App.vue                  layout, estados de carga/error/vacío
+  style.css                tokens de diseño y estilos globales
+  lib/
+    calc.js                lógica de cálculo (proyección, mes a la fecha, anomalías...)
+    calc.test.js           pruebas de calc.js
+    useDashboard.js        carga de datos, error, refresco automático
+    chart.js               carga diferida de Chart.js
+    format.js, md.js       formato de números/fechas y Markdown del análisis
+  components/              una tarjeta por archivo
+public/
+  data.json, analysis.txt  datos de ejemplo para desarrollo
+  favicon.svg
+```
 
-## Qué falta portar (mismo patrón, pendiente de confirmar que se continúe)
-Cada uno es una tarjeta independiente en el `dashboard-template.html` original — se porta
-igual que las de arriba: la lógica de `/tmp/app.js` (extraída de las líneas 440-1293 del
-original) a un composable o directo al componente, con su propio `.vue`:
+`calc.js` encapsula bugs reales ya resueltos (rezago de reconciliación de Azure, meses
+cerrados, duplicados por re-ejecución). No lo simplifiques sin entender cada rama; las
+pruebas documentan el comportamiento esperado.
 
-- Tarjeta de Análisis (Hermes) — requiere portar el renderer de Markdown hecho a mano
-  (mdInline/mdLite).
-- "Costo diario por recurso — mes en curso" (stacked area + Chart.js).
-- Mapa de calor diario (genérico, se reusa para grupo y servicio).
-- Tendencia por tipo de servicio (mismo heatmap genérico).
-- Servicios (lista, igual que Grupos).
-- Tabla de recursos (con columna "Var. semana").
-- Recursos en $0 (grid minimalista).
-- Comparativa mensual (bar chart + proyección fin de mes).
-- Franja de anomalías (badges de alerta — ya con la lógica en calc.js, falta el componente).
+## Sistema visual
+Oscuro por defecto, claro con `[data-theme="light"]`. El tema inicial sale de la
+preferencia guardada o del sistema, y se aplica antes del primer pintado (script en
+`index.html`).
 
-Con el patrón ya probado (lib puro + componente delgado), cada tarjeta restante es
-mecánica — no hay piezas de arquitectura nuevas por resolver.
+- **Color**: un solo acento (`--series-1`, cian). Verde, rojo y ámbar (`--good`,
+  `--critical`, `--warning`) solo indican estado. `--cat-1..8` son los colores
+  categóricos de los gráficos.
+- **Tipografía**: Geist y Geist Mono, auto-hospedadas con `@fontsource-variable`.
+  Los números usan `font-variant-numeric: tabular-nums`.
+- **Forma**: tarjetas 20px (`--radius-lg`), bloques internos y controles 12px
+  (`--radius-md`), chips en pastilla.
+- **Espaciado**: escala `--space-1..7`.
+- **Iconos**: `@phosphor-icons/vue`. No se dibujan iconos a mano.
+- **Capas z-index**: 0 fondo decorativo, 1 contenido, 10 barra superior.
 
-## Restyle aplicado
-Se mantuvieron los valores exactos de los tokens de color (`--series-1`, `--cat-1..8`,
-`--good`/`--critical`/`--warning`, etc. — ya validados en producción). Se añadió una
-escala de espaciado y tipografía consistente (`--space-*`, `--fs-*`, `--radius-*`,
-sombras en dos niveles) para que cada tarjeta deje de tener valores sueltos a mano,
-dándole más aire y jerarquía sin cambiar la paleta de marca.
+Los gráficos de Chart.js leen los colores con `cssVar()` al dibujarse. Por eso los
+componentes que los usan reciben `themeTick` y se redibujan al cambiar el tema.
+
+## Comportamiento
+- **Refresco automático**: cada 15 minutos y al volver a la pestaña. Si una recarga
+  posterior falla, se conserva lo que ya se veía.
+- **Datos viejos**: si `generatedAt` tiene más de 24 h, aparece un aviso en la barra
+  superior.
+- **Error de carga**: si `data.json` no responde, se muestra un botón para reintentar.
+  Un JSON vacío se trata aparte como "sin datos todavía".
+- **Sin análisis**: si `analysis.txt` está vacío, la tarjeta de análisis se oculta y el
+  hero ocupa todo el ancho.
+- **Alertas**: cada alerta de la franja superior lleva a la tarjeta relacionada.
+- **Movimiento**: las animaciones se desactivan con `prefers-reduced-motion`.
+- **Impresión**: `@media print` fuerza tema claro y oculta controles.
+
+## Accesibilidad
+Los gráficos tienen `role="img"` y `aria-label` con un resumen. La tabla de recursos usa
+`aria-sort` y el buscador tiene etiqueta para lectores de pantalla.
+
+## Formato de data.json
+Campos que usa el dashboard: `generatedAt`, `snapshotDate`, `total`, `monthlyBudget`,
+`monthToDate`, `dailyHistory`, `monthlyFinals`, `monthByResource`, `byResourceGroup`,
+`byService`, `byResource`, `resourceComparisons`, `historyByGroup`, `historyByService`.
+Hay un ejemplo en `public/data.json`.
