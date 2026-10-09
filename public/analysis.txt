@@ -1,3 +1,10 @@
-## Análisis de prueba
+## Resumen del mes
 
-Datos de ejemplo para validar el bundle de Vite+Vue antes de portar el resto de tarjetas.
+El gasto de octubre va **31.2% por debajo** del mismo periodo de septiembre, principalmente por la baja en `rg-produccion`.
+
+### Puntos a vigilar
+- `vm-prod-api` subió +25.4% esta semana — vigilar si se estabiliza.
+- Los recursos en $0 de `rg-staging` corresponden a Web Apps, costo esperado en $0.
+
+1. Revisar si el storage de backups antiguos en `rg-datos` sigue siendo necesario.
+2. Confirmar presupuesto mensual con finanzas para el próximo trimestre.

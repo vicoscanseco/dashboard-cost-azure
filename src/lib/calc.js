@@ -97,3 +97,117 @@ export function computeMonthForecast(history, overrideCurrentSoFar, monthlyFinal
 // creado que arranca desde casi $0 dispara porcentajes absurdos (ej. +10525%).
 export const MIN_BASELINE_USD = 1;
 export const DONUT_TOP_N = 8;
+export const GROUPS_SHOWN = 10;
+export const SERVICES_SHOWN = 8;
+// Tipos de recurso que Azure factura siempre en $0 por diseño: el costo de cómputo de un
+// Web App / Function App se le atribuye al App Service Plan (serverfarms) que lo hospeda,
+// no al sitio en sí. Mostrarlos como "candidatos a revisar" es ruido, no una señal real.
+export const ZERO_COST_BY_DESIGN_TYPES = ['microsoft.web/sites'];
+
+// Arma las filas "Otros (N)" agregadas al final de una lista rankeada (grupos o
+// servicios), con su propio deltaPct reconstruido a partir de los deltas individuales
+// (solo si TODOS los elementos agrupados tienen deltaPct, si no se deja null).
+export function buildRankedRows(items, shownCount, labelField, withDelta) {
+  const sorted = [...items].sort((a, b) => b.cost - a.cost);
+  let shown = sorted.slice(0, shownCount);
+  const rest = sorted.slice(shownCount);
+  if (rest.length) {
+    const otherCost = rest.reduce((s, g) => s + g.cost, 0);
+    let otherDeltaPct = null;
+    if (withDelta) {
+      const otherDeltas = rest.filter((g) => g.deltaPct !== null && g.deltaPct !== undefined);
+      if (otherDeltas.length === rest.length && rest.length) {
+        const prevSum = rest.reduce((s, g) => s + g.cost / (1 + g.deltaPct / 100), 0);
+        otherDeltaPct = prevSum > 0 ? Math.round(((otherCost - prevSum) / prevSum) * 1000) / 10 : null;
+      }
+    }
+    shown = [...shown, { [labelField]: `Otros (${rest.length})`, cost: otherCost, deltaPct: otherDeltaPct, _isOther: true }];
+  }
+  const maxCost = sorted[0] ? sorted[0].cost || 1 : 1;
+  return shown.map((g, i) => ({ ...g, _pct: Math.max(2, Math.round((g.cost / maxCost) * 100)), _colorIndex: i }));
+}
+
+// ---- mapa de calor genérico: top N filas (por resource_group o service_name) x últimos días ----
+export function buildHeatmapData(rows, keyField, topN = 8) {
+  if (!rows || !rows.length) return null;
+  const dates = Array.from(new Set(rows.map((r) => r.date))).sort();
+  const days = dates.slice(-7);
+
+  const totalsByKey = {};
+  rows.forEach((r) => { totalsByKey[r[keyField]] = (totalsByKey[r[keyField]] || 0) + r.cost; });
+  const topKeys = Object.keys(totalsByKey).sort((a, b) => totalsByKey[b] - totalsByKey[a]).slice(0, topN);
+
+  if (!topKeys.length || days.length < 2) return { tooShort: true };
+
+  const lookup = {};
+  rows.forEach((r) => { lookup[r.date + '::' + r[keyField]] = r.cost; });
+
+  let maxCost = 0;
+  topKeys.forEach((k) => days.forEach((d) => { const c = lookup[d + '::' + k] || 0; if (c > maxCost) maxCost = c; }));
+  if (maxCost <= 0) maxCost = 1;
+
+  const rowsOut = topKeys.map((k) => {
+    let rowTotal = 0;
+    const cells = days.map((d) => {
+      const cost = lookup[d + '::' + k] || 0;
+      rowTotal += cost;
+      return { date: d, cost, t: maxCost ? cost / maxCost : 0 };
+    });
+    return { key: k, cells, rowTotal };
+  });
+
+  return { days, rows: rowsOut, maxCost };
+}
+
+// ---- franja de anomalías: presupuesto proyectado + grupos/recursos con subida fuerte ----
+export function buildAnomalyBadges(groups, resources, history, monthlyBudget, monthToDateSoFar, monthlyFinals) {
+  const badges = [];
+
+  if (monthlyBudget) {
+    const fc = computeMonthForecast(history, monthToDateSoFar, monthlyFinals);
+    if (fc && fc.forecast > monthlyBudget) {
+      const overPct = Math.round(((fc.forecast - monthlyBudget) / monthlyBudget) * 1000) / 10;
+      badges.push({
+        kind: 'budget',
+        critical: overPct >= 30,
+        text: `Proyección del mes supera el presupuesto de ${monthlyBudget} (+${overPct}%)`,
+        forecast: fc.forecast,
+        overPct
+      });
+    }
+  }
+
+  const flaggedGroups = (groups || [])
+    .filter((g) => g.deltaPct !== null && g.deltaPct !== undefined && g.deltaPct >= 30 && g.prevCost >= MIN_BASELINE_USD)
+    .sort((a, b) => b.deltaPct - a.deltaPct)
+    .slice(0, 4)
+    .map((g) => ({ kind: 'group', critical: g.deltaPct >= 40, name: g.resource_group, deltaPct: g.deltaPct, prevCost: g.prevCost, cost: g.cost }));
+
+  const flaggedResources = (resources || [])
+    .filter((r) => r.deltaPct !== null && r.deltaPct !== undefined && r.deltaPct >= 20 && r.prevCost >= MIN_BASELINE_USD)
+    .sort((a, b) => b.deltaPct - a.deltaPct)
+    .slice(0, 4)
+    .map((r) => ({ kind: 'resource', critical: r.deltaPct >= 40, name: r.resource_name, group: r.resource_group, deltaPct: r.deltaPct, prevCost: r.prevCost, cost: r.cost }));
+
+  return [...badges, ...flaggedGroups, ...flaggedResources];
+}
+
+// ---- tabla de recursos: delta semana vs semana por (grupo, recurso) ----
+export function buildResourceRows(resources, resourceComparisons) {
+  const deltaByKey = {};
+  (resourceComparisons || []).forEach((r) => { deltaByKey[r.resource_group + '::' + r.resource_name] = r.deltaPct; });
+  return resources.slice(0, 10).map((r) => ({
+    ...r,
+    deltaPct: deltaByKey[r.resource_group + '::' + r.resource_name]
+  }));
+}
+
+// ---- recursos en $0 esta semana: candidatos a revisar/eliminar ----
+export function buildZeroResources(resources) {
+  const zero = (resources || []).filter((r) => {
+    if (!(!r.cost || r.cost < 0.005)) return false;
+    if (r.resource_type && ZERO_COST_BY_DESIGN_TYPES.indexOf(r.resource_type) !== -1) return false;
+    return true;
+  });
+  return zero.sort((a, b) => a.resource_group.localeCompare(b.resource_group) || a.resource_name.localeCompare(b.resource_name));
+}

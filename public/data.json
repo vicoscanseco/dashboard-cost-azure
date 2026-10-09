@@ -2,8 +2,12 @@
   "generatedAt": "2026-10-09T08:00:43.000Z",
   "snapshotDate": "2026-10-08",
   "total": 90.97,
+  "monthlyBudget": 150,
   "monthToDate": { "lastDate": "2026-10-08", "total": 90.97, "prevTotal": 132.22 },
   "dailyHistory": [
+    { "date": "2026-09-01", "total": 11.2 },
+    { "date": "2026-09-15", "total": 13.4 },
+    { "date": "2026-09-30", "total": 12.1 },
     { "date": "2026-10-01", "total": 9.1 },
     { "date": "2026-10-02", "total": 11.4 },
     { "date": "2026-10-03", "total": 8.7 },
@@ -13,14 +17,56 @@
     { "date": "2026-10-07", "total": 14.1 },
     { "date": "2026-10-08", "total": 10.77 }
   ],
-  "monthByResource": { "days": [], "series": [], "othersDaily": [] },
+  "monthlyFinals": { "2026-09": 420.5, "2026-08": 310.2 },
+  "monthByResource": {
+    "days": ["2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08"],
+    "series": [
+      { "resource_name": "vm-prod-api", "resource_group": "rg-produccion", "daily": [3.1, 3.4, 2.9, 4.1, 3.3, 4.4, 4.5, 3.4] },
+      { "resource_name": "sql-prod-db", "resource_group": "rg-produccion", "daily": [2.2, 2.3, 2.1, 2.5, 2.2, 2.6, 2.7, 2.3] },
+      { "resource_name": "app-staging", "resource_group": "rg-staging", "daily": [1.1, 1.3, 1.0, 1.4, 1.2, 1.5, 1.5, 1.2] }
+    ],
+    "othersDaily": [2.7, 4.4, 2.7, 4.9, 3.5, 5.3, 5.4, 3.87]
+  },
   "byResourceGroup": [
     { "resource_group": "rg-produccion", "cost": 48.2, "prevCost": 40.1, "deltaPct": 20.2 },
     { "resource_group": "rg-staging", "cost": 22.5, "prevCost": 21.0, "deltaPct": 7.1 },
     { "resource_group": "rg-datos", "cost": 15.3, "prevCost": 14.8, "deltaPct": 3.4 },
     { "resource_group": "(sin grupo)", "cost": 4.97, "prevCost": 4.1, "deltaPct": 21.2 }
   ],
-  "resourceComparisons": [],
-  "monthlyFinals": {},
-  "monthlyBudget": 150
+  "byService": [
+    { "service_name": "Virtual Machines", "cost": 31.2 },
+    { "service_name": "Azure SQL Database", "cost": 18.4 },
+    { "service_name": "App Service", "cost": 14.1 },
+    { "service_name": "Storage", "cost": 9.8 },
+    { "service_name": "Bandwidth", "cost": 5.3 }
+  ],
+  "byResource": [
+    { "resource_group": "rg-produccion", "resource_name": "vm-prod-api", "resource_type": "microsoft.compute/virtualmachines", "cost": 27.3 },
+    { "resource_group": "rg-produccion", "resource_name": "sql-prod-db", "resource_type": "microsoft.sql/servers/databases", "cost": 18.4 },
+    { "resource_group": "rg-staging", "resource_name": "app-staging", "resource_type": "microsoft.web/sites", "cost": 0 },
+    { "resource_group": "rg-datos", "resource_name": "storage-old-backups", "resource_type": "microsoft.storage/storageaccounts", "cost": 0 }
+  ],
+  "resourceComparisons": [
+    { "resource_group": "rg-produccion", "resource_name": "vm-prod-api", "deltaPct": 25.4, "prevCost": 21.8, "cost": 27.3 }
+  ],
+  "historyByGroup": [
+    { "date": "2026-10-01", "resource_group": "rg-produccion", "cost": 5.1 },
+    { "date": "2026-10-02", "resource_group": "rg-produccion", "cost": 5.6 },
+    { "date": "2026-10-03", "resource_group": "rg-produccion", "cost": 5.0 },
+    { "date": "2026-10-04", "resource_group": "rg-staging", "cost": 2.1 },
+    { "date": "2026-10-05", "resource_group": "rg-staging", "cost": 2.3 },
+    { "date": "2026-10-06", "resource_group": "rg-datos", "cost": 1.4 },
+    { "date": "2026-10-07", "resource_group": "rg-datos", "cost": 1.6 },
+    { "date": "2026-10-08", "resource_group": "rg-produccion", "cost": 5.9 }
+  ],
+  "historyByService": [
+    { "date": "2026-10-01", "service_name": "Virtual Machines", "cost": 4.1 },
+    { "date": "2026-10-02", "service_name": "Virtual Machines", "cost": 4.4 },
+    { "date": "2026-10-03", "service_name": "Azure SQL Database", "cost": 2.3 },
+    { "date": "2026-10-04", "service_name": "App Service", "cost": 1.9 },
+    { "date": "2026-10-05", "service_name": "Virtual Machines", "cost": 4.7 },
+    { "date": "2026-10-06", "service_name": "Storage", "cost": 1.1 },
+    { "date": "2026-10-07", "service_name": "Virtual Machines", "cost": 4.9 },
+    { "date": "2026-10-08", "service_name": "Azure SQL Database", "cost": 2.5 }
+  ]
 }
