@@ -36,6 +36,13 @@ const xLabels = computed(() => {
     .map(({ h, i }) => ({ x: x(i), label: fmtDate(h.date) }));
 });
 
+const summary = computed(() => {
+  const hs = props.history;
+  if (hs.length < 2) return 'Tendencia diaria';
+  const max = hs.reduce((m, h) => (h.total > m.total ? h : m), hs[0]);
+  return `Tendencia diaria de ${fmtDate(hs[0].date)} a ${fmtDate(hs[hs.length - 1].date)}. Último día ${fmtUSD(hs[hs.length - 1].total)}. Máximo ${fmtUSD(max.total)} el ${fmtDate(max.date)}.`;
+});
+
 const tip = ref({ visible: false, x: 0, y: 0, text: '' });
 function showTip(h, i, evt) {
   const svg = evt.target.closest('svg');
@@ -59,7 +66,7 @@ function hideTip() { tip.value.visible = false; }
         Solo hay un punto de historial ({{ fmtDate(history[0].date) }}: {{ fmtUSD(history[0].total) }}). Se necesitan al menos 2 días para una tendencia.
       </div>
       <template v-else>
-        <svg :viewBox="`0 0 ${W} ${H}`" style="width:100%; height:auto; display:block;">
+        <svg :viewBox="`0 0 ${W} ${H}`" style="width:100%; height:auto; display:block;" role="img" :aria-label="summary">
           <g v-for="(g, idx) in gridLines" :key="idx">
             <line :x1="padL" :y1="g.y" :x2="W - padR" :y2="g.y" stroke="var(--grid)" stroke-width="1" stroke-dasharray="2 5" />
             <text :x="padL - 8" :y="g.y + 4" text-anchor="end" font-size="10.5" font-family="var(--mono)" fill="var(--text-muted)">{{ g.label }}</text>

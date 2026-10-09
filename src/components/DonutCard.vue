@@ -1,11 +1,15 @@
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { Chart } from 'chart.js/auto';
 import { cssVar, CAT_COLORS, fmtUSD } from '../lib/format.js';
 import { DONUT_TOP_N } from '../lib/calc.js';
 
 const props = defineProps({ groups: { type: Array, default: () => [] }, themeTick: { type: Number, default: 0 } });
 const canvasEl = ref(null);
+const label = computed(() => {
+  const top = [...props.groups].sort((a, b) => b.cost - a.cost).slice(0, 3);
+  return 'Distribución del gasto por grupo. ' + top.map((g) => `${g.resource_group} ${fmtUSD(g.cost)}`).join(', ');
+});
 let chartInst = null;
 
 function draw() {
@@ -72,7 +76,7 @@ watch(() => props.themeTick, () => nextTick(draw));
   <div class="card card-donut">
     <h2>Distribución por grupo</h2>
     <div v-if="!groups.length" class="empty">Sin datos de grupos.</div>
-    <div v-else class="donut-wrap"><canvas ref="canvasEl"></canvas></div>
+    <div v-else class="donut-wrap"><canvas ref="canvasEl" role="img" :aria-label="label">{{ label }}</canvas></div>
   </div>
 </template>
 

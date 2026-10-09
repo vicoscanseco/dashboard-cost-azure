@@ -103,7 +103,7 @@ watch(() => props.themeTick, () => nextTick(draw));
   <div class="card card-month-resources">
     <h2>Costo diario por recurso <span class="sub">Mes en curso</span></h2>
     <div v-if="!monthByResource?.days?.length" class="empty">Aún no hay suficiente detalle diario por recurso para este mes.</div>
-    <div v-else class="chart-wrap"><canvas ref="canvasEl"></canvas></div>
+    <div v-else class="chart-wrap"><canvas ref="canvasEl" role="img" aria-label="Costo diario apilado por recurso del mes en curso, con línea de presupuesto diario estimado.">Costo diario por recurso del mes en curso</canvas></div>
   </div>
 </template>
 

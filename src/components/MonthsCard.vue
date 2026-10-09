@@ -76,7 +76,7 @@ const overBudget = computed(() => fc.value && props.monthlyBudget && fc.value.fo
     <div v-if="!history.length" class="empty"></div>
     <template v-else>
       <div v-if="lastMonths.length < 2" class="empty">Se necesita más de un mes de historial para comparar.</div>
-      <div v-else class="chart-wrap"><canvas ref="canvasEl"></canvas></div>
+      <div v-else class="chart-wrap"><canvas ref="canvasEl" role="img" aria-label="Comparativa del gasto mensual: real y proyectado.">Comparativa mensual de gasto</canvas></div>
 
       <div v-if="fc" class="month-summary">
         <div><div class="stat-label">Mes actual (a la fecha)</div><div class="stat-value">{{ fmtUSD(fc.currentSoFar) }}</div></div>
