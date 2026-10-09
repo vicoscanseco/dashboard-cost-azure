@@ -4,7 +4,13 @@ import { loadChart } from '../lib/chart.js';
 import { cssVar, CAT_COLORS, fmtUSD } from '../lib/format.js';
 import { DONUT_TOP_N } from '../lib/calc.js';
 
-const props = defineProps({ groups: { type: Array, default: () => [] }, themeTick: { type: Number, default: 0 } });
+const props = defineProps({
+  groups: { type: Array, default: () => [] },
+  themeTick: { type: Number, default: 0 },
+  activeGroup: { type: String, default: null }
+});
+const emit = defineEmits(['hover']);
+let chartLabels = [];
 const canvasEl = ref(null);
 const label = computed(() => {
   const top = [...props.groups].sort((a, b) => b.cost - a.cost).slice(0, 3);
@@ -49,8 +55,10 @@ async function draw() {
     }
   };
 
+  chartLabels = labels;
   const Chart = await loadChart();
   if (id !== drawId || !canvasEl.value) return;
+  let lastEmitted = null;
   chartInst = new Chart(canvasEl.value, {
     type: 'doughnut',
     plugins: [centerText],
@@ -59,13 +67,29 @@ async function draw() {
       responsive: true,
       maintainAspectRatio: false,
       cutout: '70%',
+      onHover: (_evt, els) => {
+        const name = els.length && chartLabels[els[0].index] && !chartLabels[els[0].index].startsWith('Otros (') ? chartLabels[els[0].index] : null;
+        if (name !== lastEmitted) { lastEmitted = name; emit('hover', name); }
+      },
       plugins: {
         legend: { position: 'bottom', labels: { color: cssVar('--text-secondary'), boxWidth: 9, boxHeight: 9, padding: 10, font: { size: 11 } } },
         tooltip: { callbacks: { label: (ctx) => ` ${ctx.label}: ${fmtUSD(ctx.parsed)}` } }
       }
     }
   });
+  highlight();
 }
+
+// Resalta la porción del grupo activo (viene de la lista) sin redibujar el gráfico
+function highlight() {
+  if (!chartInst) return;
+  const idx = props.activeGroup ? chartLabels.indexOf(props.activeGroup) : -1;
+  const els = idx >= 0 ? [{ datasetIndex: 0, index: idx }] : [];
+  chartInst.setActiveElements(els);
+  chartInst.tooltip.setActiveElements(els, { x: 0, y: 0 });
+  chartInst.update('none');
+}
+watch(() => props.activeGroup, highlight);
 
 onMounted(() => nextTick(draw));
 onBeforeUnmount(() => { drawId++; if (chartInst) chartInst.destroy(); });

@@ -19,6 +19,7 @@ import ZeroResourcesCard from './components/ZeroResourcesCard.vue';
 
 const { state, reload, monthHistory, mtd, monthToDateSoFar, monthlyFinals, forecast } = useDashboard();
 const themeTick = ref(0);
+const activeGroup = ref(null);
 const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.trim()));
 </script>
 
@@ -69,9 +70,9 @@ const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.t
         <TrendCard class="col-12" :history="monthHistory" :monthly-budget="state.data.monthlyBudget" />
 
         <MonthByResourceCard class="col-8" :month-by-resource="state.data.monthByResource" :monthly-budget="state.data.monthlyBudget" :theme-tick="themeTick" />
-        <DonutCard class="col-4" :groups="state.data.byResourceGroup || []" :theme-tick="themeTick" />
+        <DonutCard class="col-4" :groups="state.data.byResourceGroup || []" :theme-tick="themeTick" :active-group="activeGroup" @hover="activeGroup = $event" />
 
-        <GroupsCard id="card-groups" class="col-6" :groups="state.data.byResourceGroup || []" />
+        <GroupsCard id="card-groups" class="col-6" :groups="state.data.byResourceGroup || []" :active="activeGroup" @hover="activeGroup = $event" />
         <ServicesCard class="col-6" :services="state.data.byService || []" />
 
         <HeatmapCard

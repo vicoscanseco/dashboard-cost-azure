@@ -8,8 +8,11 @@ const props = defineProps({
   shownCount: { type: Number, required: true },
   labelField: { type: String, required: true },
   withDelta: { type: Boolean, default: false },
-  emptyMsg: { type: String, default: 'Sin datos.' }
+  emptyMsg: { type: String, default: 'Sin datos.' },
+  active: { type: String, default: null }
 });
+const emit = defineEmits(['hover']);
+const hoverName = (row) => (row._isOther ? null : row[props.labelField]);
 
 const rows = computed(() => (props.items.length ? buildRankedRows(props.items, props.shownCount, props.labelField, props.withDelta) : []));
 
@@ -22,7 +25,13 @@ function swatchColor(row) {
 <template>
   <div v-if="!rows.length" class="empty">{{ emptyMsg }}</div>
   <div v-else class="bar-list">
-    <div v-for="row in rows" :key="row[labelField]" :class="['bar-row', { 'is-other': row._isOther }]">
+    <div
+      v-for="row in rows"
+      :key="row[labelField]"
+      :class="['bar-row', { 'is-other': row._isOther, 'is-active': active && row[labelField] === active, 'is-dim': active && row[labelField] !== active }]"
+      @mouseenter="emit('hover', hoverName(row))"
+      @mouseleave="emit('hover', null)"
+    >
       <span class="bar-label">
         <span class="bar-swatch" :style="{ background: swatchColor(row) }"></span>
         {{ row[labelField] }}
@@ -42,6 +51,9 @@ function swatchColor(row) {
 .bar-list { display: flex; flex-direction: column; }
 .bar-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); font-size: var(--fs-sm); }
 .bar-row:last-child { margin-bottom: 0; }
+.bar-row { transition: opacity .2s var(--ease); }
+.bar-row.is-dim { opacity: 0.45; }
+.bar-row.is-active .bar-label { color: var(--text-primary); }
 .bar-row.is-other .bar-label, .bar-row.is-other .bar-value { color: var(--text-muted); }
 .bar-label { display: flex; align-items: center; gap: var(--space-2); color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bar-swatch { width: 9px; height: 9px; border-radius: 3px; flex: none; }
