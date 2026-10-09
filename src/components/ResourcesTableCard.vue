@@ -28,7 +28,7 @@ function deltaColor(d) {
         <td>{{ r.resource_name }}</td>
         <td class="num">{{ fmtUSD(r.cost) }}</td>
         <td class="num" :style="{ color: deltaColor(r.deltaPct) }">
-          {{ r.deltaPct !== null && r.deltaPct !== undefined ? (r.deltaPct >= 0 ? '+' : '') + r.deltaPct + '%' : '–' }}
+          {{ r.deltaPct !== null && r.deltaPct !== undefined ? (r.deltaPct >= 0 ? '+' : '') + r.deltaPct + '%' : '-' }}
         </td>
       </tr>
     </table>
@@ -37,7 +37,8 @@ function deltaColor(d) {
 
 <style scoped>
 table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
-th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--grid); }
+th, td { text-align: left; padding: 11px 8px; border-bottom: 1px solid var(--grid); }
+tr:hover td { background: var(--surface-2); }
 th { color: var(--text-muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding-bottom: 10px; }
 td.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--text-primary); font-weight: 600; }
 tr:last-child td { border-bottom: none; }

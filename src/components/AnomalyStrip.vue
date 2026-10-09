@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { fmtUSD } from '../lib/format.js';
 import { buildAnomalyBadges } from '../lib/calc.js';
+import { PhWarningOctagon, PhWarning } from '@phosphor-icons/vue';
 
 const props = defineProps({
   groups: { type: Array, default: () => [] },
@@ -24,22 +25,24 @@ function badgeText(b) {
 </script>
 
 <template>
-  <div v-if="badges.length" class="anomaly-strip">
+  <div v-if="badges.length" class="anomaly-strip rise">
     <div v-for="(b, i) in badges" :key="i" :class="['anomaly-badge', b.critical ? 'sev-critical' : 'sev-warning']">
-      <span class="anomaly-dot" :style="{ background: b.critical ? 'var(--critical)' : 'var(--warning)' }"></span>
+      <component :is="b.critical ? PhWarningOctagon : PhWarning" class="anomaly-icon" :size="18" weight="bold" />
       <span>{{ badgeText(b) }}</span>
     </div>
   </div>
 </template>
 
 <style scoped>
-.anomaly-strip { display: flex; flex-wrap: wrap; gap: 10px; }
+.anomaly-strip { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .anomaly-badge {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--surface-1); border: 1px solid var(--border); border-radius: 999px;
-  padding: 8px 14px; font-size: 12.5px; color: var(--text-primary); box-shadow: var(--shadow-sm);
+  display: flex; align-items: center; gap: var(--space-2);
+  background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 10px 14px; font-size: var(--fs-sm); color: var(--text-primary);
 }
-.anomaly-badge.sev-critical { background: var(--critical-bg); border-color: color-mix(in srgb, var(--critical) 45%, var(--border)); }
-.anomaly-badge.sev-warning { background: var(--warning-bg); border-color: color-mix(in srgb, var(--warning) 45%, var(--border)); }
-.anomaly-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.anomaly-badge.sev-critical { background: var(--critical-bg); border-color: color-mix(in srgb, var(--critical) 40%, var(--border)); }
+.anomaly-badge.sev-warning { background: var(--warning-bg); border-color: color-mix(in srgb, var(--warning) 40%, var(--border)); }
+.sev-critical .anomaly-icon { color: var(--critical); }
+.sev-warning .anomaly-icon { color: var(--warning); }
+.anomaly-icon { flex: none; }
 </style>

@@ -68,14 +68,6 @@ watch(() => [props.history, props.monthToDateSoFar, props.monthlyFinals], () => 
 watch(() => props.themeTick, () => nextTick(draw));
 
 const overBudget = computed(() => fc.value && props.monthlyBudget && fc.value.forecast > props.monthlyBudget);
-const usedPct = computed(() => (fc.value && props.monthlyBudget ? Math.min(100, Math.round((fc.value.currentSoFar / props.monthlyBudget) * 100)) : 0));
-const forecastPct = computed(() => (fc.value && props.monthlyBudget ? Math.round((fc.value.forecast / props.monthlyBudget) * 100) : 0));
-const fillClass = computed(() => (forecastPct.value > 100 ? 'over' : forecastPct.value >= 80 ? 'warn' : ''));
-const budgetNote = computed(() =>
-  forecastPct.value > 100
-    ? `La proyección de fin de mes supera el presupuesto en ${forecastPct.value - 100}%.`
-    : `La proyección de fin de mes usa el ${forecastPct.value}% del presupuesto.`
-);
 </script>
 
 <template>
@@ -91,12 +83,6 @@ const budgetNote = computed(() =>
         <div><div class="stat-label">Proyección fin de mes</div><div :class="['stat-value', 'forecast', { 'over-budget': overBudget }]">{{ fmtUSD(fc.forecast) }}</div></div>
         <div v-if="monthlyBudget"><div class="stat-label">Presupuesto mensual</div><div class="stat-value">{{ fmtUSD(monthlyBudget) }}</div></div>
       </div>
-
-      <div v-if="monthlyBudget && fc" class="budget-block">
-        <div class="budget-head"><span>Presupuesto usado (a la fecha)</span><span class="budget-pct">{{ usedPct }}%</span></div>
-        <div class="budget-track"><div :class="['budget-fill', fillClass]" :style="{ width: usedPct + '%' }"></div></div>
-        <div class="budget-note">{{ budgetNote }}</div>
-      </div>
     </template>
   </div>
 </template>
@@ -108,12 +94,4 @@ const budgetNote = computed(() =>
 .month-summary .stat-value { font-family: var(--mono); font-size: var(--fs-lg); font-weight: 600; font-variant-numeric: tabular-nums; }
 .month-summary .stat-value.forecast { color: var(--series-1); }
 .month-summary .stat-value.over-budget { color: var(--critical); }
-.budget-block { margin-top: var(--space-5); }
-.budget-head { display: flex; justify-content: space-between; align-items: baseline; font-size: var(--fs-sm); color: var(--text-secondary); margin-bottom: 6px; }
-.budget-head .budget-pct { font-family: var(--mono); font-weight: 650; font-variant-numeric: tabular-nums; }
-.budget-track { height: 10px; border-radius: 999px; background: var(--grid); position: relative; overflow: hidden; }
-.budget-fill { position: absolute; inset: 0; border-radius: 999px; width: 0%; background: var(--series-1); transition: width .2s; }
-.budget-fill.warn { background: var(--warning); }
-.budget-fill.over { background: var(--critical); }
-.budget-note { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 6px; }
 </style>

@@ -16,8 +16,8 @@ const data = computed(() => buildHeatmapData(props.rows, props.keyField));
 function cellStyle(cost, t) {
   if (!cost) return { background: 'transparent', color: cssVar('--text-primary') };
   const rgb = cssVar('--series-1-rgb');
-  const alpha = 0.08 + t * 0.82;
-  return { background: `rgba(${rgb},${alpha.toFixed(2)})`, color: t > 0.55 ? '#ffffff' : cssVar('--text-primary') };
+  const alpha = 0.10 + t * 0.80;
+  return { background: `rgba(${rgb},${alpha.toFixed(2)})`, color: t > 0.55 ? cssVar('--on-series') : cssVar('--text-primary') };
 }
 const legendSteps = [0.1, 0.3, 0.5, 0.7, 0.9];
 function legendStyle(t) {
@@ -42,7 +42,7 @@ function legendStyle(t) {
             <td class="row-label">{{ row.key }}</td>
             <td v-for="cell in row.cells" :key="cell.date">
               <div class="heat-cell" :style="cellStyle(cell.cost, cell.t)" :title="`${row.key} · ${fmtDate(cell.date)}: ${fmtUSD(cell.cost)}`">
-                {{ cell.cost ? fmtUSDShort(cell.cost) : '–' }}
+                {{ cell.cost ? fmtUSDShort(cell.cost) : '-' }}
               </div>
             </td>
             <td class="heat-total">{{ fmtUSDShort(row.rowTotal) }}</td>

@@ -44,9 +44,9 @@ function swatchColor(row) {
 .bar-row:last-child { margin-bottom: 0; }
 .bar-row.is-other .bar-label, .bar-row.is-other .bar-value { color: var(--text-muted); }
 .bar-label { display: flex; align-items: center; gap: var(--space-2); color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.bar-swatch { width: 9px; height: 9px; border-radius: 2.5px; flex: none; }
-.bar-track { grid-column: 1 / -1; height: 7px; border-radius: 999px; background: var(--grid); position: relative; margin-top: 2px; overflow: hidden; }
-.bar-fill { position: absolute; inset: 0; border-radius: 999px; background: var(--series-1); width: 0%; }
+.bar-swatch { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+.bar-track { grid-column: 1 / -1; height: 6px; border-radius: 999px; background: var(--surface-2); position: relative; margin-top: 2px; overflow: hidden; }
+.bar-fill { position: absolute; inset: 0; border-radius: 999px; background: var(--series-1); width: 0%; transition: width 1s var(--ease); }
 .bar-fill.muted { background: var(--text-muted); opacity: 0.55; }
 .bar-value { font-family: var(--mono); color: var(--text-primary); font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; display: flex; gap: var(--space-2); }
 .delta-up { color: var(--critical); }

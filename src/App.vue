@@ -15,7 +15,7 @@ import MonthsCard from './components/MonthsCard.vue';
 import ResourcesTableCard from './components/ResourcesTableCard.vue';
 import ZeroResourcesCard from './components/ZeroResourcesCard.vue';
 
-const { state, load, monthHistory, mtd, monthToDateSoFar, monthlyFinals } = useDashboard();
+const { state, load, monthHistory, mtd, monthToDateSoFar, monthlyFinals, forecast } = useDashboard();
 const themeTick = ref(0);
 
 onMounted(load);
@@ -25,7 +25,11 @@ onMounted(load);
   <div class="wrap">
     <TopBar :generated-at="state.generatedAt" @theme-change="themeTick++" />
 
-    <div v-if="!state.loaded" class="empty">Cargando…</div>
+    <div v-if="!state.loaded" class="grid" aria-busy="true" aria-label="Cargando">
+      <div class="skeleton col-8" style="min-height: 380px"></div>
+      <div class="skeleton col-4" style="min-height: 380px"></div>
+      <div class="skeleton col-12" style="min-height: 260px"></div>
+    </div>
     <div v-else-if="!state.data" class="empty">Sin datos todavía</div>
 
     <template v-else>
@@ -39,15 +43,23 @@ onMounted(load);
       />
 
       <div class="grid">
-        <HeroCard class="col-4" :mtd="mtd" :fallback-snapshot-date="state.data.snapshotDate" :fallback-total="state.data.total" />
-        <AnalysisCard class="col-8" :text="state.analysisText" />
+        <HeroCard
+          class="col-8"
+          :mtd="mtd"
+          :history="monthHistory"
+          :monthly-budget="state.data.monthlyBudget"
+          :forecast="forecast ? forecast.forecast : null"
+          :fallback-snapshot-date="state.data.snapshotDate" :fallback-total="state.data.total"
+        />
+        <AnalysisCard class="col-4" :text="state.analysisText" />
 
         <TrendCard class="col-12" :history="monthHistory" />
 
-        <MonthByResourceCard class="col-12" :month-by-resource="state.data.monthByResource" :monthly-budget="state.data.monthlyBudget" :theme-tick="themeTick" />
-
+        <MonthByResourceCard class="col-8" :month-by-resource="state.data.monthByResource" :monthly-budget="state.data.monthlyBudget" :theme-tick="themeTick" />
         <DonutCard class="col-4" :groups="state.data.byResourceGroup || []" :theme-tick="themeTick" />
-        <GroupsCard class="col-8" :groups="state.data.byResourceGroup || []" />
+
+        <GroupsCard class="col-6" :groups="state.data.byResourceGroup || []" />
+        <ServicesCard class="col-6" :services="state.data.byService || []" />
 
         <HeatmapCard
           class="col-12"
@@ -58,8 +70,15 @@ onMounted(load);
           empty-msg="Aún no hay historial por grupo disponible. Se necesitan al menos 2 días registrados."
         />
 
-        <ServicesCard class="col-6" :services="state.data.byService || []" />
-        <ResourcesTableCard class="col-6" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
+        <ResourcesTableCard class="col-7" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
+        <MonthsCard
+          class="col-5"
+          :history="monthHistory"
+          :monthly-budget="state.data.monthlyBudget"
+          :month-to-date-so-far="monthToDateSoFar"
+          :monthly-finals="monthlyFinals"
+          :theme-tick="themeTick"
+        />
 
         <HeatmapCard
           class="col-12"
@@ -68,15 +87,6 @@ onMounted(load);
           key-field="service_name"
           row-head-label="Servicio"
           empty-msg="Aún no hay historial por tipo de servicio disponible."
-        />
-
-        <MonthsCard
-          class="col-12"
-          :history="monthHistory"
-          :monthly-budget="state.data.monthlyBudget"
-          :month-to-date-so-far="monthToDateSoFar"
-          :monthly-finals="monthlyFinals"
-          :theme-tick="themeTick"
         />
 
         <ZeroResourcesCard class="col-12" :resources="state.data.byResource || []" />

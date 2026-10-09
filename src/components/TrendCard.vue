@@ -61,15 +61,21 @@ function hideTip() { tip.value.visible = false; }
       <template v-else>
         <svg :viewBox="`0 0 ${W} ${H}`" style="width:100%; height:auto; display:block;">
           <g v-for="(g, idx) in gridLines" :key="idx">
-            <line :x1="padL" :y1="g.y" :x2="W - padR" :y2="g.y" stroke="var(--grid)" stroke-width="1" />
+            <line :x1="padL" :y1="g.y" :x2="W - padR" :y2="g.y" stroke="var(--grid)" stroke-width="1" stroke-dasharray="2 5" />
             <text :x="padL - 8" :y="g.y + 4" text-anchor="end" font-size="10.5" font-family="var(--mono)" fill="var(--text-muted)">{{ g.label }}</text>
           </g>
-          <path :d="areaPath" fill="var(--series-1-wash)" stroke="none" />
-          <polyline :points="linePts" fill="none" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+          <defs>
+            <linearGradient id="trend-fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--series-1)" stop-opacity="0.28" />
+              <stop offset="1" stop-color="var(--series-1)" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path :d="areaPath" fill="url(#trend-fill)" stroke="none" />
+          <polyline :points="linePts" fill="none" stroke="var(--series-1)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
           <circle
             v-for="(h, i) in history"
             :key="h.date"
-            :cx="x(i)" :cy="y(h.total)" r="4"
+            :cx="x(i)" :cy="y(h.total)" r="3.5"
             fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"
             style="cursor:pointer"
             @mouseenter="(e) => showTip(h, i, e)"
