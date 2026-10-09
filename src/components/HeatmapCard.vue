@@ -14,6 +14,13 @@ const props = defineProps({
 
 const data = computed(() => buildHeatmapData(props.rows, props.keyField));
 
+// total por día de las filas mostradas, para ver el pulso diario sin sumar a mano
+const dayTotals = computed(() => {
+  if (!data.value || data.value.tooShort) return [];
+  const totals = data.value.days.map((_, i) => data.value.rows.reduce((s, r) => s + r.cells[i].cost, 0));
+  return { cells: totals, grand: totals.reduce((s, v) => s + v, 0) };
+});
+
 function cellStyle(cost, t) {
   void props.themeTick; // dependencia reactiva: recalcula colores al cambiar de tema
   if (!cost) return { background: 'transparent', color: cssVar('--text-primary') };
@@ -50,6 +57,11 @@ function legendStyle(t) {
             </td>
             <td class="heat-total">{{ fmtUSDShort(row.rowTotal) }}</td>
           </tr>
+          <tr class="foot">
+            <td class="row-label">Total mostrado</td>
+            <td v-for="(t, i) in dayTotals.cells" :key="i" class="day-total">{{ fmtUSDShort(t) }}</td>
+            <td class="heat-total">{{ fmtUSDShort(dayTotals.grand) }}</td>
+          </tr>
         </table>
       </div>
       <div class="heat-legend">
@@ -78,6 +90,10 @@ function legendStyle(t) {
   text-align: right; padding: 4px 6px 4px 14px; border-left: 1px solid var(--border);
   font-family: var(--mono); font-weight: 650; font-variant-numeric: tabular-nums; color: var(--text-primary); white-space: nowrap;
 }
+.heatmap tr:not(.foot):hover td.row-label, .heatmap tr:not(.foot):hover td.heat-total { color: var(--text-primary); }
+.heatmap tr:not(.foot):hover .heat-cell { box-shadow: 0 0 0 1.5px var(--text-muted); }
+.heatmap tr.foot td { padding-top: 10px; border-top: 1px solid var(--border); }
+.heatmap td.day-total { text-align: center; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 10.5px; font-weight: 600; color: var(--text-secondary); }
 .heat-legend { display: flex; align-items: center; gap: 6px; margin-top: var(--space-4); font-size: var(--fs-xs); color: var(--text-muted); }
 .heat-legend .heat-ramp { display: flex; gap: 2px; }
 .heat-legend .heat-ramp span { width: 16px; height: 8px; border-radius: 2px; }

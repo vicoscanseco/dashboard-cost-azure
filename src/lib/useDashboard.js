@@ -1,4 +1,4 @@
-import { reactive, computed, readonly } from 'vue';
+import { reactive, computed, readonly, onMounted, onBeforeUnmount } from 'vue';
 import { dedupeByDate, applyFreshMonthByResource, resolveMonthToDate, computeMonthForecast } from './calc.js';
 
 // Orquesta el mismo flujo que el render() monolítico de dashboard-template.html, pero
@@ -9,21 +9,50 @@ import { dedupeByDate, applyFreshMonthByResource, resolveMonthToDate, computeMon
 export function useDashboard() {
   const state = reactive({
     loaded: false,
+    error: false,
+    refreshing: false,
     data: null,
     analysisText: '',
     generatedAt: null
   });
 
+  // Falla de red o HTTP distinto de 200 en data.json = error (con reintento).
+  // JSON válido pero vacío = "sin datos". Una recarga silenciosa que falla conserva lo ya visible.
   async function load() {
-    const [dataRes, analysisRes] = await Promise.all([
-      fetch('data.json?_=' + Date.now()).then((r) => (r.ok ? r.json() : null)).catch(() => null),
-      fetch('analysis.txt?_=' + Date.now()).then((r) => (r.ok ? r.text() : '')).catch(() => '')
-    ]);
-    state.data = dataRes;
-    state.analysisText = analysisRes || '';
-    state.generatedAt = dataRes ? dataRes.generatedAt : null;
-    state.loaded = true;
+    const first = !state.loaded;
+    state.refreshing = true;
+    try {
+      const [dataRes, analysisRes] = await Promise.all([
+        fetch('data.json?_=' + Date.now()).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }),
+        fetch('analysis.txt?_=' + Date.now()).then((r) => (r.ok ? r.text() : '')).catch(() => '')
+      ]);
+      state.data = dataRes;
+      state.analysisText = analysisRes || '';
+      state.generatedAt = dataRes ? dataRes.generatedAt : null;
+      state.error = false;
+    } catch (e) {
+      if (first) state.error = true;
+    } finally {
+      state.loaded = true;
+      state.refreshing = false;
+    }
   }
+
+  // El reporte se publica una vez al día: refresco cada 15 min y al volver a la pestaña
+  const REFRESH_MS = 15 * 60 * 1000;
+  let timer = null;
+  let lastLoad = Date.now();
+  const reload = async () => { lastLoad = Date.now(); await load(); };
+  const onVisible = () => { if (!document.hidden && Date.now() - lastLoad > REFRESH_MS / 3) reload(); };
+  onMounted(() => {
+    reload();
+    timer = setInterval(reload, REFRESH_MS);
+    document.addEventListener('visibilitychange', onVisible);
+  });
+  onBeforeUnmount(() => {
+    clearInterval(timer);
+    document.removeEventListener('visibilitychange', onVisible);
+  });
 
   // monthHistory: costo real de cada día (sin ventana móvil), con los días del mes en
   // curso sustituidos por el valor fresco recalculado en esta corrida (ver calc.js)
@@ -41,7 +70,7 @@ export function useDashboard() {
 
   return {
     state: readonly(state),
-    load,
+    reload,
     monthHistory,
     mtd,
     monthToDateSoFar,

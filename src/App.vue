@@ -1,5 +1,6 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref, computed } from 'vue';
+import { PhArrowClockwise, PhCloudSlash } from '@phosphor-icons/vue';
 import { useDashboard } from './lib/useDashboard.js';
 import TopBar from './components/TopBar.vue';
 import AnomalyStrip from './components/AnomalyStrip.vue';
@@ -11,14 +12,14 @@ import DonutCard from './components/DonutCard.vue';
 import GroupsCard from './components/GroupsCard.vue';
 import HeatmapCard from './components/HeatmapCard.vue';
 import ServicesCard from './components/ServicesCard.vue';
+import MoversCard from './components/MoversCard.vue';
 import MonthsCard from './components/MonthsCard.vue';
 import ResourcesTableCard from './components/ResourcesTableCard.vue';
 import ZeroResourcesCard from './components/ZeroResourcesCard.vue';
 
-const { state, load, monthHistory, mtd, monthToDateSoFar, monthlyFinals, forecast } = useDashboard();
+const { state, reload, monthHistory, mtd, monthToDateSoFar, monthlyFinals, forecast } = useDashboard();
 const themeTick = ref(0);
-
-onMounted(load);
+const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.trim()));
 </script>
 
 <template>
@@ -30,7 +31,18 @@ onMounted(load);
       <div class="skeleton col-4" style="min-height: 380px"></div>
       <div class="skeleton col-12" style="min-height: 260px"></div>
     </div>
-    <div v-else-if="!state.data" class="empty">Sin datos todavía</div>
+    <div v-else-if="state.error" class="status card rise" role="alert">
+      <PhCloudSlash :size="32" weight="duotone" />
+      <h2>No se pudieron cargar los datos</h2>
+      <p>No hubo respuesta de data.json. Revisa la conexión o que el pipeline haya publicado el reporte.</p>
+      <button type="button" class="retry" :disabled="state.refreshing" @click="reload">
+        <PhArrowClockwise :size="16" weight="bold" /> Reintentar
+      </button>
+    </div>
+    <div v-else-if="!state.data" class="status card rise">
+      <h2>Sin datos todavía</h2>
+      <p>El reporte aún no tiene información. Aparecerá cuando el pipeline publique la primera corrida.</p>
+    </div>
 
     <template v-else>
       <AnomalyStrip
@@ -45,14 +57,14 @@ onMounted(load);
       <div class="grid">
         <HeroCard
           id="card-hero"
-          class="col-8"
+          :class="hasAnalysis ? 'col-8' : 'col-12'"
           :mtd="mtd"
           :history="monthHistory"
           :monthly-budget="state.data.monthlyBudget"
           :forecast="forecast ? forecast.forecast : null"
           :fallback-snapshot-date="state.data.snapshotDate" :fallback-total="state.data.total"
         />
-        <AnalysisCard class="col-4" :text="state.analysisText" />
+        <AnalysisCard v-if="hasAnalysis" class="col-4" :text="state.analysisText" />
 
         <TrendCard class="col-12" :history="monthHistory" :monthly-budget="state.data.monthlyBudget" />
 
@@ -71,6 +83,8 @@ onMounted(load);
           row-head-label="Grupo"
           empty-msg="Aún no hay historial por grupo disponible. Se necesitan al menos 2 días registrados."
         />
+
+        <MoversCard class="col-12" :resources="state.data.resourceComparisons || []" />
 
         <ResourcesTableCard id="card-resources" class="col-7" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
         <MonthsCard
@@ -97,3 +111,17 @@ onMounted(load);
     </template>
   </div>
 </template>
+
+<style scoped>
+.status { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); max-width: 560px; margin: var(--space-7) auto; color: var(--text-secondary); }
+.status h2 { margin: var(--space-2) 0 0; color: var(--text-primary); }
+.status p { margin: 0 0 var(--space-3); font-size: var(--fs-sm); }
+.retry {
+  display: inline-flex; align-items: center; gap: var(--space-2); height: 40px; padding: 0 16px;
+  background: var(--series-1); color: var(--on-series); border: 0; border-radius: var(--radius-md);
+  font: inherit; font-size: var(--fs-sm); font-weight: 600; cursor: pointer;
+  transition: transform .2s var(--ease), opacity .2s var(--ease);
+}
+.retry:active { transform: scale(0.97); }
+.retry:disabled { opacity: 0.6; cursor: progress; }
+</style>
