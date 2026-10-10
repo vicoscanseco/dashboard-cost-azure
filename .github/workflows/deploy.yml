@@ -70,7 +70,7 @@ jobs:
           set -euo pipefail
           BK="$HOME/dashboard-backups/$(date +%Y%m%d-%H%M%S)"
           mkdir -p "$BK"
-          rsync -a --exclude data.json --exclude analysis.txt "$TARGET/" "$BK/"
+          rsync -rlt --exclude data.json --exclude analysis.txt "$TARGET/" "$BK/"
           # conserva solo los 5 respaldos más recientes
           ls -1dt "$HOME"/dashboard-backups/*/ | tail -n +6 | xargs -r rm -rf
           echo "Respaldo en $BK"
@@ -79,10 +79,10 @@ jobs:
         run: |
           set -euo pipefail
           # 1) primero los assets (nombres con hash, no chocan con la versión actual)
-          rsync -a dist/assets/ "$TARGET/assets/"
+          rsync -rlt dist/assets/ "$TARGET/assets/"
           # 2) luego index.html y el resto; --delete limpia assets viejos pero NUNCA
           #    toca data.json / analysis.txt (los publica n8n) ni el template legado.
-          rsync -a --delete \
+          rsync -rlt --delete \
             --exclude data.json \
             --exclude analysis.txt \
             --exclude dashboard-template.html \
