@@ -16,7 +16,7 @@ const canvasEl = ref(null);
 let chartInst = null;
 
 const fc = computed(() => (props.history.length ? computeMonthForecast(props.history, props.monthToDateSoFar, props.monthlyFinals) : null));
-const lastMonths = computed(() => (fc.value ? Object.keys(fc.value.byMonth).sort().slice(-6) : []));
+const lastMonths = computed(() => (fc.value ? Object.keys(fc.value.byMonth).sort().slice(-12) : []));
 
 let drawId = 0;
 async function draw() {
