@@ -70,7 +70,7 @@ curl -o actions-runner.tar.gz -L https://github.com/actions/runner/releases/down
 tar xzf actions-runner.tar.gz
 
 ./config.sh --url https://github.com/vicoscanseco/dashboard-cost-azure \
-  --token <TOKEN> --name vcubnt01 --labels vcubnt01 --unattended
+  --token AAATRNVZJ34XAJ6NTGO5NVLKZKU5M --name vcubnt01 --labels vcubnt01 --unattended
 exit
 ```
 
