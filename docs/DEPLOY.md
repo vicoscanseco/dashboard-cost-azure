@@ -107,7 +107,7 @@ Cada deploy deja un respaldo de la versión anterior en
 `/home/gh-runner/dashboard-backups/<fecha>` (se guardan los 5 más recientes):
 
 ```bash
-sudo -u gh-runner rsync -rlt --delete --exclude data.json --exclude analysis.txt \
+sudo -u gh-runner rsync -rltO --delete --exclude data.json --exclude analysis.txt \
   /home/gh-runner/dashboard-backups/<fecha>/ /var/www/azure-dashboard/
 ```
 
