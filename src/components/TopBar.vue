@@ -38,7 +38,7 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
     <div class="topbar-right">
       <span v-if="staleHours" class="stale" title="El pipeline no ha publicado datos nuevos">
         <PhClockCounterClockwise :size="14" weight="bold" />
-        Datos de hace {{ staleHours >= 48 ? Math.floor(staleHours / 24) + ' días' : staleHours + ' h' }}
+        <span class="stale-long">Datos de hace </span>{{ staleHours >= 48 ? Math.floor(staleHours / 24) + ' días' : staleHours + ' h' }}
       </span>
       <span class="updated">{{ updatedLabel() }}</span>
       <button class="theme-toggle" type="button" :aria-label="theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'" @click="toggle">
@@ -72,7 +72,9 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
   display: flex; align-items: center; justify-content: center;
   font-family: var(--mono); font-weight: 600; font-size: 13px; letter-spacing: -0.02em;
 }
-.topbar h1 { font-size: var(--fs-lg); font-weight: 600; margin: 0; letter-spacing: -0.02em; white-space: nowrap; }
+.topbar h1 { font-size: var(--fs-lg); font-weight: 600; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-right { flex-shrink: 0; }
+@media (max-width: 480px) { .stale-long { display: none; } }
 .topbar-right { display: flex; align-items: center; gap: var(--space-3); }
 .stale {
   display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px;

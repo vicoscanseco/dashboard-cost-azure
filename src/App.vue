@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { PhArrowClockwise, PhCloudSlash } from '@phosphor-icons/vue';
+import { PhArrowClockwise, PhCloudSlash, PhWarning, PhXCircle } from '@phosphor-icons/vue';
 import { useDashboard } from './lib/useDashboard.js';
 import TopBar from './components/TopBar.vue';
 import AnomalyStrip from './components/AnomalyStrip.vue';
@@ -16,11 +16,29 @@ import MoversCard from './components/MoversCard.vue';
 import MonthsCard from './components/MonthsCard.vue';
 import ResourcesTableCard from './components/ResourcesTableCard.vue';
 import ZeroResourcesCard from './components/ZeroResourcesCard.vue';
+import PipelineHealthCard from './components/PipelineHealthCard.vue';
+import WaterfallCard from './components/WaterfallCard.vue';
+import ProjectsCard from './components/ProjectsCard.vue';
+import ExplorerCard from './components/ExplorerCard.vue';
+import { parseMonthlyDetail } from './lib/history.js';
+import { buildHealthChecks } from './lib/health.js';
 
 const { state, reload, monthHistory, mtd, monthToDateSoFar, monthlyFinals, forecast } = useDashboard();
 const themeTick = ref(0);
 const activeGroup = ref(null);
 const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.trim()));
+
+// Histórico mensual (mes × proyecto × recurso × servicio) para cascada, proyectos y explorador
+const detailRows = computed(() => parseMonthlyDetail(state.data && state.data.monthlyDetail));
+const currentMonth = computed(() => {
+  const d = state.data;
+  const last = (d && d.monthToDate && d.monthToDate.lastDate) || (d && d.pipeline && d.pipeline.dataThrough) || (d && d.snapshotDate);
+  return last ? last.slice(0, 7) : null;
+});
+const health = computed(() => buildHealthChecks(state.data, new Date()));
+const explorerFocus = ref(null);
+const focusProject = (key) => { explorerFocus.value = { key, t: Date.now() }; };
+const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 </script>
 
 <template>
@@ -55,7 +73,14 @@ const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.t
         :monthly-finals="monthlyFinals"
       />
 
+      <button v-if="health.issues.length" type="button" :class="['health-banner', health.level]" @click="goHealth">
+        <component :is="health.level === 'crit' ? PhXCircle : PhWarning" :size="18" weight="fill" />
+        <span><strong>Pipeline:</strong> {{ health.issues.map((c) => c.label + ' (' + c.value + ')').join(' · ') }}</span>
+        <span class="go">Ver detalle</span>
+      </button>
+
       <div class="grid">
+        <div class="section-label">Este mes</div>
         <HeroCard
           id="card-hero"
           :class="hasAnalysis ? 'col-8' : 'col-12'"
@@ -72,6 +97,7 @@ const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.t
         <MonthByResourceCard class="col-8" :month-by-resource="state.data.monthByResource" :monthly-budget="state.data.monthlyBudget" :theme-tick="themeTick" />
         <DonutCard class="col-4" :groups="state.data.byResourceGroup || []" :theme-tick="themeTick" :active-group="activeGroup" @hover="activeGroup = $event" />
 
+        <div class="section-label">Esta semana</div>
         <GroupsCard id="card-groups" class="col-6" :groups="state.data.byResourceGroup || []" :active="activeGroup" @hover="activeGroup = $event" />
         <ServicesCard class="col-6" :services="state.data.byService || []" />
 
@@ -87,15 +113,7 @@ const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.t
 
         <MoversCard class="col-12" :resources="state.data.resourceComparisons || []" />
 
-        <ResourcesTableCard id="card-resources" class="col-7" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
-        <MonthsCard
-          class="col-5"
-          :history="monthHistory"
-          :monthly-budget="state.data.monthlyBudget"
-          :month-to-date-so-far="monthToDateSoFar"
-          :monthly-finals="monthlyFinals"
-          :theme-tick="themeTick"
-        />
+        <ResourcesTableCard id="card-resources" class="col-12" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
 
         <HeatmapCard
           class="col-12"
@@ -108,12 +126,42 @@ const hasAnalysis = computed(() => !!(state.analysisText && state.analysisText.t
         />
 
         <ZeroResourcesCard class="col-12" :resources="state.data.byResource || []" />
+
+        <div class="section-label">Histórico</div>
+        <MonthsCard
+          class="col-5"
+          :history="monthHistory"
+          :monthly-budget="state.data.monthlyBudget"
+          :month-to-date-so-far="monthToDateSoFar"
+          :monthly-finals="monthlyFinals"
+          :theme-tick="themeTick"
+        />
+        <ProjectsCard class="col-7" :rows="detailRows" :current-month="currentMonth" :theme-tick="themeTick" @select="focusProject" />
+        <WaterfallCard class="col-12" :rows="detailRows" :current-month="currentMonth" :theme-tick="themeTick" />
+        <ExplorerCard class="col-12" :rows="detailRows" :current-month="currentMonth" :focus="explorerFocus" />
+
+        <div class="section-label">Operación</div>
+        <PipelineHealthCard class="col-12" :health="health" />
       </div>
     </template>
   </div>
 </template>
 
 <style scoped>
+.section-label {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: var(--space-3);
+  margin-top: var(--space-4); font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.grid > .section-label:first-child { margin-top: 0; }
+.health-banner {
+  display: flex; align-items: center; gap: var(--space-3); width: 100%; text-align: left;
+  padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid; cursor: pointer; font: inherit; font-size: var(--fs-sm);
+}
+.health-banner.warn { background: var(--warning-bg); border-color: color-mix(in srgb, var(--warning) 45%, transparent); color: var(--warning-text); }
+.health-banner.crit { background: var(--critical-bg); border-color: color-mix(in srgb, var(--critical) 45%, transparent); color: var(--critical); }
+.health-banner span:first-of-type { flex: 1; min-width: 0; }
+.health-banner .go { font-family: var(--mono); font-size: var(--fs-xs); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .status { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); max-width: 560px; margin: var(--space-7) auto; color: var(--text-secondary); }
 .status h2 { margin: var(--space-2) 0 0; color: var(--text-primary); }
 .status p { margin: 0 0 var(--space-3); font-size: var(--fs-sm); }

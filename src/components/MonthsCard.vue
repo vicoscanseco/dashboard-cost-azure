@@ -87,15 +87,21 @@ const overBudget = computed(() => fc.value && props.monthlyBudget && fc.value.fo
         <div><div class="stat-label">Proyección fin de mes</div><div :class="['stat-value', 'forecast', { 'over-budget': overBudget }]">{{ fmtUSD(fc.forecast) }}</div></div>
         <div v-if="monthlyBudget"><div class="stat-label">Presupuesto mensual</div><div class="stat-value">{{ fmtUSD(monthlyBudget) }}</div></div>
       </div>
+      <p v-if="fc && fc.method === 'weekday'" class="method">
+        Proyección con el ritmo de los últimos 28 días: {{ fmtUSD(fc.weekdayRate) }}/día entre semana y {{ fmtUSD(fc.weekendRate) }}/día en fin de semana
+        (lineal simple: {{ fmtUSD(fc.forecastLinear) }}).
+      </p>
     </template>
   </div>
 </template>
 
 <style scoped>
-.chart-wrap { height: 240px; position: relative; }
+.card-months { display: flex; flex-direction: column; }
+.chart-wrap { flex: 1; min-height: 240px; position: relative; }
 .month-summary { display: flex; gap: var(--space-6); margin-top: var(--space-4); flex-wrap: wrap; }
 .month-summary .stat-label { font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: 3px; }
 .month-summary .stat-value { font-family: var(--mono); font-size: var(--fs-lg); font-weight: 600; font-variant-numeric: tabular-nums; }
 .month-summary .stat-value.forecast { color: var(--series-1); }
 .month-summary .stat-value.over-budget { color: var(--critical); }
+.method { margin: var(--space-3) 0 0; font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--mono); max-width: 70ch; }
 </style>

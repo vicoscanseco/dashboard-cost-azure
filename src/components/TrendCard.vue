@@ -7,6 +7,15 @@ const props = defineProps({
   monthlyBudget: { type: Number, default: null }
 });
 
+// Rango visible: con el histórico completo (desde enero) la serie diaria es muy densa;
+// por defecto se muestran 90 días y se puede ampliar.
+const RANGES = [{ id: '30', label: '30 d', n: 30 }, { id: '90', label: '90 d', n: 90 }, { id: 'all', label: 'Todo', n: null }];
+const range = ref('90');
+const shown = computed(() => {
+  const r = RANGES.find((x) => x.id === range.value);
+  return r && r.n ? props.history.slice(-r.n) : props.history;
+});
+
 const W = 900, H = 220, padL = 46, padR = 16, padT = 16, padB = 28;
 const innerW = W - padL - padR, innerH = H - padT - padB;
 
@@ -18,20 +27,20 @@ const budgetAt = (date) => {
 };
 
 const niceMax = computed(() => {
-  const maxV = Math.max(...props.history.map((h) => Math.max(h.total, budgetAt(h.date) || 0)), 0);
+  const maxV = Math.max(...shown.value.map((h) => Math.max(h.total, budgetAt(h.date) || 0)), 0);
   return maxV <= 0 ? 10 : Math.ceil((maxV * 1.15) / 5) * 5;
 });
-const x = (i) => padL + (innerW * i) / (props.history.length - 1);
+const x = (i) => padL + (innerW * i) / (shown.value.length - 1);
 const y = (v) => padT + innerH - (innerH * v) / niceMax.value;
 
-const linePts = computed(() => props.history.map((h, i) => `${x(i)},${y(h.total)}`).join(' '));
+const linePts = computed(() => shown.value.map((h, i) => `${x(i)},${y(h.total)}`).join(' '));
 const budgetPts = computed(() =>
-  props.monthlyBudget ? props.history.map((h, i) => `${x(i)},${y(budgetAt(h.date))}`).join(' ') : ''
+  props.monthlyBudget ? shown.value.map((h, i) => `${x(i)},${y(budgetAt(h.date))}`).join(' ') : ''
 );
 const areaPath = computed(() => {
-  if (!props.history.length) return '';
-  const pts = props.history.map((h, i) => `${x(i)},${y(h.total)}`).join(' L');
-  return `M${x(0)},${padT + innerH} L${pts} L${x(props.history.length - 1)},${padT + innerH} Z`;
+  if (!shown.value.length) return '';
+  const pts = shown.value.map((h, i) => `${x(i)},${y(h.total)}`).join(' L');
+  return `M${x(0)},${padT + innerH} L${pts} L${x(shown.value.length - 1)},${padT + innerH} Z`;
 });
 const gridLines = computed(() => {
   const ticks = 4, out = [];
@@ -42,15 +51,15 @@ const gridLines = computed(() => {
   return out;
 });
 const xLabels = computed(() => {
-  const labelStep = Math.max(1, Math.ceil(props.history.length / 7));
-  return props.history
+  const labelStep = Math.max(1, Math.ceil(shown.value.length / 7));
+  return shown.value
     .map((h, i) => ({ h, i }))
-    .filter(({ i }) => i % labelStep === 0 || i === props.history.length - 1)
+    .filter(({ i }) => i % labelStep === 0 || i === shown.value.length - 1)
     .map(({ h, i }) => ({ x: x(i), label: fmtDate(h.date) }));
 });
 
 const summary = computed(() => {
-  const hs = props.history;
+  const hs = shown.value;
   if (hs.length < 2) return 'Tendencia diaria';
   const max = hs.reduce((m, h) => (h.total > m.total ? h : m), hs[0]);
   return `Tendencia diaria de ${fmtDate(hs[0].date)} a ${fmtDate(hs[hs.length - 1].date)}. Último día ${fmtUSD(hs[hs.length - 1].total)}. Máximo ${fmtUSD(max.total)} el ${fmtDate(max.date)}.`;
@@ -62,14 +71,14 @@ const wrapEl = ref(null);
 function onMove(evt) {
   const rect = evt.currentTarget.getBoundingClientRect();
   const px = ((evt.clientX - rect.left) / rect.width) * W;
-  const i = Math.round(((px - padL) / innerW) * (props.history.length - 1));
-  const next = Math.max(0, Math.min(props.history.length - 1, i));
+  const i = Math.round(((px - padL) / innerW) * (shown.value.length - 1));
+  const next = Math.max(0, Math.min(shown.value.length - 1, i));
   if (hover.value !== next) hover.value = next;
 }
-const hoverPoint = computed(() => (hover.value === null ? null : props.history[hover.value]));
+const hoverPoint = computed(() => (hover.value === null ? null : shown.value[hover.value]));
 const tipStyle = computed(() => {
   if (hover.value === null) return {};
-  const h = props.history[hover.value];
+  const h = shown.value[hover.value];
   const left = (x(hover.value) / W) * 100;
   return { left: left + '%', top: (y(h.total) / H) * 100 + '%' };
 });
@@ -77,11 +86,15 @@ const tipStyle = computed(() => {
 
 <template>
   <div class="card card-trend">
-    <h2>Tendencia diaria <span class="sub">Costo real de cada día</span></h2>
+    <h2>Tendencia diaria <span class="sub">Costo real de cada día</span>
+      <span v-if="history.length > 30" class="range" role="radiogroup" aria-label="Rango">
+        <button v-for="r in RANGES" :key="r.id" type="button" role="radio" :aria-checked="range === r.id" :class="{ on: range === r.id }" @click="range = r.id; hover = null">{{ r.label }}</button>
+      </span>
+    </h2>
     <div ref="wrapEl" class="trend-wrap">
-      <div v-if="!history.length" class="empty">Aún no hay suficiente historial. Vuelve mañana.</div>
-      <div v-else-if="history.length === 1" class="empty">
-        Solo hay un punto de historial ({{ fmtDate(history[0].date) }}: {{ fmtUSD(history[0].total) }}). Se necesitan al menos 2 días para una tendencia.
+      <div v-if="!shown.length" class="empty">Aún no hay suficiente historial. Vuelve mañana.</div>
+      <div v-else-if="shown.length === 1" class="empty">
+        Solo hay un punto de historial ({{ fmtDate(shown[0].date) }}: {{ fmtUSD(shown[0].total) }}). Se necesitan al menos 2 días para una tendencia.
       </div>
       <template v-else>
         <svg :viewBox="`0 0 ${W} ${H}`" style="width:100%; height:auto; display:block;" role="img" :aria-label="summary">
@@ -120,7 +133,10 @@ const tipStyle = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped>.range { margin-left: auto; display: inline-flex; padding: 3px; gap: 2px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.range button { height: 26px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--text-secondary); font: inherit; font-family: var(--mono); font-size: var(--fs-xs); cursor: pointer; }
+.range button.on { background: var(--surface-1); color: var(--text-primary); box-shadow: 0 0 0 1px var(--border-strong); }
+
 .trend-wrap { position: relative; }
 .tooltip {
   position: absolute;

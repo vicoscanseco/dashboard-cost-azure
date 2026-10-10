@@ -17,9 +17,10 @@ npm run build     # genera dist/ listo para publicar
 npm test          # pruebas de la lógica de cálculo (Vitest)
 ```
 
-Para publicar, copia `dist/` a la carpeta donde hoy vive `dashboard-template.html`, por el
-mismo nodo SSH "Publicar dashboard". `data.json` y `analysis.txt` se siguen publicando
-igual que hoy.
+Para publicar: cada push a `main` corre pruebas y build en GitHub Actions y un runner
+self-hosted en vcubnt01 copia `dist/` a `/var/www/azure-dashboard/` (ver
+[docs/DEPLOY.md](docs/DEPLOY.md)). `data.json` y `analysis.txt` los sigue publicando n8n y
+el deploy nunca los toca.
 
 ## Estructura
 ```
@@ -29,6 +30,8 @@ src/
   lib/
     calc.js                lógica de cálculo (proyección, mes a la fecha, anomalías...)
     calc.test.js           pruebas de calc.js
+    history.js             histórico mensual: cascada, proyectos (RG), explorador
+    health.js              chequeos de "Salud del pipeline"
     useDashboard.js        carga de datos, error, refresco automático
     chart.js               carga diferida de Chart.js
     format.js, md.js       formato de números/fechas y Markdown del análisis
@@ -37,6 +40,16 @@ public/
   data.json, analysis.txt  datos de ejemplo para desarrollo
   favicon.svg
 ```
+
+## Datos que publica n8n (data.json)
+Además de lo de siempre, el workflow agrega:
+
+- `monthlyDetail`: `{ cols, rows: [[mes, resource_group, recurso, servicio, costo]] }` de los
+  últimos 12 meses, desde `cost_raw_daily`. Lo usan "¿Qué movió el costo?", "Costo por
+  proyecto" (cada resource group es un proyecto) y el explorador histórico.
+- `pipeline`: versión del workflow, día hasta el que hay datos, resultado del sync con
+  Azure (filas, intentos, región) y si Hermes respondió. Lo usa "Salud del pipeline". Si
+  falta, el dashboard avisa que la versión publicada en n8n es anterior.
 
 `calc.js` encapsula bugs reales ya resueltos (rezago de reconciliación de Azure, meses
 cerrados, duplicados por re-ejecución). No lo simplifiques sin entender cada rama; las

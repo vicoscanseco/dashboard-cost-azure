@@ -1,0 +1,104 @@
+# Build + pruebas en GitHub, publicación en vcubnt01 con un runner self-hosted.
+# - En pull requests solo corre "build" (nunca toca el servidor).
+# - En push a main (o a mano con "Run workflow") además publica dist/ en el servidor.
+# - El runner del servidor no necesita Node: solo descarga el artefacto ya compilado.
+# Guía de instalación del runner y permisos: docs/DEPLOY.md
+name: CI y deploy del dashboard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dashboard-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    name: Build y pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Quitar datos de ejemplo del build
+        # public/data.json y public/analysis.txt son mocks de desarrollo. En el servidor
+        # esos archivos los publica n8n cada mañana y nunca se deben pisar.
+        run: rm -f dist/data.json dist/analysis.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 14
+
+  deploy:
+    name: Publicar en vcubnt01
+    needs: build
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch' }}
+    runs-on: [self-hosted, linux, vcubnt01]
+    environment: production
+    concurrency:
+      group: deploy-vcubnt01
+      cancel-in-progress: false
+    env:
+      TARGET: /var/www/azure-dashboard
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Verificar destino
+        run: |
+          set -euo pipefail
+          test -d "$TARGET" || { echo "No existe $TARGET"; exit 1; }
+          test -w "$TARGET" || { echo "El runner no puede escribir en $TARGET (ver docs/DEPLOY.md, paso de permisos)"; exit 1; }
+          test -f dist/index.html
+
+      - name: Respaldo de la versión publicada
+        run: |
+          set -euo pipefail
+          BK="$HOME/dashboard-backups/$(date +%Y%m%d-%H%M%S)"
+          mkdir -p "$BK"
+          rsync -a --exclude data.json --exclude analysis.txt "$TARGET/" "$BK/"
+          # conserva solo los 5 respaldos más recientes
+          ls -1dt "$HOME"/dashboard-backups/*/ | tail -n +6 | xargs -r rm -rf
+          echo "Respaldo en $BK"
+
+      - name: Publicar
+        run: |
+          set -euo pipefail
+          # 1) primero los assets (nombres con hash, no chocan con la versión actual)
+          rsync -a dist/assets/ "$TARGET/assets/"
+          # 2) luego index.html y el resto; --delete limpia assets viejos pero NUNCA
+          #    toca data.json / analysis.txt (los publica n8n) ni el template legado.
+          rsync -a --delete \
+            --exclude data.json \
+            --exclude analysis.txt \
+            --exclude dashboard-template.html \
+            dist/ "$TARGET/"
+
+      - name: Prueba de humo
+        env:
+          DASHBOARD_LOCAL_URL: ${{ vars.DASHBOARD_LOCAL_URL }}
+        run: |
+          set -euo pipefail
+          test -f "$TARGET/index.html"
+          test -f "$TARGET/data.json" || echo "::warning::No hay data.json en $TARGET (n8n aún no ha publicado)"
+          if [ -n "${DASHBOARD_LOCAL_URL:-}" ]; then
+            curl -fsS --max-time 10 "$DASHBOARD_LOCAL_URL/" | grep -q 'id="app"'
+            curl -fsS --max-time 10 -o /dev/null "$DASHBOARD_LOCAL_URL/data.json"
+            echo "El dashboard responde en $DASHBOARD_LOCAL_URL"
+          else
+            echo "::notice::Define la variable DASHBOARD_LOCAL_URL (ej. http://127.0.0.1:8088) para probar por HTTP."
+          fi

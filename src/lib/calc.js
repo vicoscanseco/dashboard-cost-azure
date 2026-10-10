@@ -89,8 +89,40 @@ export function computeMonthForecast(history, overrideCurrentSoFar, monthlyFinal
   const dayOfMonth = lastD.getDate();
   const currentSoFar = (overrideCurrentSoFar !== null && overrideCurrentSoFar !== undefined) ? overrideCurrentSoFar : (byMonth[currentMonthKey] || 0);
   byMonth[currentMonthKey] = currentSoFar;
-  const forecast = dayOfMonth > 0 ? (currentSoFar / dayOfMonth) * daysInMonth : currentSoFar;
-  return { byMonth, currentMonthKey, currentSoFar, forecast };
+  const forecastLinear = dayOfMonth > 0 ? (currentSoFar / dayOfMonth) * daysInMonth : currentSoFar;
+  const smart = projectRemainingDays(history, lastEntry.date, daysInMonth - dayOfMonth);
+  const forecast = smart ? currentSoFar + smart.remaining : forecastLinear;
+  return {
+    byMonth, currentMonthKey, currentSoFar, forecast, forecastLinear,
+    method: smart ? 'weekday' : 'linear',
+    weekdayRate: smart ? smart.weekdayRate : null,
+    weekendRate: smart ? smart.weekendRate : null
+  };
+}
+
+// Proyección de los días que faltan del mes con el ritmo real reciente, separado entre
+// semana y fin de semana (muchos recursos escalan o se apagan en fin de semana). Usa los
+// 28 días previos al último, sin contar el último porque Azure lo sigue reconciliando
+// y suele venir corto. Con menos de 14 días de muestra devuelve null y se usa la lineal.
+export const FORECAST_SAMPLE_DAYS = 28;
+export const FORECAST_MIN_SAMPLE = 14;
+export function projectRemainingDays(history, lastDate, remainingDays) {
+  if (remainingDays <= 0) return { remaining: 0, weekdayRate: null, weekendRate: null };
+  const lastT = Date.parse(lastDate + 'T00:00:00Z');
+  const fromT = lastT - FORECAST_SAMPLE_DAYS * 864e5;
+  const sample = history.filter((h) => {
+    const t = Date.parse(h.date + 'T00:00:00Z');
+    return t >= fromT && t < lastT;
+  });
+  if (sample.length < FORECAST_MIN_SAMPLE) return null;
+  const isWeekend = (t) => { const d = new Date(t).getUTCDay(); return d === 0 || d === 6; };
+  const avg = (arr) => (arr.length ? arr.reduce((s, h) => s + h.total, 0) / arr.length : null);
+  const all = avg(sample);
+  const weekdayRate = avg(sample.filter((h) => !isWeekend(Date.parse(h.date + 'T00:00:00Z')))) ?? all;
+  const weekendRate = avg(sample.filter((h) => isWeekend(Date.parse(h.date + 'T00:00:00Z')))) ?? all;
+  let remaining = 0;
+  for (let i = 1; i <= remainingDays; i++) remaining += isWeekend(lastT + i * 864e5) ? weekendRate : weekdayRate;
+  return { remaining, weekdayRate, weekendRate };
 }
 
 // Piso mínimo de la base de comparación para anomalías: sin esto, un grupo/recurso recién

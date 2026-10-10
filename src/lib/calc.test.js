@@ -188,3 +188,34 @@ describe('buildZeroResources', () => {
     expect(out.map((r) => r.resource_name)).toEqual(['y', 'z', 'x']);
   });
 });
+
+describe('proyección por ritmo entre semana / fin de semana', () => {
+  // 28 días previos al 2026-10-14 (martes): $10 entre semana, $2 en fin de semana
+  const hist = [];
+  for (let t = Date.parse('2026-09-16T00:00:00Z'); t <= Date.parse('2026-10-14T00:00:00Z'); t += 864e5) {
+    const d = new Date(t);
+    const dow = d.getUTCDay();
+    hist.push({ date: d.toISOString().slice(0, 10), total: dow === 0 || dow === 6 ? 2 : 10 });
+  }
+
+  it('usa tasas separadas y suma solo los días que faltan', async () => {
+    const { projectRemainingDays } = await import('./calc.js');
+    const r = projectRemainingDays(hist, '2026-10-14', 17); // 15..31 oct
+    expect(r.weekdayRate).toBeCloseTo(10, 6);
+    expect(r.weekendRate).toBeCloseTo(2, 6);
+    // del 15 al 31 de octubre de 2026: 12 días hábiles y 5 de fin de semana
+    expect(r.remaining).toBeCloseTo(12 * 10 + 5 * 2, 6);
+  });
+
+  it('computeMonthForecast reporta el método y conserva la lineal', () => {
+    const fc = computeMonthForecast(hist, 100, {});
+    expect(fc.method).toBe('weekday');
+    expect(fc.forecast).toBeCloseTo(100 + 130, 6);
+    expect(fc.forecastLinear).toBeCloseTo((100 / 14) * 31, 6);
+  });
+
+  it('con poca historia cae a la lineal', () => {
+    const fc = computeMonthForecast(hist.slice(-5), 100, {});
+    expect(fc.method).toBe('linear');
+  });
+});
