@@ -2,7 +2,14 @@
 import { ref, computed, onMounted } from 'vue';
 import { PhSun, PhMoon, PhClockCounterClockwise } from '@phosphor-icons/vue';
 
-const props = defineProps({ generatedAt: { type: String, default: null } });
+const props = defineProps({
+  generatedAt: { type: String, default: null },
+  title: { type: String, default: 'Costos Azure' },
+  // El radar se publica una vez por semana: el aviso de "datos viejos" usa su propio umbral
+  staleAfterHours: { type: Number, default: 24 },
+  // Enlace opcional al otro dashboard (Costos <-> Radar)
+  navLink: { type: Object, default: null }
+});
 const emit = defineEmits(['theme-change']);
 
 const theme = ref('dark');
@@ -19,11 +26,11 @@ function toggle() {
   emit('theme-change', next);
 }
 
-const STALE_HOURS = 24;
+
 const staleHours = computed(() => {
   if (!props.generatedAt) return 0;
   const h = (Date.now() - new Date(props.generatedAt).getTime()) / 36e5;
-  return h > STALE_HOURS ? Math.floor(h) : 0;
+  return h > props.staleAfterHours ? Math.floor(h) : 0;
 });
 
 const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.generatedAt).toLocaleString('es-MX', { dateStyle: 'medium', timeStyle: 'short' }) : '');
@@ -33,7 +40,7 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
   <header class="topbar">
     <div class="topbar-brand">
       <div class="topbar-mark">VC</div>
-      <h1>Costos Azure</h1>
+      <h1>{{ title }}</h1>
     </div>
     <div class="topbar-right">
       <span v-if="staleHours" class="stale" title="El pipeline no ha publicado datos nuevos">
@@ -41,6 +48,7 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
         <span class="stale-long">Datos de hace </span>{{ staleHours >= 48 ? Math.floor(staleHours / 24) + ' días' : staleHours + ' h' }}
       </span>
       <span class="updated">{{ updatedLabel() }}</span>
+      <a v-if="navLink && navLink.href" class="nav-link" :href="navLink.href">{{ navLink.label }}</a>
       <button class="theme-toggle" type="button" :aria-label="theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'" @click="toggle">
         <PhSun v-if="theme === 'dark'" :size="18" weight="bold" />
         <PhMoon v-else :size="18" weight="bold" />
@@ -80,6 +88,8 @@ const updatedLabel = () => (props.generatedAt ? 'Actualizado ' + new Date(props.
   display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px;
   background: var(--warning-bg); color: var(--warning-text); font-size: var(--fs-xs); font-family: var(--mono); white-space: nowrap;
 }
+.nav-link { font-size: var(--fs-xs); font-family: var(--mono); color: var(--series-1); text-decoration: none; padding: 6px 10px; border: 1px solid var(--border); border-radius: var(--radius-md); white-space: nowrap; }
+.nav-link:hover { border-color: var(--series-1); }
 .updated { color: var(--text-muted); font-size: var(--fs-xs); font-family: var(--mono); }
 @media (max-width: 640px) { .updated { display: none; } }
 .theme-toggle {

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="Radar semanal de recursos Azure sin uso o con bajo uso, con su costo real y la acción sugerida." />
+    <meta name="theme-color" content="#07090d" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Radar de Recursos Azure</title>
+    <script>
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('azure-dash-theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/radar/main.js"></script>
+  </body>
+</html>

@@ -7,3 +7,6 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+# archivos temporales de Vite cuando un build falla
+vite.config.js.timestamp-*

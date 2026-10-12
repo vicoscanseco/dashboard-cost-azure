@@ -1,5 +1,9 @@
 # Azure Cost Dashboard
 
+Dos páginas en el mismo proyecto: **Costos** (`index.html`) y **Radar de recursos**
+(`radar.html`, recursos sin uso o en bajo uso con su costo real). Comparten estilos,
+componentes y deploy.
+
 Dashboard de costos de Azure hecho con Vue 3, Vite y Chart.js. Lee `data.json` y
 `analysis.txt`, que n8n publica por SSH en vcubnt01. Es una migración de
 `dashboard-template.html` a una base modular, con la lógica de cálculo ya validada y un
@@ -32,6 +36,9 @@ src/
     calc.test.js           pruebas de calc.js
     history.js             histórico mensual: cascada, proyectos (RG), explorador
     health.js              chequeos de "Salud del pipeline"
+    radar.js               lógica del Radar (filtros, resumen, CSV, salud)
+  radar/                   página del Radar (main.js, RadarApp.vue, useRadar.js)
+  components/radar/        tarjetas del Radar
     useDashboard.js        carga de datos, error, refresco automático
     chart.js               carga diferida de Chart.js
     format.js, md.js       formato de números/fechas y Markdown del análisis
@@ -50,6 +57,14 @@ Además de lo de siempre, el workflow agrega:
 - `pipeline`: versión del workflow, día hasta el que hay datos, resultado del sync con
   Azure (filas, intentos, región) y si Hermes respondió. Lo usa "Salud del pipeline". Si
   falta, el dashboard avisa que la versión publicada en n8n es anterior.
+
+## Datos del Radar (resource-data.json)
+Lo publica cada lunes el workflow "Azure - Monitor de uso de recursos". Desde la versión
+2026-10-12 el costo de cada recurso sale de `cost_raw_daily` (el mismo dato del dashboard de
+costos): `cost: { mtd, lastMonth, last30, weekly[] }`, y en los planes de App Service incluye
+lo que cobran sus apps (`appsCost`), porque en Shared (D1) el cargo cae en cada app aunque
+esté detenida. También trae `savings` (eliminable/optimizable), `dormantProjects`,
+`unmonitored` (gasto de tipos que el radar no mide), `analysisText` y `pipeline`.
 
 `calc.js` encapsula bugs reales ya resueltos (rezago de reconciliación de Azure, meses
 cerrados, duplicados por re-ejecución). No lo simplifiques sin entender cada rama; las

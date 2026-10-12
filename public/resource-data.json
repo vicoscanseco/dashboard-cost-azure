@@ -1,0 +1,3495 @@
+{
+ "generatedAt": "2026-10-12T08:06:00.000Z",
+ "snapshotDate": "2026-10-12",
+ "counts": {
+  "activo": 16,
+  "bajo_uso": 4,
+  "sin_uso": 19,
+  "sin_datos": 14
+ },
+ "potentialSavings": 454.13,
+ "savings": {
+  "eliminable": 346.73,
+  "optimizable": 107.4
+ },
+ "totalLast30": 907.69,
+ "weeks": [
+  "2026-30",
+  "2026-31",
+  "2026-32",
+  "2026-33",
+  "2026-34",
+  "2026-35",
+  "2026-36",
+  "2026-37",
+  "2026-38",
+  "2026-39",
+  "2026-40"
+ ],
+ "resources": [
+  {
+   "id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/app_service_plan/hospuebla-dev-asp",
+   "name": "hospuebla-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "hospuebla-dev",
+   "sku": "F1",
+   "tier": "Free",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 3,
+    "appsCorriendo": 0,
+    "sku": "F1",
+    "tier": "Free"
+   },
+   "cost": {
+    "mtd": 0,
+    "lastMonth": 0,
+    "last30": 0,
+    "weekly": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0,
+   "recommendedAction": "Sin costo",
+   "actionHint": "No genera cargos; elimínalo solo si quieres ordenar la suscripción."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
+   "name": "db-apce-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "GP_S_Gen5_1"
+   },
+   "cost": {
+    "mtd": 9.6,
+    "lastMonth": 24.75,
+    "last30": 24.01,
+    "weekly": [
+     5.67,
+     4.77,
+     4.5,
+     5.5,
+     4.58,
+     4.84,
+     4.94,
+     4.53,
+     5.37,
+     5.33,
+     6.11
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 2,
+   "monthlyCost": 9.6,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
+   "name": "db-codepre-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "S1"
+   },
+   "cost": {
+    "mtd": 11.7,
+    "lastMonth": 30.2,
+    "last30": 29.25,
+    "weekly": [
+     6.53,
+     6.1,
+     7.82,
+     7.81,
+     7.44,
+     7.13,
+     6.19,
+     5.99,
+     6.13,
+     5.61,
+     7.27
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 4,
+   "monthlyCost": 11.7,
+   "recommendedAction": "Eliminar",
+   "actionHint": "4 semanas seguidas sin uso."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
+   "name": "DB_HP",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 2.08,
+    "lastMonth": 5.08,
+    "last30": 5.2,
+    "weekly": [
+     1.37,
+     1.33,
+     0.97,
+     1.06,
+     1.35,
+     1.17,
+     1.38,
+     1.14,
+     1.0,
+     1.23,
+     1.3
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 3,
+   "monthlyCost": 2.08,
+   "recommendedAction": "Eliminar",
+   "actionHint": "3 semanas seguidas sin uso."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
+   "name": "SmartBoardStable",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "S1"
+   },
+   "cost": {
+    "mtd": 10.46,
+    "lastMonth": 25.27,
+    "last30": 26.15,
+    "weekly": [
+     6.92,
+     6.48,
+     5.12,
+     5.39,
+     5.08,
+     4.99,
+     6.56,
+     5.24,
+     6.06,
+     5.82,
+     5.27
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 2,
+   "monthlyCost": 10.46,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
+   "name": "smartboard-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "F1",
+   "tier": "Free",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 1,
+    "appsCorriendo": 0,
+    "sku": "F1",
+    "tier": "Free"
+   },
+   "cost": {
+    "mtd": 0,
+    "lastMonth": 0,
+    "last30": 0,
+    "weekly": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0,
+   "recommendedAction": "Sin costo",
+   "actionHint": "No genera cargos; elimínalo solo si quieres ordenar la suscripción."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
+   "name": "db-codesphere-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxccodespheredev",
+   "sku": "S0",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "S0"
+   },
+   "cost": {
+    "mtd": 5.42,
+    "lastMonth": 12.89,
+    "last30": 13.55,
+    "weekly": [
+     3.37,
+     2.88,
+     2.85,
+     2.6,
+     2.62,
+     3.16,
+     2.79,
+     3.18,
+     2.93,
+     3.02,
+     3.58
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 4,
+   "monthlyCost": 5.42,
+   "recommendedAction": "Eliminar",
+   "actionHint": "4 semanas seguidas sin uso."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
+   "name": "codesphere-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxccodespheredev",
+   "sku": "D1",
+   "tier": "Shared",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 2,
+    "appsCorriendo": 0,
+    "sku": "D1",
+    "tier": "Shared"
+   },
+   "cost": {
+    "mtd": 4.05,
+    "lastMonth": 9.48,
+    "last30": 18.98,
+    "weekly": [
+     2.01,
+     2.63,
+     2.56,
+     2.09,
+     2.04,
+     2.49,
+     2.66,
+     2.04,
+     2.67,
+     2.61,
+     2.38
+    ]
+   },
+   "appsCost": {
+    "mtd": 4.05,
+    "lastMonth": 9.48,
+    "last30": 18.98,
+    "weekly": [
+     2.01,
+     2.63,
+     2.56,
+     2.09,
+     2.04,
+     2.49,
+     2.66,
+     2.04,
+     2.67,
+     2.61,
+     2.38
+    ]
+   },
+   "weeksInStatus": 1,
+   "monthlyCost": 4.05,
+   "recommendedAction": "Bajar a F1 o eliminar",
+   "actionHint": "En Shared (D1) cada app cobra por hora aunque esté detenida."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
+   "name": "db-fracc-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcfraccdev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 1.72,
+    "lastMonth": 4.31,
+    "last30": 4.3,
+    "weekly": [
+     0.89,
+     1.06,
+     0.94,
+     0.95,
+     1.12,
+     0.97,
+     0.98,
+     1.13,
+     1.14,
+     0.84,
+     0.97
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 1.72,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
+   "name": "fracc-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcfraccdev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "apps": 2,
+    "appsCorriendo": 0,
+    "sku": "S1",
+    "tier": "Standard"
+   },
+   "cost": {
+    "mtd": 24.92,
+    "lastMonth": 67.48,
+    "last30": 62.31,
+    "weekly": [
+     15.39,
+     11.94,
+     13.68,
+     12.86,
+     11.83,
+     13.02,
+     14.29,
+     16.53,
+     12.06,
+     12.29,
+     13.88
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 2,
+   "monthlyCost": 24.92,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
+   "name": "db-katsin-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxckatsindev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 2.12,
+    "lastMonth": 5.27,
+    "last30": 5.3,
+    "weekly": [
+     1.14,
+     1.12,
+     1.0,
+     1.24,
+     1.02,
+     1.02,
+     1.12,
+     1.04,
+     1.02,
+     1.18,
+     1.14
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 2.12,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
+   "name": "asp-coreedu-dev",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcoreedu",
+   "sku": "D1",
+   "tier": "Shared",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 3,
+    "appsCorriendo": 0,
+    "sku": "D1",
+    "tier": "Shared"
+   },
+   "cost": {
+    "mtd": 3.98,
+    "lastMonth": 10.78,
+    "last30": 28.47,
+    "weekly": [
+     2.14,
+     2.41,
+     2.58,
+     2.56,
+     2.19,
+     2.49,
+     2.55,
+     2.32,
+     2.36,
+     2.16,
+     2.32
+    ]
+   },
+   "appsCost": {
+    "mtd": 3.98,
+    "lastMonth": 10.78,
+    "last30": 28.47,
+    "weekly": [
+     2.14,
+     2.41,
+     2.58,
+     2.56,
+     2.19,
+     2.49,
+     2.55,
+     2.32,
+     2.36,
+     2.16,
+     2.32
+    ]
+   },
+   "weeksInStatus": 1,
+   "monthlyCost": 3.98,
+   "recommendedAction": "Bajar a F1 o eliminar",
+   "actionHint": "En Shared (D1) cada app cobra por hora aunque esté detenida."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
+   "name": "db-sanjose-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcsanjosedev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 1.71,
+    "lastMonth": 3.95,
+    "last30": 4.28,
+    "weekly": [
+     0.89,
+     0.94,
+     0.91,
+     1.12,
+     1.04,
+     0.96,
+     0.96,
+     0.98,
+     0.98,
+     0.98,
+     0.9
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 1.71,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
+   "name": "db-thyssen-moneta-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "GP_S_Gen5_1"
+   },
+   "cost": {
+    "mtd": 7.53,
+    "lastMonth": 20.54,
+    "last30": 18.82,
+    "weekly": [
+     3.67,
+     4.7,
+     4.51,
+     4.25,
+     4.87,
+     4.07,
+     3.72,
+     4.44,
+     4.3,
+     4.66,
+     4.03
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 4,
+   "monthlyCost": 7.53,
+   "recommendedAction": "Eliminar",
+   "actionHint": "4 semanas seguidas sin uso."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
+   "name": "db-thyssen-orders-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "GP_S_Gen5_1"
+   },
+   "cost": {
+    "mtd": 9.44,
+    "lastMonth": 22.78,
+    "last30": 23.6,
+    "weekly": [
+     5.67,
+     4.77,
+     5.22,
+     5.94,
+     6.15,
+     6.08,
+     5.13,
+     5.51,
+     5.0,
+     4.65,
+     5.34
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 9.44,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
+   "name": "db-thyssen-rvsJIT-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 2.13,
+    "lastMonth": 5.09,
+    "last30": 5.33,
+    "weekly": [
+     1.07,
+     1.19,
+     1.11,
+     1.08,
+     1.17,
+     1.26,
+     1.21,
+     1.13,
+     1.36,
+     1.42,
+     1.19
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 2.13,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
+   "name": "db-thyssen-tkcc-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 1.8,
+    "lastMonth": 4.61,
+    "last30": 4.51,
+    "weekly": [
+     1.09,
+     0.94,
+     0.97,
+     1.08,
+     1.05,
+     1.07,
+     0.99,
+     0.91,
+     1.12,
+     0.94,
+     1.13
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 1.8,
+   "recommendedAction": "Revisar",
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
+   "name": "db-TKLINK-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "conexiones": 0,
+    "sku": "Basic"
+   },
+   "cost": {
+    "mtd": 1.88,
+    "lastMonth": 4.83,
+    "last30": 4.71,
+    "weekly": [
+     1.13,
+     1.19,
+     1.24,
+     1.14,
+     0.95,
+     1.06,
+     0.94,
+     0.88,
+     1.06,
+     1.15,
+     0.94
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 3,
+   "monthlyCost": 1.88,
+   "recommendedAction": "Eliminar",
+   "actionHint": "3 semanas seguidas sin uso."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
+   "name": "thyssen-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.0,
+    "apps": 1,
+    "appsCorriendo": 0,
+    "sku": "S1",
+    "tier": "Standard"
+   },
+   "cost": {
+    "mtd": 27.18,
+    "lastMonth": 74.03,
+    "last30": 67.96,
+    "weekly": [
+     15.41,
+     18.16,
+     13.52,
+     17.34,
+     16.51,
+     13.88,
+     14.91,
+     17.58,
+     14.79,
+     15.14,
+     13.73
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 4,
+   "monthlyCost": 27.18,
+   "recommendedAction": "Eliminar",
+   "actionHint": "4 semanas seguidas sin uso."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
+   "name": "codeact-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxccodeactdev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "bajo_uso",
+   "detalle": {
+    "cpuPromedio": 6.0,
+    "apps": 2,
+    "appsCorriendo": 2,
+    "sku": "S1",
+    "tier": "Standard"
+   },
+   "cost": {
+    "mtd": 26.66,
+    "lastMonth": 68.67,
+    "last30": 66.65,
+    "weekly": [
+     13.51,
+     16.32,
+     16.84,
+     15.88,
+     16.29,
+     13.56,
+     17.28,
+     17.72,
+     17.7,
+     15.31,
+     16.69
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 26.66,
+   "recommendedAction": "Bajar de tier",
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
+   "name": "plan-permisos-bd",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxccodeland",
+   "sku": "B1",
+   "tier": "Basic",
+   "status": "bajo_uso",
+   "detalle": {
+    "cpuPromedio": 6.9,
+    "apps": 1,
+    "appsCorriendo": 1,
+    "sku": "B1",
+    "tier": "Basic"
+   },
+   "cost": {
+    "mtd": 4.91,
+    "lastMonth": 11.26,
+    "last30": 12.28,
+    "weekly": [
+     2.73,
+     2.83,
+     3.05,
+     2.77,
+     2.31,
+     3.09,
+     2.35,
+     3.08,
+     2.46,
+     2.62,
+     3.07
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 4.91,
+   "recommendedAction": "Bajar de tier",
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
+   "name": "codepre-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxccodepredev",
+   "sku": "F1",
+   "tier": "Free",
+   "status": "bajo_uso",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 2,
+    "appsCorriendo": 2,
+    "sku": "F1",
+    "tier": "Free"
+   },
+   "cost": {
+    "mtd": 0,
+    "lastMonth": 0,
+    "last30": 0,
+    "weekly": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0,
+   "recommendedAction": "Bajar de tier",
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
+   "name": "sistemaparroquial-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcsistemaparroquialdev",
+   "sku": "D1",
+   "tier": "Shared",
+   "status": "bajo_uso",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 3,
+    "appsCorriendo": 3,
+    "sku": "D1",
+    "tier": "Shared"
+   },
+   "cost": {
+    "mtd": 3.52,
+    "lastMonth": 8.16,
+    "last30": 28.47,
+    "weekly": [
+     2.03,
+     1.83,
+     1.99,
+     1.93,
+     1.72,
+     1.64,
+     1.91,
+     2.02,
+     1.67,
+     2.29,
+     2.02
+    ]
+   },
+   "appsCost": {
+    "mtd": 3.52,
+    "lastMonth": 8.16,
+    "last30": 28.47,
+    "weekly": [
+     2.03,
+     1.83,
+     1.99,
+     1.93,
+     1.72,
+     1.64,
+     1.91,
+     2.02,
+     1.67,
+     2.29,
+     2.02
+    ]
+   },
+   "weeksInStatus": 1,
+   "monthlyCost": 3.52,
+   "recommendedAction": "Bajar de tier",
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
+   "name": "db_hp",
+   "category": "sql_database",
+   "resourceGroup": "hospuebla-dev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "Basic",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 1.91,
+    "lastMonth": 4.95,
+    "last30": 4.77,
+    "weekly": [
+     0.91,
+     1.1,
+     1.05,
+     1.26,
+     1.25,
+     0.99,
+     1.07,
+     0.94,
+     1.06,
+     1.2,
+     1.24
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 1.91,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
+   "name": "i22-006bienestar-authorization-db-clon",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "GP_S_Gen5_1",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 8.64,
+    "lastMonth": 19.9,
+    "last30": 21.59,
+    "weekly": [
+     4.75,
+     4.07,
+     4.47,
+     5.25,
+     5.73,
+     4.08,
+     4.29,
+     4.04,
+     4.52,
+     5.29,
+     4.45
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 8.64,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
+   "name": "i22-006bienestar-corporatewellbeing-db-clon",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "GP_S_Gen5_1",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 7.71,
+    "lastMonth": 20.17,
+    "last30": 19.28,
+    "weekly": [
+     3.78,
+     4.39,
+     3.98,
+     3.9,
+     4.42,
+     4.27,
+     4.18,
+     4.24,
+     4.42,
+     3.84,
+     3.91
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 7.71,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
+   "name": "i22-006bienestar-masterdata-db-clon",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "S0",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "S0",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 5.9,
+    "lastMonth": 15.78,
+    "last30": 14.74,
+    "weekly": [
+     3.48,
+     3.77,
+     3.02,
+     3.63,
+     3.71,
+     3.83,
+     3.12,
+     3.12,
+     3.85,
+     3.0,
+     3.94
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 5.9,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
+   "name": "db-biGeteware-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "Basic",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "Basic",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 1.73,
+    "lastMonth": 4.1,
+    "last30": 4.33,
+    "weekly": [
+     1.06,
+     0.9,
+     0.84,
+     1.1,
+     0.95,
+     1.08,
+     0.85,
+     0.95,
+     1.05,
+     0.81,
+     0.88
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 1.73,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
+   "name": "respaldodbsmart",
+   "category": "storage_account",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.26,
+    "lastMonth": 0.71,
+    "last30": 0.65,
+    "weekly": [
+     0.13,
+     0.15,
+     0.16,
+     0.15,
+     0.16,
+     0.13,
+     0.12,
+     0.13,
+     0.12,
+     0.15,
+     0.15
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.26,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
+   "name": "stabdapcedev",
+   "category": "storage_account",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.21,
+    "lastMonth": 0.5,
+    "last30": 0.53,
+    "weekly": [
+     0.11,
+     0.13,
+     0.14,
+     0.14,
+     0.1,
+     0.1,
+     0.14,
+     0.12,
+     0.13,
+     0.11,
+     0.12
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.21,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
+   "name": "db-config",
+   "category": "sql_database",
+   "resourceGroup": "rgmxccodeland",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "S1",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 11.49,
+    "lastMonth": 29.31,
+    "last30": 28.73,
+    "weekly": [
+     5.38,
+     6.98,
+     7.32,
+     5.77,
+     6.41,
+     7.07,
+     6.29,
+     5.8,
+     5.73,
+     6.54,
+     5.38
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 11.49,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
+   "name": "stacodeland",
+   "category": "storage_account",
+   "resourceGroup": "rgmxccodeland",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.25,
+    "lastMonth": 0.66,
+    "last30": 0.63,
+    "weekly": [
+     0.16,
+     0.15,
+     0.14,
+     0.15,
+     0.14,
+     0.17,
+     0.16,
+     0.13,
+     0.16,
+     0.16,
+     0.16
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.25,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
+   "name": "db-codepre-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxccodepredev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "cpuPromedio": null,
+    "conexiones": null,
+    "sku": "GP_S_Gen5_1",
+    "errorMetricas": "Metric cpu_percent not available (serverless paused)"
+   },
+   "cost": {
+    "mtd": 7.77,
+    "lastMonth": 18.77,
+    "last30": 19.43,
+    "weekly": [
+     4.47,
+     4.2,
+     4.3,
+     3.9,
+     3.94,
+     3.91,
+     4.88,
+     4.09,
+     3.77,
+     5.02,
+     5.18
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 7.77,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
+   "name": "stacodespheredev",
+   "category": "storage_account",
+   "resourceGroup": "rgmxccodespheredev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.22,
+    "lastMonth": 0.59,
+    "last30": 0.54,
+    "weekly": [
+     0.13,
+     0.12,
+     0.13,
+     0.13,
+     0.12,
+     0.12,
+     0.14,
+     0.13,
+     0.13,
+     0.13,
+     0.14
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.22,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
+   "name": "stacasanjose",
+   "category": "storage_account",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.21,
+    "lastMonth": 0.49,
+    "last30": 0.53,
+    "weekly": [
+     0.11,
+     0.12,
+     0.12,
+     0.13,
+     0.13,
+     0.1,
+     0.11,
+     0.11,
+     0.11,
+     0.12,
+     0.12
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.21,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
+   "name": "stacgsanjose",
+   "category": "storage_account",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.24,
+    "lastMonth": 0.65,
+    "last30": 0.61,
+    "weekly": [
+     0.12,
+     0.14,
+     0.15,
+     0.12,
+     0.16,
+     0.12,
+     0.14,
+     0.12,
+     0.14,
+     0.14,
+     0.12
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.24,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
+   "name": "stasanjosedev",
+   "category": "storage_account",
+   "resourceGroup": "rgmxcsanjosedev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_datos",
+   "detalle": {
+    "transaccionesTotal": null,
+    "sku": "Standard_LRS",
+    "errorMetricas": "Request timed out"
+   },
+   "cost": {
+    "mtd": 0.23,
+    "lastMonth": 0.57,
+    "last30": 0.57,
+    "weekly": [
+     0.13,
+     0.12,
+     0.12,
+     0.14,
+     0.13,
+     0.12,
+     0.14,
+     0.12,
+     0.11,
+     0.12,
+     0.11
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.23,
+   "recommendedAction": "Revisar",
+   "actionHint": "Azure Monitor: Request timed out"
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
+   "name": "APCE_VENTANILLA",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "S0",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 1.6,
+    "conexiones": 110,
+    "sku": "S0"
+   },
+   "cost": {
+    "mtd": 5.71,
+    "lastMonth": 14.81,
+    "last30": 14.28,
+    "weekly": [
+     2.72,
+     3.02,
+     3.12,
+     3.33,
+     3.5,
+     3.03,
+     3.58,
+     2.92,
+     3.49,
+     2.95,
+     3.53
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 5.71,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
+   "name": "db-codeact-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxccodeactdev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 9.4,
+    "conexiones": 664,
+    "sku": "GP_S_Gen5_1"
+   },
+   "cost": {
+    "mtd": 7.8,
+    "lastMonth": 21.28,
+    "last30": 19.49,
+    "weekly": [
+     4.02,
+     4.75,
+     3.71,
+     4.29,
+     3.81,
+     4.99,
+     4.19,
+     3.87,
+     4.2,
+     3.85,
+     4.29
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 7.8,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
+   "name": "stacodeactdev",
+   "category": "storage_account",
+   "resourceGroup": "rgmxccodeactdev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "transaccionesTotal": 4647,
+    "sku": "Standard_LRS"
+   },
+   "cost": {
+    "mtd": 0.22,
+    "lastMonth": 0.59,
+    "last30": 0.56,
+    "weekly": [
+     0.14,
+     0.11,
+     0.12,
+     0.11,
+     0.13,
+     0.13,
+     0.12,
+     0.13,
+     0.14,
+     0.12,
+     0.13
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.22,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
+   "name": "codegob2-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxccodegob2dev",
+   "sku": "D1",
+   "tier": "Shared",
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": null,
+    "apps": 3,
+    "appsCorriendo": 3,
+    "sku": "D1",
+    "tier": "Shared"
+   },
+   "cost": {
+    "mtd": 3.83,
+    "lastMonth": 10.05,
+    "last30": 28.47,
+    "weekly": [
+     1.93,
+     1.97,
+     2.54,
+     2.49,
+     2.46,
+     1.81,
+     1.83,
+     1.99,
+     2.11,
+     2.27,
+     1.86
+    ]
+   },
+   "appsCost": {
+    "mtd": 3.83,
+    "lastMonth": 10.05,
+    "last30": 28.47,
+    "weekly": [
+     1.93,
+     1.97,
+     2.54,
+     2.49,
+     2.46,
+     1.81,
+     1.83,
+     1.99,
+     2.11,
+     2.27,
+     1.86
+    ]
+   },
+   "weeksInStatus": 1,
+   "monthlyCost": 3.83,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
+   "name": "db-codegob-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxccodegobdev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 12.3,
+    "conexiones": 648,
+    "sku": "S1"
+   },
+   "cost": {
+    "mtd": 10.42,
+    "lastMonth": 23.89,
+    "last30": 26.04,
+    "weekly": [
+     6.28,
+     6.01,
+     6.18,
+     5.64,
+     5.86,
+     5.29,
+     5.57,
+     6.42,
+     6.62,
+     5.0,
+     5.1
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 10.42,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
+   "name": "stacodegobdev",
+   "category": "storage_account",
+   "resourceGroup": "rgmxccodegobdev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "transaccionesTotal": 3804,
+    "sku": "Standard_LRS"
+   },
+   "cost": {
+    "mtd": 0.23,
+    "lastMonth": 0.61,
+    "last30": 0.58,
+    "weekly": [
+     0.13,
+     0.12,
+     0.12,
+     0.15,
+     0.14,
+     0.12,
+     0.14,
+     0.15,
+     0.12,
+     0.14,
+     0.14
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.23,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
+   "name": "codegob-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxccodegobdev",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 11.3,
+    "apps": 3,
+    "appsCorriendo": 3,
+    "sku": "S1",
+    "tier": "Standard"
+   },
+   "cost": {
+    "mtd": 24.0,
+    "lastMonth": 55.0,
+    "last30": 60.0,
+    "weekly": [
+     13.92,
+     13.53,
+     14.51,
+     12.62,
+     14.95,
+     11.53,
+     12.2,
+     14.4,
+     11.56,
+     12.65,
+     14.7
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 24.0,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
+   "name": "db-ca-sanjose",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "S0",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 4.1,
+    "conexiones": 757,
+    "sku": "S0"
+   },
+   "cost": {
+    "mtd": 5.43,
+    "lastMonth": 14.0,
+    "last30": 13.57,
+    "weekly": [
+     2.89,
+     3.53,
+     2.88,
+     3.01,
+     3.18,
+     3.52,
+     3.28,
+     2.83,
+     3.11,
+     3.62,
+     3.03
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 5.43,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
+   "name": "db-cg-sanjose",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "S0",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 7.4,
+    "conexiones": 885,
+    "sku": "S0"
+   },
+   "cost": {
+    "mtd": 5.23,
+    "lastMonth": 13.93,
+    "last30": 13.07,
+    "weekly": [
+     2.46,
+     3.15,
+     3.05,
+     3.28,
+     3.22,
+     2.82,
+     2.85,
+     2.6,
+     3.06,
+     2.62,
+     2.53
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 5.23,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
+   "name": "db-cp-sanjose",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "S1",
+   "tier": "Standard",
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 2.5,
+    "conexiones": 331,
+    "sku": "S1"
+   },
+   "cost": {
+    "mtd": 12.64,
+    "lastMonth": 29.83,
+    "last30": 31.59,
+    "weekly": [
+     6.03,
+     6.29,
+     6.64,
+     5.93,
+     8.04,
+     6.96,
+     7.37,
+     6.66,
+     7.28,
+     6.74,
+     6.58
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 12.64,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
+   "name": "sanjose-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "B1",
+   "tier": "Basic",
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 12.0,
+    "apps": 1,
+    "appsCorriendo": 1,
+    "sku": "B1",
+    "tier": "Basic"
+   },
+   "cost": {
+    "mtd": 4.49,
+    "lastMonth": 11.56,
+    "last30": 11.22,
+    "weekly": [
+     2.18,
+     2.83,
+     2.47,
+     2.74,
+     2.53,
+     2.92,
+     2.4,
+     2.51,
+     2.41,
+     2.82,
+     2.39
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 4.49,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
+   "name": "sanjose-dev-asp",
+   "category": "app_service_plan",
+   "resourceGroup": "rgmxcsanjosedev",
+   "sku": "B1",
+   "tier": "Basic",
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 11.7,
+    "apps": 1,
+    "appsCorriendo": 1,
+    "sku": "B1",
+    "tier": "Basic"
+   },
+   "cost": {
+    "mtd": 5.38,
+    "lastMonth": 14.57,
+    "last30": 13.45,
+    "weekly": [
+     2.95,
+     3.41,
+     3.23,
+     3.44,
+     3.38,
+     3.42,
+     3.48,
+     3.55,
+     3.2,
+     3.08,
+     3.28
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 5.38,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
+   "name": "db-arquidiocesiscentral-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxcsistemaparroquialdev",
+   "sku": "GP_S_Gen5_1",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 3.2,
+    "conexiones": 193,
+    "sku": "GP_S_Gen5_1"
+   },
+   "cost": {
+    "mtd": 9.5,
+    "lastMonth": 22.53,
+    "last30": 23.74,
+    "weekly": [
+     4.73,
+     5.64,
+     5.74,
+     5.04,
+     5.17,
+     5.44,
+     4.95,
+     6.13,
+     5.33,
+     5.83,
+     5.0
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 9.5,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
+   "name": "stainvoicesdev",
+   "category": "storage_account",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "transaccionesTotal": 3317,
+    "sku": "Standard_LRS"
+   },
+   "cost": {
+    "mtd": 0.25,
+    "lastMonth": 0.56,
+    "last30": 0.62,
+    "weekly": [
+     0.14,
+     0.16,
+     0.13,
+     0.13,
+     0.13,
+     0.15,
+     0.15,
+     0.14,
+     0.14,
+     0.14,
+     0.16
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.25,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
+   "name": "db-tixitransportistas-dev",
+   "category": "sql_database",
+   "resourceGroup": "rgmxctixitrdev",
+   "sku": "S0",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "cpuPromedio": 6.6,
+    "conexiones": 232,
+    "sku": "S0"
+   },
+   "cost": {
+    "mtd": 6.47,
+    "lastMonth": 17.58,
+    "last30": 16.17,
+    "weekly": [
+     3.83,
+     4.25,
+     3.73,
+     4.13,
+     3.65,
+     3.54,
+     4.27,
+     3.88,
+     4.02,
+     3.13,
+     4.14
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 6.47,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
+   "name": "sgabudget",
+   "category": "storage_account",
+   "resourceGroup": "rgvicosdev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "activo",
+   "detalle": {
+    "transaccionesTotal": 4984,
+    "sku": "Standard_LRS"
+   },
+   "cost": {
+    "mtd": 0.25,
+    "lastMonth": 0.62,
+    "last30": 0.63,
+    "weekly": [
+     0.14,
+     0.14,
+     0.13,
+     0.17,
+     0.15,
+     0.13,
+     0.12,
+     0.14,
+     0.14,
+     0.16,
+     0.15
+    ]
+   },
+   "appsCost": null,
+   "weeksInStatus": 1,
+   "monthlyCost": 0.25,
+   "recommendedAction": "Mantener",
+   "actionHint": ""
+  }
+ ],
+ "dormantProjects": [
+  {
+   "resourceGroup": "rgmxcfraccdev",
+   "resources": 2,
+   "last30": 66.61,
+   "unmonitoredLast30": 0
+  },
+  {
+   "resourceGroup": "rgmxccodespheredev",
+   "resources": 3,
+   "last30": 33.07,
+   "unmonitoredLast30": 0
+  },
+  {
+   "resourceGroup": "rgmxcoreedu",
+   "resources": 1,
+   "last30": 28.47,
+   "unmonitoredLast30": 0
+  },
+  {
+   "resourceGroup": "rgmxckatsindev",
+   "resources": 1,
+   "last30": 5.3,
+   "unmonitoredLast30": 0
+  },
+  {
+   "resourceGroup": "hospuebla-dev",
+   "resources": 2,
+   "last30": 4.77,
+   "unmonitoredLast30": 0
+  }
+ ],
+ "unmonitored": [
+  {
+   "resourceGroup": "rgmxcthyssendev",
+   "name": "vm-thyssen-legacy",
+   "type": "microsoft.compute/virtualmachines",
+   "last30": 35.0,
+   "mtd": 14.0
+  },
+  {
+   "resourceGroup": "rgmxcapcedev",
+   "name": "ca-apce-worker",
+   "type": "microsoft.app/containerapps",
+   "last30": 18.4,
+   "mtd": 7.2
+  },
+  {
+   "resourceGroup": "rgvicosdev",
+   "name": "oai-vicos",
+   "type": "microsoft.cognitiveservices/accounts",
+   "last30": 6.1,
+   "mtd": 2.9
+  },
+  {
+   "resourceGroup": "rgmxcsanjose",
+   "name": "pip-sanjose",
+   "type": "microsoft.network/publicipaddresses",
+   "last30": 3.65,
+   "mtd": 1.46
+  }
+ ],
+ "unmonitoredTotal": 63.15,
+ "history": [
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/app_service_plan/hospuebla-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/app_service_plan/hospuebla-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/app_service_plan/hospuebla-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/app_service_plan/hospuebla-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/app_service_plan/hospuebla-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
+   "status": "sin_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
+   "status": "sin_datos"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-09-14",
+   "resource_id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-21",
+   "resource_id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-09-28",
+   "resource_id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
+   "status": "activo"
+  },
+  {
+   "snapshot_date": "2026-10-05",
+   "resource_id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
+   "status": "bajo_uso"
+  },
+  {
+   "snapshot_date": "2026-10-12",
+   "resource_id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
+   "status": "activo"
+  }
+ ],
+ "analysisText": "## Resumen de la semana\n\nHay **19 recursos sin uso** que siguen cobrando. Lo más caro son los planes **Shared (D1)** con apps detenidas: Azure cobra cada app por hora aunque esté apagada.\n\n### Qué haría primero\n1. Bajar a F1 o eliminar los planes D1 sin apps corriendo.\n2. Eliminar las bases `*-dev` que llevan 3+ semanas sin conexiones.\n3. Revisar `vm-thyssen-legacy`: no la monitorea el radar y es lo más caro del proyecto dormido.",
+ "links": {
+  "costDashboard": "https://tours-modify-exposure-bears.trycloudflare.com"
+ },
+ "pipeline": {
+  "workflowVersion": "2026-10-12",
+  "costDataThrough": "2026-10-11",
+  "costRows": 118,
+  "hermes": {
+   "ok": true,
+   "error": null
+  },
+  "sinDatos": 14
+ }
+}

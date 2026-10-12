@@ -32,9 +32,9 @@ jobs:
       - run: npm test
       - run: npm run build
       - name: Quitar datos de ejemplo del build
-        # public/data.json y public/analysis.txt son mocks de desarrollo. En el servidor
-        # esos archivos los publica n8n cada mañana y nunca se deben pisar.
-        run: rm -f dist/data.json dist/analysis.txt
+        # public/data.json, analysis.txt y resource-data.json son mocks de desarrollo. En el
+        # servidor esos archivos los publica n8n y nunca se deben pisar.
+        run: rm -f dist/data.json dist/analysis.txt dist/resource-data.json
       - uses: actions/upload-artifact@v4
         with:
           name: dist
@@ -52,6 +52,7 @@ jobs:
       cancel-in-progress: false
     env:
       TARGET: /var/www/azure-dashboard
+      RADAR_TARGET: /var/www/azure-resource-dashboard
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -86,6 +87,8 @@ jobs:
             --exclude data.json \
             --exclude analysis.txt \
             --exclude dashboard-template.html \
+            --exclude radar.html \
+            --exclude resource-data.json \
             dist/ "$TARGET/"
 
       - name: Prueba de humo
@@ -101,4 +104,41 @@ jobs:
             echo "El dashboard responde en $DASHBOARD_LOCAL_URL"
           else
             echo "::notice::Define la variable DASHBOARD_LOCAL_URL (ej. http://127.0.0.1:8088) para probar por HTTP."
+          fi
+
+      # ---- Radar de recursos: dist/radar.html se publica como index.html en su carpeta ----
+      - name: Publicar radar de recursos
+        id: radar
+        run: |
+          set -euo pipefail
+          if [ ! -d "$RADAR_TARGET" ] || [ ! -w "$RADAR_TARGET" ]; then
+            echo "::warning::El runner no puede escribir en $RADAR_TARGET; se omite el radar (ver docs/DEPLOY.md, paso 1b)."
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          test -f dist/radar.html
+          BK="$HOME/radar-backups/$(date +%Y%m%d-%H%M%S)"
+          mkdir -p "$BK"
+          rsync -rltO --exclude resource-data.json "$RADAR_TARGET/" "$BK/"
+          ls -1dt "$HOME"/radar-backups/*/ | tail -n +6 | xargs -r rm -rf
+          # assets primero, luego la página (radar.html -> index.html)
+          rsync -rltO --delete dist/assets/ "$RADAR_TARGET/assets/"
+          rsync -rltO dist/favicon.svg "$RADAR_TARGET/favicon.svg"
+          cp dist/radar.html "$RADAR_TARGET/index.html.tmp"
+          mv -f "$RADAR_TARGET/index.html.tmp" "$RADAR_TARGET/index.html"
+          echo "Radar publicado (respaldo en $BK)"
+
+      - name: Prueba de humo del radar
+        if: ${{ steps.radar.outputs.skipped != 'true' }}
+        env:
+          RADAR_LOCAL_URL: ${{ vars.RADAR_LOCAL_URL }}
+        run: |
+          set -euo pipefail
+          test -f "$RADAR_TARGET/index.html"
+          test -f "$RADAR_TARGET/resource-data.json" || echo "::warning::No hay resource-data.json (el workflow del radar corre los lunes)"
+          if [ -n "${RADAR_LOCAL_URL:-}" ]; then
+            curl -fsS --max-time 10 "$RADAR_LOCAL_URL/" | grep -q 'id="app"'
+            echo "El radar responde en $RADAR_LOCAL_URL"
+          else
+            echo "::notice::Define la variable RADAR_LOCAL_URL (ej. http://127.0.0.1:8089) para probar por HTTP."
           fi

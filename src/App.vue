@@ -148,20 +148,6 @@ const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ 
 </template>
 
 <style scoped>
-.section-label {
-  grid-column: 1 / -1; display: flex; align-items: center; gap: var(--space-3);
-  margin-top: var(--space-4); font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
-}
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.grid > .section-label:first-child { margin-top: 0; }
-.health-banner {
-  display: flex; align-items: center; gap: var(--space-3); width: 100%; text-align: left;
-  padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid; cursor: pointer; font: inherit; font-size: var(--fs-sm);
-}
-.health-banner.warn { background: var(--warning-bg); border-color: color-mix(in srgb, var(--warning) 45%, transparent); color: var(--warning-text); }
-.health-banner.crit { background: var(--critical-bg); border-color: color-mix(in srgb, var(--critical) 45%, transparent); color: var(--critical); }
-.health-banner span:first-of-type { flex: 1; min-width: 0; }
-.health-banner .go { font-family: var(--mono); font-size: var(--fs-xs); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .status { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); max-width: 560px; margin: var(--space-7) auto; color: var(--text-secondary); }
 .status h2 { margin: var(--space-2) 0 0; color: var(--text-primary); }
 .status p { margin: 0 0 var(--space-3); font-size: var(--fs-sm); }

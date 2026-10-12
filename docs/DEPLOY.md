@@ -46,12 +46,30 @@ sudo apt-get install -y acl rsync
 sudo setfacl -R -d -m g:dashdeploy:rwX /var/www/azure-dashboard
 ```
 
+### 1b. Carpeta del Radar de recursos
+
+El mismo deploy publica el radar (`dist/radar.html` como `index.html`) en
+`/var/www/azure-resource-dashboard/`, la carpeta que sirve el nginx del radar (puerto 8089).
+`resource-data.json` lo sigue publicando n8n y nunca se toca. Si la carpeta no es
+escribible, el deploy del radar se omite con un aviso y el de costos sigue normal.
+
+```bash
+sudo chgrp -R dashdeploy /var/www/azure-resource-dashboard
+sudo chmod -R g+rwX /var/www/azure-resource-dashboard
+sudo find /var/www/azure-resource-dashboard -type d -exec chmod g+s {} +
+sudo setfacl -R -d -m g:dashdeploy:rwX /var/www/azure-resource-dashboard
+```
+
 Comprueba:
 
 ```bash
 sudo -u gh-runner test -w /var/www/azure-dashboard && echo "gh-runner puede escribir"
 sudo -u hermes-svc test -w /var/www/azure-dashboard && echo "hermes-svc puede escribir"
+sudo -u gh-runner test -w /var/www/azure-resource-dashboard && echo "gh-runner puede escribir en el radar"
 ```
+
+> No guardes el token del runner en el repo: dura una hora y solo sirve para registrar
+> el runner, pero queda en el historial de git.
 
 > Si el wrapper de n8n (publish) escribe con otro usuario, agrégalo también al grupo.
 > Corre una ejecución del workflow de n8n después de este paso para confirmar que
@@ -70,7 +88,7 @@ curl -o actions-runner.tar.gz -L https://github.com/actions/runner/releases/down
 tar xzf actions-runner.tar.gz
 
 ./config.sh --url https://github.com/vicoscanseco/dashboard-cost-azure \
-  --token AAATRNVZJ34XAJ6NTGO5NVLKZKU5M --name vcubnt01 --labels vcubnt01 --unattended
+  --token <TOKEN> --name vcubnt01 --labels vcubnt01 --unattended
 exit
 ```
 
@@ -93,6 +111,7 @@ En GitHub el runner debe aparecer como **Idle** con las etiquetas
 - **Settings → Secrets and variables → Actions → Variables → `DASHBOARD_LOCAL_URL`** con la
   URL local del nginx del dashboard (ej. `http://127.0.0.1:8088`). Con esto la prueba de
   humo valida que la página y `data.json` respondan. Sin la variable solo revisa archivos.
+- Opcional: **`RADAR_LOCAL_URL`** (ej. `http://127.0.0.1:8089`) para la prueba de humo del radar.
 
 ## 4. Primer deploy
 
