@@ -12,7 +12,9 @@ export const STATUS = {
 export const TYPE_GROUPS = {
   db: { label: 'Bases de datos', categories: ['sql_database', 'postgresql_flexible', 'mysql_flexible'] },
   app_service_plan: { label: 'App Service', categories: ['app_service_plan'] },
-  storage_account: { label: 'Storage', categories: ['storage_account'] }
+  storage_account: { label: 'Storage', categories: ['storage_account'] },
+  vm: { label: 'Máquinas virtuales', categories: ['virtual_machine'] },
+  huerfanos: { label: 'Huérfanos', categories: ['orphan_disk', 'orphan_ip', 'old_snapshot'] }
 };
 
 export const CATEGORY_LABEL = {
@@ -20,8 +22,15 @@ export const CATEGORY_LABEL = {
   postgresql_flexible: 'PostgreSQL',
   mysql_flexible: 'MySQL',
   app_service_plan: 'App Service Plan',
-  storage_account: 'Storage Account'
+  storage_account: 'Storage Account',
+  virtual_machine: 'Máquina virtual',
+  orphan_disk: 'Disco sin VM',
+  orphan_ip: 'IP pública sin uso',
+  old_snapshot: 'Snapshot viejo'
 };
+
+export const ORPHAN_CATEGORIES = ['orphan_disk', 'orphan_ip', 'old_snapshot'];
+const POWER_LABEL = { running: 'encendida', stopped: 'detenida (sin desasignar)', deallocated: 'desasignada', starting: 'iniciando', stopping: 'deteniendo', deallocating: 'desasignando' };
 
 export function typeGroup(category) {
   for (const [k, g] of Object.entries(TYPE_GROUPS)) if (g.categories.includes(category)) return k;
@@ -46,6 +55,14 @@ export function metricSummary(r) {
     case 'postgresql_flexible':
     case 'mysql_flexible':
       return { label: 'CPU promedio', value: pct(d.cpuPromedio) || '—', extra: d.conexionesPromedio !== undefined && d.conexionesPromedio !== null ? `${d.conexionesPromedio.toFixed(1)} conexiones prom.` : null };
+    case 'virtual_machine':
+      return { label: d.cpuPromedio !== null && d.cpuPromedio !== undefined ? 'CPU promedio' : 'Estado', value: pct(d.cpuPromedio) || '', extra: d.energia ? POWER_LABEL[d.energia] || d.energia : null };
+    case 'orphan_disk':
+      return { label: 'Tamaño', value: d.sizeGB ? `${d.sizeGB} GB` : '—', extra: 'sin VM conectada' };
+    case 'orphan_ip':
+      return { label: 'Asociación', value: 'ninguna', extra: null };
+    case 'old_snapshot':
+      return { label: 'Creado', value: d.creado ? String(d.creado).slice(0, 10) : '—', extra: 'más de 90 días' };
     case 'storage_account':
       return { label: 'Transacciones', value: d.transaccionesTotal === null || d.transaccionesTotal === undefined ? '—' : Math.round(d.transaccionesTotal).toLocaleString('es-MX'), extra: null };
     default:
@@ -53,9 +70,10 @@ export function metricSummary(r) {
   }
 }
 
-export function filterResources(resources, { status = 'all', type = 'all', q = '' } = {}) {
+export function filterResources(resources, { status = 'all', type = 'all', q = '', showIgnored = false } = {}) {
   const needle = q.trim().toLowerCase();
   return resources.filter((r) => {
+    if (!!r.ignored !== !!showIgnored) return false;
     if (status !== 'all' && r.status !== status) return false;
     if (type !== 'all' && typeGroup(r.category) !== type) return false;
     if (needle) {
@@ -80,7 +98,7 @@ export function historyFor(history, resourceId, n = 12) {
 
 // Resumen del encabezado: cuánto está en juego y qué parte del gasto total representa
 export function buildSummary(data) {
-  const resources = (data && data.resources) || [];
+  const resources = ((data && data.resources) || []).filter((r) => !r.ignored);
   const savings = (data && data.savings) || {
     eliminable: resources.filter((r) => r.status === 'sin_uso').reduce((s, r) => s + (cost30(r) || 0), 0),
     optimizable: resources.filter((r) => r.status === 'bajo_uso').reduce((s, r) => s + (cost30(r) || 0), 0)
@@ -90,21 +108,29 @@ export function buildSummary(data) {
   const counts = { activo: 0, bajo_uso: 0, sin_uso: 0, sin_datos: 0, ...((data && data.counts) || {}) };
   const costlyIdle = resources.filter((r) => r.status === 'sin_uso' && (cost30(r) || 0) >= 1).length;
   const freeIdle = resources.filter((r) => r.status === 'sin_uso' && (cost30(r) || 0) < 0.01).length;
+  const achieved = (data && data.achieved) || { monthly: 0, yearToDate: 0, items: [], newThisWeek: 0 };
   return {
     atStake, savings, total,
     share: total ? (atStake / total) * 100 : null,
     counts, costlyIdle, freeIdle,
+    orphans: resources.filter((r) => ORPHAN_CATEGORIES.includes(r.category)).length,
+    withRecommendation: resources.filter((r) => r.skuRecommendation).length,
+    achieved,
+    advisorTotal: (data && data.advisorTotal) || 0,
     totalResources: resources.length
   };
 }
 
 export function buildCsv(resources) {
   const esc = (v) => '"' + (v === null || v === undefined ? '' : String(v)).replace(/"/g, '""') + '"';
-  const header = ['Recurso', 'Tipo', 'SKU', 'Resource Group', 'Estado', 'Semanas así', 'Costo 30 días', 'Mes en curso', 'Mes anterior', 'Acción sugerida', 'Motivo'];
+  const header = ['Recurso', 'Tipo', 'SKU', 'Resource Group', 'Estado', 'Semanas así', 'Costo 30 días', 'Mes en curso', 'Mes anterior', 'Acción sugerida', 'Motivo', 'SKU sugerido', 'Ahorro estimado/mes', 'Azure Advisor'];
   const rows = resources.map((r) => [
     r.name, CATEGORY_LABEL[r.category] || r.category, r.sku || '', r.resourceGroup, STATUS[r.status]?.label || r.status,
     r.weeksInStatus ?? '', cost30(r)?.toFixed(2) ?? '', r.cost ? r.cost.mtd.toFixed(2) : (r.monthlyCost ?? ''), r.cost ? r.cost.lastMonth.toFixed(2) : '',
-    r.recommendedAction || '', r.actionHint || ''
+    r.recommendedAction || '', r.actionHint || '',
+    r.skuRecommendation ? `${r.skuRecommendation.from} -> ${r.skuRecommendation.to}` : '',
+    r.skuRecommendation ? r.skuRecommendation.monthlySavings.toFixed(2) : '',
+    (r.advisor || []).map((a) => a.problem).filter(Boolean).join(' | ')
   ]);
   return '﻿' + [header, ...rows].map((row) => row.map(esc).join(',')).join('\r\n');
 }
@@ -164,4 +190,14 @@ export function prettyType(t) {
     'microsoft.cognitiveservices/accounts': 'Azure AI / OpenAI'
   };
   return map[t] || t.split('/').pop();
+}
+
+// Ahorro "logrado" acumulado por semana para la gráfica (data.trend viene del workflow)
+export function trendSeries(trend) {
+  const rows = (trend || []).filter((t) => t && t.date);
+  return {
+    labels: rows.map((t) => t.date),
+    atStake: rows.map((t) => Math.round((t.atStake || 0) * 100) / 100),
+    achieved: rows.map((t) => Math.round((t.achieved || 0) * 100) / 100)
+  };
 }

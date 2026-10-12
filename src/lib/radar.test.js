@@ -87,3 +87,39 @@ describe('salud del radar', () => {
     expect(h.checks.find((c) => c.id === 'version').level).toBe('warn');
   });
 });
+
+describe('radar v2: huérfanos, ignorados, recomendaciones', () => {
+  const base = [
+    R({ name: 'disk-1', category: 'orphan_disk', status: 'sin_uso', detalle: { sizeGB: 128 }, cost: { last30: 19.2, mtd: 7, lastMonth: 19, weekly: [] } }),
+    R({ name: 'vm-1', category: 'virtual_machine', status: 'sin_uso', detalle: { energia: 'stopped', cpuPromedio: 0 }, cost: { last30: 72, mtd: 26, lastMonth: 70, weekly: [] } }),
+    R({ name: 'backup', category: 'storage_account', status: 'sin_uso', ignored: true, cost: { last30: 3, mtd: 1, lastMonth: 3, weekly: [] } }),
+    R({ name: 'plan', category: 'app_service_plan', status: 'bajo_uso', sku: 'S1', skuRecommendation: { from: 'S1', to: 'B1', monthlySavings: 43.77, source: 'estimado' }, advisor: [{ problem: 'Right-size' }], cost: { last30: 54, mtd: 20, lastMonth: 54, weekly: [] } })
+  ];
+  it('métricas de VM y huérfanos', async () => {
+    const { metricSummary } = await import('./radar.js');
+    expect(metricSummary(base[0])).toMatchObject({ value: '128 GB' });
+    expect(metricSummary(base[1]).extra).toBe('detenida (sin desasignar)');
+  });
+  it('los ignorados no se ven por defecto ni cuentan en el resumen', async () => {
+    const { filterResources, buildSummary } = await import('./radar.js');
+    expect(filterResources(base).map((r) => r.name)).toEqual(['disk-1', 'vm-1', 'plan']);
+    expect(filterResources(base, { showIgnored: true }).map((r) => r.name)).toEqual(['backup']);
+    expect(filterResources(base, { type: 'huerfanos' }).map((r) => r.name)).toEqual(['disk-1']);
+    const s = buildSummary({ resources: base, achieved: { monthly: 58.47, yearToDate: 120, items: [], newThisWeek: 2 }, advisorTotal: 62.5 });
+    expect(s.savings.eliminable).toBeCloseTo(91.2, 6);
+    expect(s.orphans).toBe(1);
+    expect(s.withRecommendation).toBe(1);
+    expect(s.achieved.monthly).toBe(58.47);
+  });
+  it('CSV incluye la recomendación y Advisor', async () => {
+    const { buildCsv } = await import('./radar.js');
+    const csv = buildCsv([base[3]]);
+    expect(csv).toContain('"S1 -> B1"');
+    expect(csv).toContain('"43.77"');
+    expect(csv).toContain('"Right-size"');
+  });
+  it('serie de tendencia', async () => {
+    const { trendSeries } = await import('./radar.js');
+    expect(trendSeries([{ date: '2026-10-12', atStake: 154.8, achieved: 0 }, { date: '2026-10-19', atStake: 140.1, achieved: 58.47 }])).toEqual({ labels: ['2026-10-12', '2026-10-19'], atStake: [154.8, 140.1], achieved: [0, 58.47] });
+  });
+});

@@ -9,7 +9,7 @@ const emit = defineEmits(['filter']);
 const s = computed(() => props.summary);
 const elimPct = computed(() => (s.value.atStake > 0 ? (s.value.savings.eliminable / s.value.atStake) * 100 : 0));
 const tiles = computed(() => [
-  { status: 'sin_uso', label: 'Sin uso', icon: PhTrash, cls: 'crit', value: s.value.counts.sin_uso, foot: s.value.costlyIdle ? `${s.value.costlyIdle} cuestan ≥ $1 al mes` : 'ninguno con costo relevante' },
+  { status: 'sin_uso', label: 'Sin uso', icon: PhTrash, cls: 'crit', value: s.value.counts.sin_uso, foot: (s.value.costlyIdle ? `${s.value.costlyIdle} cuestan ≥ $1 al mes` : 'ninguno con costo relevante') + (s.value.orphans ? ` · ${s.value.orphans} huérfanos` : '') },
   { status: 'bajo_uso', label: 'Bajo uso', icon: PhArrowsDownUp, cls: 'warn', value: s.value.counts.bajo_uso, foot: 'candidatos a bajar de tier' },
   { status: 'activo', label: 'Activos', icon: PhCheckCircle, cls: 'good', value: s.value.counts.activo, foot: 'uso dentro de rango' },
   { status: 'sin_datos', label: 'Sin datos', icon: PhQuestion, cls: 'muted', value: s.value.counts.sin_datos, foot: 'sin lectura de métricas' }
@@ -31,6 +31,12 @@ const tiles = computed(() => [
         <span><i class="sw elim"></i>Eliminable <strong>{{ fmtUSD(s.savings.eliminable) }}</strong></span>
         <span><i class="sw opt"></i>Optimizable <strong>{{ fmtUSD(s.savings.optimizable) }}</strong></span>
       </div>
+      <p v-if="s.savings.optimizableEstimado" class="share">
+        Bajando de SKU lo optimizable ahorrarías <strong>~{{ fmtUSD(s.savings.optimizableEstimado) }}/mes</strong> ({{ s.withRecommendation }} {{ s.withRecommendation === 1 ? 'recomendación' : 'recomendaciones' }} con precio).
+      </p>
+      <p v-if="s.achieved && s.achieved.monthly" class="share good">
+        Ya dejaste de pagar <strong>{{ fmtUSD(s.achieved.monthly) }}/mes</strong> gracias al radar.
+      </p>
       <p v-if="s.share !== null" class="share">
         Es el <strong>{{ s.share.toFixed(0) }}%</strong> de tu gasto total de 30 días ({{ fmtUSD(s.total) }}).
       </p>
@@ -69,6 +75,8 @@ const tiles = computed(() => [
 .sw.opt { background: var(--warning); }
 .share { margin: var(--space-4) 0 0; font-size: var(--fs-sm); color: var(--text-secondary); }
 .share strong { color: var(--text-primary); }
+.share.good strong { color: var(--good); }
+.share + .share { margin-top: var(--space-2); }
 .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
 .tile {
   display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left;

@@ -3,14 +3,17 @@
  "snapshotDate": "2026-10-12",
  "counts": {
   "activo": 16,
-  "bajo_uso": 4,
-  "sin_uso": 19,
-  "sin_datos": 14
+  "bajo_uso": 5,
+  "sin_uso": 23,
+  "sin_datos": 13,
+  "ignorados": 1,
+  "huerfanos": 3
  },
- "potentialSavings": 454.13,
+ "potentialSavings": 584.97,
  "savings": {
-  "eliminable": 346.73,
-  "optimizable": 107.4
+  "eliminable": 407.49,
+  "optimizable": 177.48,
+  "optimizableEstimado": 82.49
  },
  "totalLast30": 907.69,
  "weeks": [
@@ -64,7 +67,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0,
    "recommendedAction": "Sin costo",
-   "actionHint": "No genera cargos; elimínalo solo si quieres ordenar la suscripción."
+   "actionHint": "No genera cargos; elimínalo solo si quieres ordenar la suscripción.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-apce-dev",
@@ -101,7 +108,11 @@
    "weeksInStatus": 2,
    "monthlyCost": 9.6,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-codepre-dev",
@@ -138,7 +149,11 @@
    "weeksInStatus": 4,
    "monthlyCost": 11.7,
    "recommendedAction": "Eliminar",
-   "actionHint": "4 semanas seguidas sin uso."
+   "actionHint": "4 semanas seguidas sin uso.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": "Base de desarrollo: SQL serverless con auto-pausa solo cobra almacenamiento mientras nadie la usa."
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/DB_HP",
@@ -175,7 +190,11 @@
    "weeksInStatus": 3,
    "monthlyCost": 2.08,
    "recommendedAction": "Eliminar",
-   "actionHint": "3 semanas seguidas sin uso."
+   "actionHint": "3 semanas seguidas sin uso.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/SmartBoardStable",
@@ -212,7 +231,11 @@
    "weeksInStatus": 2,
    "monthlyCost": 10.46,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": "Base de desarrollo: SQL serverless con auto-pausa solo cobra almacenamiento mientras nadie la usa."
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/app_service_plan/smartboard-dev-asp",
@@ -251,7 +274,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0,
    "recommendedAction": "Sin costo",
-   "actionHint": "No genera cargos; elimínalo solo si quieres ordenar la suscripción."
+   "actionHint": "No genera cargos; elimínalo solo si quieres ordenar la suscripción.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/sql_database/db-codesphere-dev",
@@ -288,7 +315,11 @@
    "weeksInStatus": 4,
    "monthlyCost": 5.42,
    "recommendedAction": "Eliminar",
-   "actionHint": "4 semanas seguidas sin uso."
+   "actionHint": "4 semanas seguidas sin uso.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/app_service_plan/codesphere-dev-asp",
@@ -344,7 +375,19 @@
    "weeksInStatus": 1,
    "monthlyCost": 4.05,
    "recommendedAction": "Bajar a F1 o eliminar",
-   "actionHint": "En Shared (D1) cada app cobra por hora aunque esté detenida."
+   "actionHint": "En Shared (D1) cada app cobra por hora aunque esté detenida.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": {
+    "from": "D1",
+    "to": "F1",
+    "source": "estimado",
+    "note": "F1: 60 min de CPU al día y sin dominio propio; ideal si las apps están apagadas.",
+    "monthlySavings": 18.98,
+    "listFrom": 9.49,
+    "listTo": 0
+   },
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/sql_database/db-fracc-dev",
@@ -381,7 +424,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 1.72,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcfraccdev/providers/app_service_plan/fracc-dev-asp",
@@ -420,7 +467,11 @@
    "weeksInStatus": 2,
    "monthlyCost": 24.92,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxckatsindev/providers/sql_database/db-katsin-dev",
@@ -457,7 +508,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 2.12,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcoreedu/providers/app_service_plan/asp-coreedu-dev",
@@ -513,7 +568,19 @@
    "weeksInStatus": 1,
    "monthlyCost": 3.98,
    "recommendedAction": "Bajar a F1 o eliminar",
-   "actionHint": "En Shared (D1) cada app cobra por hora aunque esté detenida."
+   "actionHint": "En Shared (D1) cada app cobra por hora aunque esté detenida.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": {
+    "from": "D1",
+    "to": "F1",
+    "source": "estimado",
+    "note": "F1: 60 min de CPU al día y sin dominio propio; ideal si las apps están apagadas.",
+    "monthlySavings": 28.47,
+    "listFrom": 9.49,
+    "listTo": 0
+   },
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/sql_database/db-sanjose-dev",
@@ -550,7 +617,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 1.71,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-moneta-dev",
@@ -587,7 +658,11 @@
    "weeksInStatus": 4,
    "monthlyCost": 7.53,
    "recommendedAction": "Eliminar",
-   "actionHint": "4 semanas seguidas sin uso."
+   "actionHint": "4 semanas seguidas sin uso.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-orders-dev",
@@ -624,7 +699,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 9.44,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-rvsJIT-dev",
@@ -661,7 +740,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 2.13,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-thyssen-tkcc-dev",
@@ -698,7 +781,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 1.8,
    "recommendedAction": "Revisar",
-   "actionHint": "Recién detectado sin uso; confirma antes de eliminar."
+   "actionHint": "Recién detectado sin uso; confirma antes de eliminar.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/sql_database/db-TKLINK-dev",
@@ -735,7 +822,11 @@
    "weeksInStatus": 3,
    "monthlyCost": 1.88,
    "recommendedAction": "Eliminar",
-   "actionHint": "3 semanas seguidas sin uso."
+   "actionHint": "3 semanas seguidas sin uso.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/app_service_plan/thyssen-dev-asp",
@@ -774,7 +865,11 @@
    "weeksInStatus": 4,
    "monthlyCost": 27.18,
    "recommendedAction": "Eliminar",
-   "actionHint": "4 semanas seguidas sin uso."
+   "actionHint": "4 semanas seguidas sin uso.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/app_service_plan/codeact-dev-asp",
@@ -813,7 +908,19 @@
    "weeksInStatus": 1,
    "monthlyCost": 26.66,
    "recommendedAction": "Bajar de tier",
-   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": {
+    "from": "S1",
+    "to": "B1",
+    "source": "Azure Retail Prices",
+    "note": "B1 no incluye slots de deployment ni autoescalado.",
+    "monthlySavings": 54.02,
+    "listFrom": 69.35,
+    "listTo": 13.14
+   },
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/app_service_plan/plan-permisos-bd",
@@ -852,7 +959,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 4.91,
    "recommendedAction": "Bajar de tier",
-   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/app_service_plan/codepre-dev-asp",
@@ -891,7 +1002,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0,
    "recommendedAction": "Bajar de tier",
-   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/app_service_plan/sistemaparroquial-dev-asp",
@@ -947,7 +1062,19 @@
    "weeksInStatus": 1,
    "monthlyCost": 3.52,
    "recommendedAction": "Bajar de tier",
-   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza."
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza.",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": {
+    "from": "D1",
+    "to": "F1",
+    "source": "estimado",
+    "note": "F1: 60 min de CPU al día y sin dominio propio; ideal si las apps están apagadas.",
+    "monthlySavings": 28.47,
+    "listFrom": 9.49,
+    "listTo": 0
+   },
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/hospuebla-dev/providers/sql_database/db_hp",
@@ -985,7 +1112,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 1.91,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-authorization-db-clon",
@@ -1023,7 +1154,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 8.64,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-corporatewellbeing-db-clon",
@@ -1061,7 +1196,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 7.71,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/i22-006bienestar-masterdata-db-clon",
@@ -1099,7 +1238,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 5.9,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/db-biGeteware-dev",
@@ -1137,7 +1280,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 1.73,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/respaldodbsmart",
@@ -1173,8 +1320,13 @@
    "appsCost": null,
    "weeksInStatus": 1,
    "monthlyCost": 0.26,
-   "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "recommendedAction": "Ignorado",
+   "actionHint": "Etiqueta radar=ignorar: se conserva a propósito.",
+   "ignored": true,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null,
+   "radarTag": "ignorar"
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/storage_account/stabdapcedev",
@@ -1211,7 +1363,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.21,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "actionHint": "Azure Monitor: Request timed out",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/sql_database/db-config",
@@ -1249,7 +1405,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 11.49,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodeland/providers/storage_account/stacodeland",
@@ -1286,7 +1446,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.25,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "actionHint": "Azure Monitor: Request timed out",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodepredev/providers/sql_database/db-codepre-dev",
@@ -1324,7 +1488,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 7.77,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)"
+   "actionHint": "Azure Monitor: Metric cpu_percent not available (serverless paused)",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodespheredev/providers/storage_account/stacodespheredev",
@@ -1361,7 +1529,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.22,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "actionHint": "Azure Monitor: Request timed out",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacasanjose",
@@ -1398,7 +1570,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.21,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "actionHint": "Azure Monitor: Request timed out",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/storage_account/stacgsanjose",
@@ -1435,7 +1611,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.24,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "actionHint": "Azure Monitor: Request timed out",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/storage_account/stasanjosedev",
@@ -1472,7 +1652,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.23,
    "recommendedAction": "Revisar",
-   "actionHint": "Azure Monitor: Request timed out"
+   "actionHint": "Azure Monitor: Request timed out",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/sql_database/APCE_VENTANILLA",
@@ -1509,7 +1693,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 5.71,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/sql_database/db-codeact-dev",
@@ -1546,7 +1734,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 7.8,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodeactdev/providers/storage_account/stacodeactdev",
@@ -1582,7 +1774,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.22,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodegob2dev/providers/app_service_plan/codegob2-dev-asp",
@@ -1638,7 +1834,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 3.83,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/sql_database/db-codegob-dev",
@@ -1675,7 +1875,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 10.42,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/storage_account/stacodegobdev",
@@ -1711,7 +1915,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.23,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxccodegobdev/providers/app_service_plan/codegob-dev-asp",
@@ -1750,7 +1958,19 @@
    "weeksInStatus": 1,
    "monthlyCost": 24.0,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [
+    {
+     "problem": "Right-size or shutdown underutilized App Service plan",
+     "solution": "Reduce el tamaño de la instancia",
+     "impact": "Medium",
+     "monthlySavings": 38.5,
+     "currency": "USD"
+    }
+   ],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-ca-sanjose",
@@ -1787,7 +2007,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 5.43,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cg-sanjose",
@@ -1824,7 +2048,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 5.23,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/sql_database/db-cp-sanjose",
@@ -1861,7 +2089,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 12.64,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/app_service_plan/sanjose-asp",
@@ -1900,7 +2132,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 4.49,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsanjosedev/providers/app_service_plan/sanjose-dev-asp",
@@ -1939,7 +2175,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 5.38,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcsistemaparroquialdev/providers/sql_database/db-arquidiocesiscentral-dev",
@@ -1976,7 +2216,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 9.5,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/storage_account/stainvoicesdev",
@@ -2012,7 +2256,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.25,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgmxctixitrdev/providers/sql_database/db-tixitransportistas-dev",
@@ -2049,7 +2297,11 @@
    "weeksInStatus": 1,
    "monthlyCost": 6.47,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
   },
   {
    "id": "/subscriptions/x/resourceGroups/rgvicosdev/providers/storage_account/sgabudget",
@@ -2085,7 +2337,219 @@
    "weeksInStatus": 1,
    "monthlyCost": 0.25,
    "recommendedAction": "Mantener",
-   "actionHint": ""
+   "actionHint": "",
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/Microsoft.Compute/virtualMachines/vm-thyssen-legacy",
+   "name": "vm-thyssen-legacy",
+   "category": "virtual_machine",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "Standard_B2ms",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "cpuPromedio": 0.4,
+    "energia": "stopped",
+    "sku": "Standard_B2ms"
+   },
+   "cost": {
+    "mtd": 14.0,
+    "lastMonth": 34.8,
+    "last30": 35.0,
+    "weekly": [
+     8.19,
+     8.43,
+     8.54,
+     8.84,
+     8.42,
+     8.8,
+     6.98,
+     7.87,
+     8.84,
+     8.24,
+     8.75
+    ]
+   },
+   "recommendedAction": "Desasignar",
+   "actionHint": "Detenida sin desasignar: sigue cobrando el cómputo completo. Usa \"Detener (desasignar)\".",
+   "weeksInStatus": 2,
+   "appsCost": null,
+   "monthlyCost": 14.0,
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null,
+   "kind": null
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/Microsoft.Compute/virtualMachines/vm-apce-build",
+   "name": "vm-apce-build",
+   "category": "virtual_machine",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "Standard_D2s_v5",
+   "tier": null,
+   "status": "bajo_uso",
+   "detalle": {
+    "cpuPromedio": 4.2,
+    "energia": "running",
+    "sku": "Standard_D2s_v5"
+   },
+   "cost": {
+    "mtd": 28.1,
+    "lastMonth": 70.1,
+    "last30": 70.08,
+    "weekly": [
+     14.3,
+     15.75,
+     14.84,
+     16.05,
+     16.17,
+     13.89,
+     14.72,
+     14.97,
+     17.57,
+     16.95,
+     14.49
+    ]
+   },
+   "recommendedAction": "Bajar de tier",
+   "actionHint": "Uso bajo sostenido; un SKU menor probablemente alcanza.",
+   "weeksInStatus": 1,
+   "appsCost": null,
+   "monthlyCost": 28.1,
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null,
+   "kind": null
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcapcedev/providers/Microsoft.Compute/disks/vm-old_OsDisk_1",
+   "name": "vm-old_OsDisk_1",
+   "category": "orphan_disk",
+   "resourceGroup": "rgmxcapcedev",
+   "sku": "Premium_LRS",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "huerfano": "disco_sin_vm",
+    "sizeGB": 128,
+    "sku": "Premium_LRS"
+   },
+   "cost": {
+    "mtd": 7.6,
+    "lastMonth": 19.0,
+    "last30": 19.71,
+    "weekly": [
+     4.81,
+     4.05,
+     4.6,
+     4.04,
+     3.9,
+     4.89,
+     4.13,
+     4.14,
+     5.02,
+     4.89,
+     4.23
+    ]
+   },
+   "recommendedAction": "Eliminar",
+   "actionHint": "Disco sin VM: cobra por capacidad aunque nada lo use. Haz un snapshot si lo necesitas y elimínalo.",
+   "weeksInStatus": 4,
+   "appsCost": null,
+   "monthlyCost": 7.6,
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null,
+   "kind": null
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcsanjose/providers/Microsoft.Network/publicIPAddresses/pip-sanjose-old",
+   "name": "pip-sanjose-old",
+   "category": "orphan_ip",
+   "resourceGroup": "rgmxcsanjose",
+   "sku": "Standard",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "huerfano": "ip_sin_uso",
+    "sku": "Standard"
+   },
+   "cost": {
+    "mtd": 1.46,
+    "lastMonth": 3.65,
+    "last30": 3.65,
+    "weekly": [
+     0.93,
+     0.84,
+     0.87,
+     0.76,
+     0.92,
+     0.87,
+     0.93,
+     0.91,
+     0.78,
+     0.8,
+     0.76
+    ]
+   },
+   "recommendedAction": "Eliminar",
+   "actionHint": "IP pública sin asociar: cobra por hora.",
+   "weeksInStatus": 3,
+   "appsCost": null,
+   "monthlyCost": 1.46,
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null,
+   "kind": null
+  },
+  {
+   "id": "/subscriptions/x/resourceGroups/rgmxcthyssendev/providers/Microsoft.Compute/snapshots/snap-thyssen-2025",
+   "name": "snap-thyssen-2025",
+   "category": "old_snapshot",
+   "resourceGroup": "rgmxcthyssendev",
+   "sku": "Standard_LRS",
+   "tier": null,
+   "status": "sin_uso",
+   "detalle": {
+    "huerfano": "snapshot_viejo",
+    "creado": "2025-11-03T10:00:00Z"
+   },
+   "cost": {
+    "mtd": 0.9,
+    "lastMonth": 2.4,
+    "last30": 2.4,
+    "weekly": [
+     0.49,
+     0.48,
+     0.52,
+     0.56,
+     0.47,
+     0.57,
+     0.52,
+     0.52,
+     0.59,
+     0.54,
+     0.52
+    ]
+   },
+   "recommendedAction": "Revisar",
+   "actionHint": "Snapshot de más de 90 días.",
+   "weeksInStatus": 1,
+   "appsCost": null,
+   "monthlyCost": 0.9,
+   "ignored": false,
+   "advisor": [],
+   "skuRecommendation": null,
+   "serverlessHint": null,
+   "kind": null
   }
  ],
  "dormantProjects": [
@@ -2122,13 +2586,6 @@
  ],
  "unmonitored": [
   {
-   "resourceGroup": "rgmxcthyssendev",
-   "name": "vm-thyssen-legacy",
-   "type": "microsoft.compute/virtualmachines",
-   "last30": 35.0,
-   "mtd": 14.0
-  },
-  {
    "resourceGroup": "rgmxcapcedev",
    "name": "ca-apce-worker",
    "type": "microsoft.app/containerapps",
@@ -2141,16 +2598,9 @@
    "type": "microsoft.cognitiveservices/accounts",
    "last30": 6.1,
    "mtd": 2.9
-  },
-  {
-   "resourceGroup": "rgmxcsanjose",
-   "name": "pip-sanjose",
-   "type": "microsoft.network/publicipaddresses",
-   "last30": 3.65,
-   "mtd": 1.46
   }
  ],
- "unmonitoredTotal": 63.15,
+ "unmonitoredTotal": 24.5,
  "history": [
   {
    "snapshot_date": "2026-09-14",
@@ -3483,7 +3933,7 @@
   "costDashboard": "https://tours-modify-exposure-bears.trycloudflare.com"
  },
  "pipeline": {
-  "workflowVersion": "2026-10-12",
+  "workflowVersion": "2026-10-13",
   "costDataThrough": "2026-10-11",
   "costRows": 118,
   "hermes": {
@@ -3491,5 +3941,84 @@
    "error": null
   },
   "sinDatos": 14
- }
+ },
+ "achieved": {
+  "monthly": 58.47,
+  "yearToDate": 96.4,
+  "newThisWeek": 1,
+  "items": [
+   {
+    "date": "2026-10-12",
+    "name": "db-apce-old",
+    "resourceGroup": "rgmxcapcedev",
+    "category": "sql_database",
+    "kind": "eliminado",
+    "monthlySaving": 14.7,
+    "detail": "Eliminado (sin_uso, S0)"
+   },
+   {
+    "date": "2026-09-21",
+    "name": "plan-codeland",
+    "resourceGroup": "rgmxccodeland",
+    "category": "app_service_plan",
+    "kind": "bajo_sku",
+    "monthlySaving": 43.77,
+    "detail": "S1 → B1"
+   }
+  ]
+ },
+ "trend": [
+  {
+   "date": "2026-09-14",
+   "atStake": 612.4,
+   "eliminable": 428.67999999999995,
+   "optimizable": 183.72,
+   "total30": 907.69,
+   "achieved": 0
+  },
+  {
+   "date": "2026-09-21",
+   "atStake": 598.1,
+   "eliminable": 418.67,
+   "optimizable": 179.43,
+   "total30": 907.69,
+   "achieved": 43.77
+  },
+  {
+   "date": "2026-09-28",
+   "atStake": 575.3,
+   "eliminable": 402.7099999999999,
+   "optimizable": 172.58999999999997,
+   "total30": 907.69,
+   "achieved": 43.77
+  },
+  {
+   "date": "2026-10-05",
+   "atStake": 561.0,
+   "eliminable": 392.7,
+   "optimizable": 168.29999999999998,
+   "total30": 907.69,
+   "achieved": 43.77
+  },
+  {
+   "date": "2026-10-12",
+   "atStake": 584.97,
+   "eliminable": 409.479,
+   "optimizable": 175.491,
+   "total30": 907.69,
+   "achieved": 58.47
+  }
+ ],
+ "advisorOther": [
+  {
+   "problem": "Consider App Service reserved instances to save over your on-demand costs",
+   "solution": "Buy reserved instances",
+   "impact": "High",
+   "monthlySavings": 24.0,
+   "currency": "USD",
+   "impactedValue": "Basic B1 (centralus)"
+  }
+ ],
+ "advisorTotal": 62.5,
+ "pricesSource": "Azure Retail Prices"
 }

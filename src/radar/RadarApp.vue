@@ -10,6 +10,8 @@ import RadarHero from '../components/radar/RadarHero.vue';
 import DormantProjectsCard from '../components/radar/DormantProjectsCard.vue';
 import RadarTable from '../components/radar/RadarTable.vue';
 import UnmonitoredCard from '../components/radar/UnmonitoredCard.vue';
+import ProgressCard from '../components/radar/ProgressCard.vue';
+import AdvisorCard from '../components/radar/AdvisorCard.vue';
 
 const { state, reload } = useRadar();
 const data = computed(() => state.data);
@@ -19,6 +21,8 @@ const hasAnalysis = computed(() => !!(data.value && data.value.analysisText && d
 const navLink = computed(() => (data.value && data.value.links && data.value.links.costDashboard ? { label: 'Costos →', href: data.value.links.costDashboard } : null));
 
 const preset = ref(null);
+const themeTick = ref(0);
+const hasAdvisor = computed(() => !!(data.value && ((data.value.advisorTotal || 0) > 0 || (data.value.advisorOther || []).length || (data.value.resources || []).some((r) => r.advisor && r.advisor.length))));
 const filterStatus = (status) => { preset.value = { status, q: '', t: Date.now() }; };
 const filterRg = (rg) => { preset.value = { status: 'all', q: rg, t: Date.now() }; };
 const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -26,7 +30,7 @@ const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ 
 
 <template>
   <div class="wrap">
-    <TopBar title="Radar de recursos" :generated-at="data ? data.generatedAt : null" :stale-after-hours="8 * 24" :nav-link="navLink" />
+    <TopBar title="Radar de recursos" :generated-at="data ? data.generatedAt : null" :stale-after-hours="8 * 24" :nav-link="navLink" @theme-change="themeTick++" />
 
     <div v-if="!state.loaded" class="grid" aria-busy="true" aria-label="Cargando">
       <div class="skeleton col-12" style="min-height: 320px"></div>
@@ -56,6 +60,9 @@ const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ 
 
         <DormantProjectsCard :class="hasAnalysis ? 'col-6' : 'col-12'" :projects="data.dormantProjects || []" @select="filterRg" />
         <AnalysisCard v-if="hasAnalysis" class="col-6" :text="data.analysisText" />
+
+        <ProgressCard :class="hasAdvisor ? 'col-7' : 'col-12'" :achieved="data.achieved || undefined" :trend="data.trend || []" :theme-tick="themeTick" />
+        <AdvisorCard v-if="hasAdvisor" class="col-5" :resources="data.resources || []" :other="data.advisorOther || []" :total="data.advisorTotal || 0" />
 
         <div class="section-label">Recursos</div>
         <RadarTable class="col-12" :resources="data.resources || []" :history="data.history || []" :weeks="data.weeks || []" :preset="preset" />

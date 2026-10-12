@@ -17,6 +17,8 @@ const type = ref('all');
 const q = ref('');
 const sort = ref('priority');
 const showAll = ref(false);
+const showIgnored = ref(false);
+const ignoredCount = computed(() => props.resources.filter((r) => r.ignored).length);
 const PAGE = 25;
 
 const rootEl = ref(null);
@@ -29,9 +31,10 @@ watch(() => props.preset, async (p) => {
   rootEl.value && rootEl.value.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
-const filtered = computed(() => sortResources(filterResources(props.resources, { status: status.value, type: type.value, q: q.value }), sort.value));
+const filtered = computed(() => sortResources(filterResources(props.resources, { status: status.value, type: type.value, q: q.value, showIgnored: showIgnored.value }), sort.value));
 const rows = computed(() => (showAll.value ? filtered.value : filtered.value.slice(0, PAGE)));
-const countBy = (s) => props.resources.filter((r) => r.status === s).length;
+const countBy = (s) => props.resources.filter((r) => r.status === s && !r.ignored).length;
+const liveCount = computed(() => props.resources.filter((r) => !r.ignored).length);
 const filteredCost = computed(() => filtered.value.reduce((s, r) => s + (cost30(r) || 0), 0));
 
 function spark(r) {
@@ -58,7 +61,7 @@ function exportCsv() {
 
     <div class="toolbar">
       <div class="chips" role="radiogroup" aria-label="Estado">
-        <button type="button" role="radio" :aria-checked="status === 'all'" :class="['chip', { on: status === 'all' }]" @click="status = 'all'">Todos <small>{{ resources.length }}</small></button>
+        <button type="button" role="radio" :aria-checked="status === 'all'" :class="['chip', { on: status === 'all' }]" @click="status = 'all'">Todos <small>{{ liveCount }}</small></button>
         <button v-for="(s, k) in STATUS" :key="k" type="button" role="radio" :aria-checked="status === k" :class="['chip', k, { on: status === k }]" @click="status = k">
           <i class="dot"></i>{{ s.label }} <small>{{ countBy(k) }}</small>
         </button>
@@ -79,6 +82,7 @@ function exportCsv() {
             <option value="name">Nombre</option>
           </select>
         </label>
+        <label v-if="ignoredCount" class="ign"><input v-model="showIgnored" type="checkbox" /> Ver ignorados ({{ ignoredCount }})</label>
         <button type="button" class="export" @click="exportCsv"><PhDownloadSimple :size="16" weight="bold" /> CSV</button>
       </div>
     </div>
@@ -120,6 +124,12 @@ function exportCsv() {
             <td class="action">
               <span class="act" :data-action="r.recommendedAction">{{ r.recommendedAction || '—' }}</span>
               <small v-if="r.actionHint">{{ r.actionHint }}</small>
+              <span v-if="r.skuRecommendation" class="rec" :title="r.skuRecommendation.note || ''">
+                {{ r.skuRecommendation.from }} → {{ r.skuRecommendation.to }}: ahorras ~{{ fmtUSD(r.skuRecommendation.monthlySavings) }}/mes<template v-if="r.skuRecommendation.source === 'estimado'"> (estimado)</template>
+              </span>
+              <small v-if="r.skuRecommendation && r.skuRecommendation.note" class="note">{{ r.skuRecommendation.note }}</small>
+              <small v-if="r.serverlessHint" class="sv">{{ r.serverlessHint }}</small>
+              <small v-for="(a, i) in (r.advisor || [])" :key="i" class="adv">Advisor: {{ a.problem }}<template v-if="a.monthlySavings"> (~{{ fmtUSD(a.monthlySavings) }}/mes)</template></small>
             </td>
             <td class="hide-sm">
               <span class="strip">
@@ -186,7 +196,13 @@ td small { display: block; font-size: var(--fs-xs); color: var(--text-muted); }
 .act[data-action="Eliminar"] { color: var(--critical); border-color: var(--critical); }
 .act[data-action="Revisar"], .act[data-action="Bajar de tier"], .act[data-action="Bajar a F1 o eliminar"] { color: var(--warning-text); border-color: var(--warning); }
 .act[data-action="Mantener"] { color: var(--good); border-color: var(--good); }
+.act[data-action="Desasignar"] { color: var(--critical); border-color: var(--critical); }
+.act[data-action="Ignorado"] { color: var(--text-muted); border-style: dashed; }
 .action small { margin-top: 4px; line-height: 1.35; }
+.rec { display: inline-block; margin-top: 6px; font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--good); background: var(--good-bg); padding: 2px 8px; border-radius: 6px; }
+.action .sv { color: var(--series-1); }
+.action .adv { color: var(--text-secondary); }
+.ign { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--mono); cursor: pointer; }
 .strip { display: inline-flex; gap: 3px; }
 .sq { width: 9px; height: 9px; border-radius: 2px; background: var(--border-strong); display: inline-block; }
 .sq.activo { background: var(--good); }
