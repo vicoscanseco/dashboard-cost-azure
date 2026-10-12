@@ -1,1141 +1,3579 @@
 {
- "generatedAt": "2026-10-10T08:03:00.000Z",
+ "generatedAt": "2026-10-10T14:05:00.000Z",
  "snapshotDate": "2026-10-09",
- "total": 90.97,
- "monthlyBudget": 500,
- "monthToDate": {
-  "lastDate": "2026-10-09",
-  "total": 116.32,
-  "prevTotal": 121.4
- },
- "dailyHistory": [
+ "total": 116.72,
+ "prevTotal": 97.99,
+ "deltaTotal": 19.114195326053686,
+ "byResourceGroup": [
+  {
+   "resource_group": "rg-linklyai",
+   "cost": 51.21,
+   "prevCost": 64.22,
+   "deltaPct": -20.3
+  },
+  {
+   "resource_group": "rg-agentus",
+   "cost": 22.02,
+   "prevCost": 10.15,
+   "deltaPct": 116.9
+  },
+  {
+   "resource_group": "rg-n8n",
+   "cost": 12.92,
+   "prevCost": 6.87,
+   "deltaPct": 88.1
+  },
+  {
+   "resource_group": "rg-shared",
+   "cost": 12.17,
+   "prevCost": 5.5,
+   "deltaPct": 121.3
+  },
+  {
+   "resource_group": "rg-hermes",
+   "cost": 9.52,
+   "prevCost": 6.25,
+   "deltaPct": 52.3
+  },
+  {
+   "resource_group": "rg-codepre",
+   "cost": 8.87,
+   "prevCost": 5.01,
+   "deltaPct": 77
+  }
+ ],
+ "resourceComparisons": [
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "stlinkly",
+   "cost": 18.05,
+   "prevCost": 23.78,
+   "deltaPct": -24.1
+  },
+  {
+   "resource_group": "rg-agentus",
+   "resource_name": "ca-agentus",
+   "cost": 15.4,
+   "prevCost": 3.79,
+   "deltaPct": 306.3
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "sql-linkly",
+   "cost": 15.21,
+   "prevCost": 22.41,
+   "deltaPct": -32.1
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "app-linkly",
+   "cost": 13.76,
+   "prevCost": 18.02,
+   "deltaPct": -23.6
+  },
+  {
+   "resource_group": "rg-n8n",
+   "resource_name": "app-n8n",
+   "cost": 12.92,
+   "prevCost": 6.87,
+   "deltaPct": 88.1
+  },
+  {
+   "resource_group": "rg-agentus",
+   "resource_name": "cosmos-agentus",
+   "cost": 6.62,
+   "prevCost": 6.36,
+   "deltaPct": 4.1
+  },
+  {
+   "resource_group": "rg-shared",
+   "resource_name": "log-shared",
+   "cost": 6.44,
+   "prevCost": 1.87,
+   "deltaPct": 244.4
+  },
+  {
+   "resource_group": "rg-shared",
+   "resource_name": "kv-shared",
+   "cost": 5.74,
+   "prevCost": 3.63,
+   "deltaPct": 58.1
+  },
+  {
+   "resource_group": "rg-codepre",
+   "resource_name": "db-codepre-dev",
+   "cost": 5.08,
+   "prevCost": 2.6,
+   "deltaPct": 95.4
+  },
+  {
+   "resource_group": "rg-hermes",
+   "resource_name": "pip-hermes",
+   "cost": 4.98,
+   "prevCost": 3.19,
+   "deltaPct": 56.1
+  },
+  {
+   "resource_group": "rg-hermes",
+   "resource_name": "vm-hermes",
+   "cost": 4.54,
+   "prevCost": 3.06,
+   "deltaPct": 48.4
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "oai-linkly",
+   "cost": 4.2,
+   "prevCost": null,
+   "deltaPct": null
+  },
+  {
+   "resource_group": "rg-codepre",
+   "resource_name": "plan-codepre",
+   "cost": 3.79,
+   "prevCost": 2.42,
+   "deltaPct": 56.6
+  }
+ ],
+ "byResource": [
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "stlinkly",
+   "cost": 18.05,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-agentus",
+   "resource_name": "ca-agentus",
+   "cost": 15.4,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "sql-linkly",
+   "cost": 15.21,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "app-linkly",
+   "cost": 13.76,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-n8n",
+   "resource_name": "app-n8n",
+   "cost": 12.92,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-agentus",
+   "resource_name": "cosmos-agentus",
+   "cost": 6.62,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-shared",
+   "resource_name": "log-shared",
+   "cost": 6.44,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-shared",
+   "resource_name": "kv-shared",
+   "cost": 5.74,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-codepre",
+   "resource_name": "db-codepre-dev",
+   "cost": 5.08,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-hermes",
+   "resource_name": "pip-hermes",
+   "cost": 4.98,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-hermes",
+   "resource_name": "vm-hermes",
+   "cost": 4.54,
+   "resource_type": null
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "resource_name": "oai-linkly",
+   "cost": 4.2,
+   "resource_type": "microsoft.cognitiveservices/accounts"
+  },
+  {
+   "resource_group": "rg-codepre",
+   "resource_name": "plan-codepre",
+   "cost": 3.79,
+   "resource_type": null
+  }
+ ],
+ "byService": [
+  {
+   "service_name": "App Service",
+   "cost": 30.47
+  },
+  {
+   "service_name": "SQL Database",
+   "cost": 20.29
+  },
+  {
+   "service_name": "Storage",
+   "cost": 18.05
+  },
+  {
+   "service_name": "Azure Container Apps",
+   "cost": 15.4
+  },
+  {
+   "service_name": "Azure Cosmos DB",
+   "cost": 6.62
+  },
+  {
+   "service_name": "Log Analytics",
+   "cost": 6.44
+  },
+  {
+   "service_name": "Key Vault",
+   "cost": 5.74
+  },
+  {
+   "service_name": "Virtual Network",
+   "cost": 4.98
+  },
+  {
+   "service_name": "Virtual Machines",
+   "cost": 4.54
+  },
+  {
+   "service_name": "Azure OpenAI",
+   "cost": 4.2
+  }
+ ],
+ "history": [
   {
    "date": "2026-01-01",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-02",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-03",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-04",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-05",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-06",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-07",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-08",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-09",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-10",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-11",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-12",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-13",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-14",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-15",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-16",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-17",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-18",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-19",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-20",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-21",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-22",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-23",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-24",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-25",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-01-26",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-27",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-28",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-29",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-30",
-   "total": 5.02
+   "total": 4.48
   },
   {
    "date": "2026-01-31",
-   "total": 3.14
+   "total": 4.48
   },
   {
    "date": "2026-02-01",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-02",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-03",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-04",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-05",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-06",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-07",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-08",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-09",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-10",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-11",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-12",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-13",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-14",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-15",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-16",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-17",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-18",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-19",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-20",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-21",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-22",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-02-23",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-24",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-25",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-26",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-27",
-   "total": 5.13
+   "total": 4.58
   },
   {
    "date": "2026-02-28",
-   "total": 3.21
+   "total": 4.58
   },
   {
    "date": "2026-03-01",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-02",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-03",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-04",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-05",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-06",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-07",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-08",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-09",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-10",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-11",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-12",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-13",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-14",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-15",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-16",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-17",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-18",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-19",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-20",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-21",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-22",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-23",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-24",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-25",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-26",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-27",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-28",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-29",
-   "total": 7.85
+   "total": 11.21
   },
   {
    "date": "2026-03-30",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-03-31",
-   "total": 12.56
+   "total": 11.21
   },
   {
    "date": "2026-04-01",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-02",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-03",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-04",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-05",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-06",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-07",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-08",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-09",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-10",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-11",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-12",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-13",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-14",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-15",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-16",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-17",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-18",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-19",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-20",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-21",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-22",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-23",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-24",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-25",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-26",
-   "total": 11.65
+   "total": 16.65
   },
   {
    "date": "2026-04-27",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-28",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-29",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-04-30",
-   "total": 18.65
+   "total": 16.65
   },
   {
    "date": "2026-05-01",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-02",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-03",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-04",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-05",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-06",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-07",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-08",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-09",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-10",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-11",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-12",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-13",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-14",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-15",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-16",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-17",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-18",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-19",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-20",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-21",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-22",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-23",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-24",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-25",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-26",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-27",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-28",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-29",
-   "total": 18.85
+   "total": 16.83
   },
   {
    "date": "2026-05-30",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-05-31",
-   "total": 11.78
+   "total": 16.83
   },
   {
    "date": "2026-06-01",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-02",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-03",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-04",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-05",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-06",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-07",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-08",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-09",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-10",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-11",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-12",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-13",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-14",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-15",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-16",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-17",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-18",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-19",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-20",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-21",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-22",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-23",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-24",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-25",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-26",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-27",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-28",
-   "total": 13.28
+   "total": 18.97
   },
   {
    "date": "2026-06-29",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-06-30",
-   "total": 21.25
+   "total": 18.97
   },
   {
    "date": "2026-07-01",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-02",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-03",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-04",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-05",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-06",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-07",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-08",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-09",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-10",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-11",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-12",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-13",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-14",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-15",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-16",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-17",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-18",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-19",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-20",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-21",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-22",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-23",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-24",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-25",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-26",
-   "total": 8.45
+   "total": 12.07
   },
   {
    "date": "2026-07-27",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-28",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-29",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-30",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-07-31",
-   "total": 13.52
+   "total": 12.07
   },
   {
    "date": "2026-08-01",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-02",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-03",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-04",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-05",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-06",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-07",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-08",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-09",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-10",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-11",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-12",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-13",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-14",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-15",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-16",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-17",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-18",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-19",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-20",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-21",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-22",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-23",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-24",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-25",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-26",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-27",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-28",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-08-29",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-30",
-   "total": 9.0
+   "total": 12.86
   },
   {
    "date": "2026-08-31",
-   "total": 14.4
+   "total": 12.86
   },
   {
    "date": "2026-09-01",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-02",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-03",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-04",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-05",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-06",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-07",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-08",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-09",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-10",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-11",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-12",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-13",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-14",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-15",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-16",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-17",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-18",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-19",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-20",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-21",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-22",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-23",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-24",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-25",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-26",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-27",
-   "total": 9.82
+   "total": 14.03
   },
   {
    "date": "2026-09-28",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-29",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-09-30",
-   "total": 15.71
+   "total": 14.03
   },
   {
    "date": "2026-10-01",
-   "total": 14.47
+   "total": 13.93
   },
   {
    "date": "2026-10-02",
-   "total": 14.47
+   "total": 13.93
   },
   {
    "date": "2026-10-03",
-   "total": 9.04
+   "total": 13.93
   },
   {
    "date": "2026-10-04",
-   "total": 9.04
+   "total": 13.93
   },
   {
    "date": "2026-10-05",
-   "total": 14.47
+   "total": 13.93
   },
   {
    "date": "2026-10-06",
-   "total": 14.47
+   "total": 13.93
   },
   {
    "date": "2026-10-07",
-   "total": 14.47
+   "total": 13.93
   },
   {
    "date": "2026-10-08",
-   "total": 14.47
+   "total": 18.13
   },
   {
    "date": "2026-10-09",
-   "total": 14.47
+   "total": 28.93
+  }
+ ],
+ "historyByGroup": [
+  {
+   "date": "2026-09-26",
+   "resource_group": "rg-agentus",
+   "cost": 1.63
+  },
+  {
+   "date": "2026-09-26",
+   "resource_group": "rg-codepre",
+   "cost": 0.5
+  },
+  {
+   "date": "2026-09-26",
+   "resource_group": "rg-hermes",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-09-26",
+   "resource_group": "rg-linklyai",
+   "cost": 10.16
+  },
+  {
+   "date": "2026-09-26",
+   "resource_group": "rg-n8n",
+   "cost": 0.64
+  },
+  {
+   "date": "2026-09-26",
+   "resource_group": "rg-shared",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-27",
+   "resource_group": "rg-agentus",
+   "cost": 1.63
+  },
+  {
+   "date": "2026-09-27",
+   "resource_group": "rg-codepre",
+   "cost": 0.5
+  },
+  {
+   "date": "2026-09-27",
+   "resource_group": "rg-hermes",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-09-27",
+   "resource_group": "rg-linklyai",
+   "cost": 10.16
+  },
+  {
+   "date": "2026-09-27",
+   "resource_group": "rg-n8n",
+   "cost": 0.64
+  },
+  {
+   "date": "2026-09-27",
+   "resource_group": "rg-shared",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-28",
+   "resource_group": "rg-agentus",
+   "cost": 1.63
+  },
+  {
+   "date": "2026-09-28",
+   "resource_group": "rg-codepre",
+   "cost": 0.5
+  },
+  {
+   "date": "2026-09-28",
+   "resource_group": "rg-hermes",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-09-28",
+   "resource_group": "rg-linklyai",
+   "cost": 10.16
+  },
+  {
+   "date": "2026-09-28",
+   "resource_group": "rg-n8n",
+   "cost": 0.64
+  },
+  {
+   "date": "2026-09-28",
+   "resource_group": "rg-shared",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-29",
+   "resource_group": "rg-agentus",
+   "cost": 1.63
+  },
+  {
+   "date": "2026-09-29",
+   "resource_group": "rg-codepre",
+   "cost": 0.5
+  },
+  {
+   "date": "2026-09-29",
+   "resource_group": "rg-hermes",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-09-29",
+   "resource_group": "rg-linklyai",
+   "cost": 10.16
+  },
+  {
+   "date": "2026-09-29",
+   "resource_group": "rg-n8n",
+   "cost": 0.64
+  },
+  {
+   "date": "2026-09-29",
+   "resource_group": "rg-shared",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-30",
+   "resource_group": "rg-agentus",
+   "cost": 1.63
+  },
+  {
+   "date": "2026-09-30",
+   "resource_group": "rg-codepre",
+   "cost": 0.5
+  },
+  {
+   "date": "2026-09-30",
+   "resource_group": "rg-hermes",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-09-30",
+   "resource_group": "rg-linklyai",
+   "cost": 10.16
+  },
+  {
+   "date": "2026-09-30",
+   "resource_group": "rg-n8n",
+   "cost": 0.64
+  },
+  {
+   "date": "2026-09-30",
+   "resource_group": "rg-shared",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-10-01",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-01",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-01",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-01",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-01",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-01",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-02",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-02",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-02",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-02",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-02",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-02",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-03",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-03",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-03",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-03",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-03",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-03",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-04",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-04",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-04",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-04",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-04",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-04",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-05",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-05",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-05",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-05",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-05",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-05",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-06",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-06",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-06",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-06",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-06",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-06",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-07",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-07",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-07",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-07",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-07",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-07",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-08",
+   "resource_group": "rg-agentus",
+   "cost": 1
+  },
+  {
+   "date": "2026-10-08",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-08",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-08",
+   "resource_group": "rg-linklyai",
+   "cost": 10.92
+  },
+  {
+   "date": "2026-10-08",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-08",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  },
+  {
+   "date": "2026-10-09",
+   "resource_group": "rg-agentus",
+   "cost": 16
+  },
+  {
+   "date": "2026-10-09",
+   "resource_group": "rg-codepre",
+   "cost": 1.27
+  },
+  {
+   "date": "2026-10-09",
+   "resource_group": "rg-hermes",
+   "cost": 1.36
+  },
+  {
+   "date": "2026-10-09",
+   "resource_group": "rg-linklyai",
+   "cost": 6.72
+  },
+  {
+   "date": "2026-10-09",
+   "resource_group": "rg-n8n",
+   "cost": 1.85
+  },
+  {
+   "date": "2026-10-09",
+   "resource_group": "rg-shared",
+   "cost": 1.74
+  }
+ ],
+ "historyByService": [
+  {
+   "date": "2026-09-26",
+   "service_name": "App Service",
+   "cost": 3.72
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Azure Container Apps",
+   "cost": 0.74
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.89
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Key Vault",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Log Analytics",
+   "cost": 0.01
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "SQL Database",
+   "cost": 3.84
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Storage",
+   "cost": 3.73
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Virtual Machines",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-26",
+   "service_name": "Virtual Network",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "App Service",
+   "cost": 3.72
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Azure Container Apps",
+   "cost": 0.74
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.89
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Key Vault",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Log Analytics",
+   "cost": 0.01
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "SQL Database",
+   "cost": 3.84
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Storage",
+   "cost": 3.73
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Virtual Machines",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-27",
+   "service_name": "Virtual Network",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "App Service",
+   "cost": 3.72
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Azure Container Apps",
+   "cost": 0.74
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.89
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Key Vault",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Log Analytics",
+   "cost": 0.01
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "SQL Database",
+   "cost": 3.84
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Storage",
+   "cost": 3.73
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Virtual Machines",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-28",
+   "service_name": "Virtual Network",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "App Service",
+   "cost": 3.72
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Azure Container Apps",
+   "cost": 0.74
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.89
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Key Vault",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Log Analytics",
+   "cost": 0.01
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "SQL Database",
+   "cost": 3.84
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Storage",
+   "cost": 3.73
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Virtual Machines",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-29",
+   "service_name": "Virtual Network",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "App Service",
+   "cost": 3.72
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Azure Container Apps",
+   "cost": 0.74
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.89
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Key Vault",
+   "cost": 0.4
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Log Analytics",
+   "cost": 0.01
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "SQL Database",
+   "cost": 3.84
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Storage",
+   "cost": 3.73
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Virtual Machines",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-09-30",
+   "service_name": "Virtual Network",
+   "cost": 0.35
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-01",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-02",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-03",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-04",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-05",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-06",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-07",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Azure Container Apps",
+   "cost": 0.06
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  },
+  {
+   "date": "2026-10-08",
+   "service_name": "Azure OpenAI",
+   "cost": 4.2
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "App Service",
+   "cost": 4.35
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Azure Container Apps",
+   "cost": 15.06
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Azure Cosmos DB",
+   "cost": 0.95
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Key Vault",
+   "cost": 0.82
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Log Analytics",
+   "cost": 0.92
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "SQL Database",
+   "cost": 2.9
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Storage",
+   "cost": 2.58
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Virtual Machines",
+   "cost": 0.65
+  },
+  {
+   "date": "2026-10-09",
+   "service_name": "Virtual Network",
+   "cost": 0.71
+  }
+ ],
+ "dailyHistory": [
+  {
+   "date": "2026-01-01",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-02",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-03",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-04",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-05",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-06",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-07",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-08",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-09",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-10",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-11",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-12",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-13",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-14",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-15",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-16",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-17",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-18",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-19",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-20",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-21",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-22",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-23",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-24",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-25",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-26",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-27",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-28",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-29",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-30",
+   "total": 4.48
+  },
+  {
+   "date": "2026-01-31",
+   "total": 4.48
+  },
+  {
+   "date": "2026-02-01",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-02",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-03",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-04",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-05",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-06",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-07",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-08",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-09",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-10",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-11",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-12",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-13",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-14",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-15",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-16",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-17",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-18",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-19",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-20",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-21",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-22",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-23",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-24",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-25",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-26",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-27",
+   "total": 4.58
+  },
+  {
+   "date": "2026-02-28",
+   "total": 4.58
+  },
+  {
+   "date": "2026-03-01",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-02",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-03",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-04",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-05",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-06",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-07",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-08",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-09",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-10",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-11",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-12",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-13",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-14",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-15",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-16",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-17",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-18",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-19",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-20",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-21",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-22",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-23",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-24",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-25",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-26",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-27",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-28",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-29",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-30",
+   "total": 11.21
+  },
+  {
+   "date": "2026-03-31",
+   "total": 11.21
+  },
+  {
+   "date": "2026-04-01",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-02",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-03",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-04",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-05",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-06",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-07",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-08",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-09",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-10",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-11",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-12",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-13",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-14",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-15",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-16",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-17",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-18",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-19",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-20",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-21",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-22",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-23",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-24",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-25",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-26",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-27",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-28",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-29",
+   "total": 16.65
+  },
+  {
+   "date": "2026-04-30",
+   "total": 16.65
+  },
+  {
+   "date": "2026-05-01",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-02",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-03",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-04",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-05",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-06",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-07",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-08",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-09",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-10",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-11",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-12",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-13",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-14",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-15",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-16",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-17",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-18",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-19",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-20",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-21",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-22",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-23",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-24",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-25",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-26",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-27",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-28",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-29",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-30",
+   "total": 16.83
+  },
+  {
+   "date": "2026-05-31",
+   "total": 16.83
+  },
+  {
+   "date": "2026-06-01",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-02",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-03",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-04",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-05",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-06",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-07",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-08",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-09",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-10",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-11",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-12",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-13",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-14",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-15",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-16",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-17",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-18",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-19",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-20",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-21",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-22",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-23",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-24",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-25",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-26",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-27",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-28",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-29",
+   "total": 18.97
+  },
+  {
+   "date": "2026-06-30",
+   "total": 18.97
+  },
+  {
+   "date": "2026-07-01",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-02",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-03",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-04",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-05",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-06",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-07",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-08",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-09",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-10",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-11",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-12",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-13",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-14",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-15",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-16",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-17",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-18",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-19",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-20",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-21",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-22",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-23",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-24",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-25",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-26",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-27",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-28",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-29",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-30",
+   "total": 12.07
+  },
+  {
+   "date": "2026-07-31",
+   "total": 12.07
+  },
+  {
+   "date": "2026-08-01",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-02",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-03",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-04",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-05",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-06",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-07",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-08",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-09",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-10",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-11",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-12",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-13",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-14",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-15",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-16",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-17",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-18",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-19",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-20",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-21",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-22",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-23",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-24",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-25",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-26",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-27",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-28",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-29",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-30",
+   "total": 12.86
+  },
+  {
+   "date": "2026-08-31",
+   "total": 12.86
+  },
+  {
+   "date": "2026-09-01",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-02",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-03",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-04",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-05",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-06",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-07",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-08",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-09",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-10",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-11",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-12",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-13",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-14",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-15",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-16",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-17",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-18",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-19",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-20",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-21",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-22",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-23",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-24",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-25",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-26",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-27",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-28",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-29",
+   "total": 14.03
+  },
+  {
+   "date": "2026-09-30",
+   "total": 14.03
+  },
+  {
+   "date": "2026-10-01",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-02",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-03",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-04",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-05",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-06",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-07",
+   "total": 13.93
+  },
+  {
+   "date": "2026-10-08",
+   "total": 18.13
+  },
+  {
+   "date": "2026-10-09",
+   "total": 28.93
   }
  ],
  "monthlyFinals": {
@@ -1147,8 +3585,9 @@
   "2026-06": 569.05,
   "2026-07": 374.03,
   "2026-08": 398.74,
-  "2026-09": 420.77
+  "2026-09": 420.9
  },
+ "monthlyBudget": 500,
  "monthByResource": {
   "days": [
    "2026-10-01",
@@ -1158,230 +3597,155 @@
    "2026-10-05",
    "2026-10-06",
    "2026-10-07",
-   "2026-10-08"
+   "2026-10-08",
+   "2026-10-09"
   ],
   "series": [
    {
-    "resource_name": "vm-prod-api",
-    "resource_group": "rg-produccion",
+    "resource_group": "rg-linklyai",
+    "resource_name": "stlinkly",
     "daily": [
-     3.1,
-     3.4,
-     2.9,
-     4.1,
-     3.3,
-     4.4,
-     4.5,
-     3.4
+     2.58,
+     2.58,
+     2.58,
+     2.58,
+     2.58,
+     2.58,
+     2.58,
+     2.58,
+     2.58
     ]
    },
    {
-    "resource_name": "sql-prod-db",
-    "resource_group": "rg-produccion",
+    "resource_group": "rg-linklyai",
+    "resource_name": "sql-linkly",
     "daily": [
-     2.2,
-     2.3,
-     2.1,
-     2.5,
-     2.2,
-     2.6,
-     2.7,
-     2.3
+     2.17,
+     2.17,
+     2.17,
+     2.17,
+     2.17,
+     2.17,
+     2.17,
+     2.17,
+     2.17
     ]
    },
    {
-    "resource_name": "app-staging",
-    "resource_group": "rg-staging",
+    "resource_group": "rg-linklyai",
+    "resource_name": "app-linkly",
     "daily": [
-     1.1,
-     1.3,
-     1.0,
-     1.4,
-     1.2,
-     1.5,
-     1.5,
-     1.2
+     1.97,
+     1.97,
+     1.97,
+     1.97,
+     1.97,
+     1.97,
+     1.97,
+     1.97,
+     1.97
+    ]
+   },
+   {
+    "resource_group": "rg-n8n",
+    "resource_name": "app-n8n",
+    "daily": [
+     1.85,
+     1.85,
+     1.85,
+     1.85,
+     1.85,
+     1.85,
+     1.85,
+     1.85,
+     1.85
+    ]
+   },
+   {
+    "resource_group": "rg-agentus",
+    "resource_name": "ca-agentus",
+    "daily": [
+     0.06,
+     0.06,
+     0.06,
+     0.06,
+     0.06,
+     0.06,
+     0.06,
+     0.06,
+     15.06
+    ]
+   },
+   {
+    "resource_group": "rg-agentus",
+    "resource_name": "cosmos-agentus",
+    "daily": [
+     0.95,
+     0.95,
+     0.95,
+     0.95,
+     0.95,
+     0.95,
+     0.95,
+     0.95,
+     0.95
+    ]
+   },
+   {
+    "resource_group": "rg-shared",
+    "resource_name": "log-shared",
+    "daily": [
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92
+    ]
+   },
+   {
+    "resource_group": "rg-shared",
+    "resource_name": "kv-shared",
+    "daily": [
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82
     ]
    }
   ],
   "othersDaily": [
-   2.7,
-   4.4,
-   2.7,
-   4.9,
-   3.5,
-   5.3,
-   5.4,
-   3.87
-  ]
+   2.63,
+   2.63,
+   2.63,
+   2.63,
+   2.63,
+   2.63,
+   2.63,
+   6.83,
+   2.63
+  ],
+  "monthToDate": {
+   "monthStart": "2026-10-01",
+   "lastDate": "2026-10-09",
+   "total": 144.58,
+   "prevTotal": 126.23
+  }
  },
- "byResourceGroup": [
-  {
-   "resource_group": "rg-produccion",
-   "cost": 48.2,
-   "prevCost": 40.1,
-   "deltaPct": 20.2
-  },
-  {
-   "resource_group": "rg-staging",
-   "cost": 22.5,
-   "prevCost": 21.0,
-   "deltaPct": 7.1
-  },
-  {
-   "resource_group": "rg-datos",
-   "cost": 15.3,
-   "prevCost": 14.8,
-   "deltaPct": 3.4
-  },
-  {
-   "resource_group": "(sin grupo)",
-   "cost": 4.97,
-   "prevCost": 4.1,
-   "deltaPct": 21.2
-  }
- ],
- "byService": [
-  {
-   "service_name": "Virtual Machines",
-   "cost": 31.2
-  },
-  {
-   "service_name": "Azure SQL Database",
-   "cost": 18.4
-  },
-  {
-   "service_name": "App Service",
-   "cost": 14.1
-  },
-  {
-   "service_name": "Storage",
-   "cost": 9.8
-  },
-  {
-   "service_name": "Bandwidth",
-   "cost": 5.3
-  }
- ],
- "byResource": [
-  {
-   "resource_group": "rg-produccion",
-   "resource_name": "vm-prod-api",
-   "resource_type": "microsoft.compute/virtualmachines",
-   "cost": 27.3
-  },
-  {
-   "resource_group": "rg-produccion",
-   "resource_name": "sql-prod-db",
-   "resource_type": "microsoft.sql/servers/databases",
-   "cost": 18.4
-  },
-  {
-   "resource_group": "rg-staging",
-   "resource_name": "app-staging",
-   "resource_type": "microsoft.web/sites",
-   "cost": 0
-  },
-  {
-   "resource_group": "rg-datos",
-   "resource_name": "storage-old-backups",
-   "resource_type": "microsoft.storage/storageaccounts",
-   "cost": 0
-  }
- ],
- "resourceComparisons": [
-  {
-   "resource_group": "rg-produccion",
-   "resource_name": "vm-prod-api",
-   "deltaPct": 25.4,
-   "prevCost": 21.8,
-   "cost": 27.3
-  }
- ],
- "historyByGroup": [
-  {
-   "date": "2026-10-01",
-   "resource_group": "rg-produccion",
-   "cost": 5.1
-  },
-  {
-   "date": "2026-10-02",
-   "resource_group": "rg-produccion",
-   "cost": 5.6
-  },
-  {
-   "date": "2026-10-03",
-   "resource_group": "rg-produccion",
-   "cost": 5.0
-  },
-  {
-   "date": "2026-10-04",
-   "resource_group": "rg-staging",
-   "cost": 2.1
-  },
-  {
-   "date": "2026-10-05",
-   "resource_group": "rg-staging",
-   "cost": 2.3
-  },
-  {
-   "date": "2026-10-06",
-   "resource_group": "rg-datos",
-   "cost": 1.4
-  },
-  {
-   "date": "2026-10-07",
-   "resource_group": "rg-datos",
-   "cost": 1.6
-  },
-  {
-   "date": "2026-10-08",
-   "resource_group": "rg-produccion",
-   "cost": 5.9
-  }
- ],
- "historyByService": [
-  {
-   "date": "2026-10-01",
-   "service_name": "Virtual Machines",
-   "cost": 4.1
-  },
-  {
-   "date": "2026-10-02",
-   "service_name": "Virtual Machines",
-   "cost": 4.4
-  },
-  {
-   "date": "2026-10-03",
-   "service_name": "Azure SQL Database",
-   "cost": 2.3
-  },
-  {
-   "date": "2026-10-04",
-   "service_name": "App Service",
-   "cost": 1.9
-  },
-  {
-   "date": "2026-10-05",
-   "service_name": "Virtual Machines",
-   "cost": 4.7
-  },
-  {
-   "date": "2026-10-06",
-   "service_name": "Storage",
-   "cost": 1.1
-  },
-  {
-   "date": "2026-10-07",
-   "service_name": "Virtual Machines",
-   "cost": 4.9
-  },
-  {
-   "date": "2026-10-08",
-   "service_name": "Azure SQL Database",
-   "cost": 2.5
-  }
- ],
+ "monthToDate": {
+  "monthStart": "2026-10-01",
+  "lastDate": "2026-10-09",
+  "total": 144.58,
+  "prevTotal": 126.23
+ },
  "monthlyDetail": {
   "cols": [
    "month",
@@ -1683,7 +4047,7 @@
     "rg-hermes",
     "vm-hermes",
     "Virtual Machines",
-    10.0
+    10
    ],
    [
     "2026-04",
@@ -1970,7 +4334,7 @@
     "rg-shared",
     "kv-shared",
     "Key Vault",
-    4.42
+    4.43
    ],
    [
     "2026-07",
@@ -1991,7 +4355,7 @@
     "rg-agentus",
     "cosmos-agentus",
     "Azure Cosmos DB",
-    31.17
+    31.18
    ],
    [
     "2026-08",
@@ -2026,7 +4390,7 @@
     "rg-linklyai",
     "app-linkly",
     "App Service",
-    62.0
+    62
    ],
    [
     "2026-08",
@@ -2152,7 +4516,7 @@
     "rg-agentus",
     "ca-agentus",
     "Azure Container Apps",
-    0.51
+    15.51
    ],
    [
     "2026-10",
@@ -2199,6 +4563,13 @@
    [
     "2026-10",
     "rg-linklyai",
+    "oai-linkly",
+    "Azure OpenAI",
+    4.2
+   ],
+   [
+    "2026-10",
+    "rg-linklyai",
     "sql-linkly",
     "SQL Database",
     19.55
@@ -2215,7 +4586,7 @@
     "rg-n8n",
     "app-n8n",
     "App Service",
-    7.55
+    16.61
    ],
    [
     "2026-10",
@@ -2233,8 +4604,139 @@
    ]
   ]
  },
+ "dailyAnomalies": [
+  {
+   "date": "2026-10-09",
+   "scope": "total",
+   "key": "Total de la suscripcion",
+   "kind": "pico",
+   "cost": 28.93,
+   "baseline": 14.03,
+   "delta": 14.91,
+   "deltaPct": 106.3,
+   "weekday": "viernes"
+  },
+  {
+   "date": "2026-10-09",
+   "scope": "proyecto",
+   "key": "rg-agentus",
+   "kind": "pico",
+   "cost": 16,
+   "baseline": 1.63,
+   "delta": 14.37,
+   "deltaPct": 882.9,
+   "weekday": "viernes"
+  },
+  {
+   "date": "2026-10-09",
+   "scope": "servicio",
+   "key": "Azure Container Apps",
+   "kind": "pico",
+   "cost": 15.06,
+   "baseline": 0.74,
+   "delta": 14.32,
+   "deltaPct": 1948.3,
+   "weekday": "viernes"
+  },
+  {
+   "date": "2026-10-08",
+   "scope": "servicio",
+   "key": "Azure OpenAI",
+   "kind": "nuevo",
+   "cost": 4.2,
+   "baseline": 0,
+   "delta": 4.2,
+   "deltaPct": null,
+   "weekday": "jueves"
+  }
+ ],
+ "projectBudgets": [
+  {
+   "resource_group": "rg-n8n",
+   "mtd": 16.61,
+   "projection": 38.14,
+   "budget": 25.55,
+   "source": "referencia",
+   "reference": 25.55,
+   "status": "en_riesgo",
+   "overBy": 12.59,
+   "usedPct": 65,
+   "projectedPct": 149.3
+  },
+  {
+   "resource_group": "rg-shared",
+   "mtd": 15.65,
+   "projection": 32.9,
+   "budget": 24.9,
+   "source": "referencia",
+   "reference": 24.9,
+   "status": "en_riesgo",
+   "overBy": 8,
+   "usedPct": 62.9,
+   "projectedPct": 132.1
+  },
+  {
+   "resource_group": "rg-agentus",
+   "mtd": 24.02,
+   "projection": 55.93,
+   "budget": 54.97,
+   "source": "referencia",
+   "reference": 54.97,
+   "status": "ok",
+   "overBy": 0.96,
+   "usedPct": 43.7,
+   "projectedPct": 101.7
+  },
+  {
+   "resource_group": "rg-hermes",
+   "mtd": 12.24,
+   "projection": 31.85,
+   "budget": 34.11,
+   "source": "referencia",
+   "reference": 34.11,
+   "status": "ok",
+   "overBy": -2.26,
+   "usedPct": 35.9,
+   "projectedPct": 93.4
+  },
+  {
+   "resource_group": "rg-codepre",
+   "mtd": 11.41,
+   "projection": 27.14,
+   "budget": 30.57,
+   "source": "referencia",
+   "reference": 30.57,
+   "status": "ok",
+   "overBy": -3.43,
+   "usedPct": 37.3,
+   "projectedPct": 88.8
+  },
+  {
+   "resource_group": "rg-linklyai",
+   "mtd": 64.64,
+   "projection": 269.74,
+   "budget": 307.3,
+   "source": "referencia",
+   "reference": 307.3,
+   "status": "ok",
+   "overBy": -37.56,
+   "usedPct": 21,
+   "projectedPct": 87.8
+  }
+ ],
+ "budgetMeta": {
+  "month": "2026-10",
+  "dayOfMonth": 9,
+  "remainingDays": 22,
+  "referenceMonths": [
+   "2026-07",
+   "2026-08",
+   "2026-09"
+  ],
+  "marginPct": 20
+ },
  "pipeline": {
-  "workflowVersion": "2026-10-10",
+  "workflowVersion": "2026-10-13",
   "dataThrough": "2026-10-09",
   "sync": {
    "ok": true,
@@ -2247,6 +4749,6 @@
    "ok": true,
    "error": null
   },
-  "monthlyDetailRows": 120
+  "monthlyDetailRows": 121
  }
 }

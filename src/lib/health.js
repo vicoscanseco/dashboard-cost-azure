@@ -5,6 +5,9 @@
 // (en n8n 2.x guardar no es publicar: el cron corre solo la versión publicada).
 
 const DAY_MS = 864e5;
+// Versión del workflow de n8n que corresponde a este dashboard. Si data.json trae una
+// anterior, las tarjetas nuevas (presupuesto por proyecto, picos diarios) salen vacías.
+export const LATEST_WORKFLOW_VERSION = '2026-10-13';
 const isoDay = (d) => d.toISOString().slice(0, 10);
 
 function daysInMonth(month) {
@@ -52,9 +55,12 @@ export function buildHealthChecks(data, now = new Date()) {
   }
 
   // 3. Versión del workflow
-  checks.push(p
-    ? { id: 'version', label: 'Workflow', level: 'ok', value: p.workflowVersion || 'sin versión', hint: 'Versión que generó estos datos.' }
-    : { id: 'version', label: 'Workflow', level: 'warn', value: 'versión anterior', hint: 'data.json no trae datos de salud: la versión publicada en n8n es anterior. Publica el workflow (Shift+P).' });
+  const outdated = p && (!p.workflowVersion || p.workflowVersion < LATEST_WORKFLOW_VERSION);
+  checks.push(!p
+    ? { id: 'version', label: 'Workflow', level: 'warn', value: 'versión anterior', hint: 'data.json no trae datos de salud: la versión publicada en n8n es anterior. Publica el workflow (Shift+P).' }
+    : outdated
+      ? { id: 'version', label: 'Workflow', level: 'warn', value: p.workflowVersion || 'sin versión', hint: `Hay una versión nueva (${LATEST_WORKFLOW_VERSION}) con presupuesto por proyecto y picos diarios. Importa y publica el workflow (Shift+P).` }
+      : { id: 'version', label: 'Workflow', level: 'ok', value: p.workflowVersion, hint: 'Versión que generó estos datos.' });
 
   // 4. Sync con Azure Cost Management
   if (p && p.sync) {

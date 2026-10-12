@@ -1,0 +1,9 @@
+[Unit]
+Description=Respaldo de las bases SQLite del pipeline de Azure y de n8n
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/backup-azure-dbs.sh
+Nice=10
+IOSchedulingClass=idle

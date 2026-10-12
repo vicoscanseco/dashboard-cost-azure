@@ -8,7 +8,7 @@ const base = {
   generatedAt: '2026-10-10T08:05:00Z',
   snapshotDate: '2026-10-09',
   dailyHistory: [...fullSept, { date: '2026-10-09', total: 1 }],
-  pipeline: { workflowVersion: '2026-10-10', dataThrough: '2026-10-09', sync: { ok: true, rows: 4155, attempts: 1, region: 'MEXICOCENTRAL' }, hermes: { ok: true } }
+  pipeline: { workflowVersion: '2026-10-13', dataThrough: '2026-10-09', sync: { ok: true, rows: 4155, attempts: 1, region: 'MEXICOCENTRAL' }, hermes: { ok: true } }
 };
 
 describe('buildHealthChecks', () => {
@@ -22,6 +22,12 @@ describe('buildHealthChecks', () => {
     const h = buildHealthChecks({ ...base, pipeline: undefined }, now);
     expect(h.checks.find((c) => c.id === 'version').level).toBe('warn');
     expect(h.level).toBe('warn');
+  });
+  it('workflow con versión anterior pide actualizar', () => {
+    const h = buildHealthChecks({ ...base, pipeline: { ...base.pipeline, workflowVersion: '2026-10-10' } }, now);
+    const v = h.checks.find((c) => c.id === 'version');
+    expect(v.level).toBe('warn');
+    expect(v.hint).toContain('2026-10-13');
   });
   it('Hermes caído y datos viejos son críticos', () => {
     const h = buildHealthChecks({ ...base, generatedAt: '2026-10-07T08:00:00Z', pipeline: { ...base.pipeline, hermes: { ok: false, error: 'No access token' } } }, now);

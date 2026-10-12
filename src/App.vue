@@ -20,6 +20,7 @@ import PipelineHealthCard from './components/PipelineHealthCard.vue';
 import WaterfallCard from './components/WaterfallCard.vue';
 import ProjectsCard from './components/ProjectsCard.vue';
 import ExplorerCard from './components/ExplorerCard.vue';
+import BudgetsCard from './components/BudgetsCard.vue';
 import { parseMonthlyDetail } from './lib/history.js';
 import { buildHealthChecks } from './lib/health.js';
 
@@ -71,6 +72,8 @@ const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ 
         :monthly-budget="state.data.monthlyBudget"
         :month-to-date-so-far="monthToDateSoFar"
         :monthly-finals="monthlyFinals"
+        :daily-anomalies="state.data.dailyAnomalies || []"
+        :project-budgets="state.data.projectBudgets || []"
       />
 
       <button v-if="health.issues.length" type="button" :class="['health-banner', health.level]" @click="goHealth">
@@ -92,16 +95,19 @@ const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ 
         />
         <AnalysisCard v-if="hasAnalysis" class="col-4" :text="state.analysisText" />
 
-        <TrendCard class="col-12" :history="monthHistory" :monthly-budget="state.data.monthlyBudget" />
+        <TrendCard id="card-trend" class="col-12" :history="monthHistory" :monthly-budget="state.data.monthlyBudget" />
 
         <MonthByResourceCard class="col-8" :month-by-resource="state.data.monthByResource" :monthly-budget="state.data.monthlyBudget" :theme-tick="themeTick" />
         <DonutCard class="col-4" :groups="state.data.byResourceGroup || []" :theme-tick="themeTick" :active-group="activeGroup" @hover="activeGroup = $event" />
+
+        <BudgetsCard v-if="state.data.projectBudgets" id="card-budgets" class="col-12" :project-budgets="state.data.projectBudgets" :meta="state.data.budgetMeta" />
 
         <div class="section-label">Esta semana</div>
         <GroupsCard id="card-groups" class="col-6" :groups="state.data.byResourceGroup || []" :active="activeGroup" @hover="activeGroup = $event" />
         <ServicesCard class="col-6" :services="state.data.byService || []" />
 
         <HeatmapCard
+          id="card-heat-groups"
           class="col-12"
           :theme-tick="themeTick"
           title="Mapa de calor diario"
@@ -116,6 +122,7 @@ const goHealth = () => document.getElementById('card-health')?.scrollIntoView({ 
         <ResourcesTableCard id="card-resources" class="col-12" :resources="state.data.byResource || []" :resource-comparisons="state.data.resourceComparisons || []" />
 
         <HeatmapCard
+          id="card-heat-services"
           class="col-12"
           :theme-tick="themeTick"
           title="Tendencia por tipo de servicio"

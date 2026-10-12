@@ -1,0 +1,2 @@
+# los scripts y units de systemd se usan en Linux: siempre LF
+ops/** text eol=lf

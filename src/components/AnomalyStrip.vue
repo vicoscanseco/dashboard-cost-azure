@@ -10,17 +10,20 @@ const props = defineProps({
   history: { type: Array, default: () => [] },
   monthlyBudget: { type: Number, default: null },
   monthToDateSoFar: { type: Number, default: null },
-  monthlyFinals: { type: Object, default: () => ({}) }
+  monthlyFinals: { type: Object, default: () => ({}) },
+  dailyAnomalies: { type: Array, default: () => [] },
+  projectBudgets: { type: Array, default: () => [] }
 });
 
 const badges = computed(() =>
-  buildAnomalyBadges(props.groups, props.resources, props.history, props.monthlyBudget, props.monthToDateSoFar, props.monthlyFinals)
+  buildAnomalyBadges(props.groups, props.resources, props.history, props.monthlyBudget, props.monthToDateSoFar, props.monthlyFinals, { dailyAnomalies: props.dailyAnomalies, projectBudgets: props.projectBudgets })
 );
 
-const TARGETS = { budget: 'card-hero', group: 'card-groups', resource: 'card-resources' };
+const TARGETS = { budget: 'card-hero', group: 'card-groups', resource: 'card-resources', project: 'card-budgets' };
+const DAILY_TARGETS = { total: 'card-trend', proyecto: 'card-heat-groups', servicio: 'card-heat-services' };
 
 function goTo(b) {
-  const el = document.getElementById(TARGETS[b.kind]);
+  const el = document.getElementById(b.kind === 'daily' ? DAILY_TARGETS[b.scope] : TARGETS[b.kind]);
   if (!el) return;
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
@@ -32,6 +35,15 @@ function goTo(b) {
 
 function badgeText(b) {
   if (b.kind === 'budget') return `Proyección del mes ${fmtUSD(b.forecast)} supera el presupuesto (+${b.overPct}%)`;
+  if (b.kind === 'project') return b.status === 'excedido'
+    ? `${b.name} ya pasó su presupuesto (${fmtUSD(b.mtd)} de ${fmtUSD(b.budget)})`
+    : `${b.name} cerraría en ~${fmtUSD(b.projection)} (presupuesto ${fmtUSD(b.budget)})`;
+  if (b.kind === 'daily') {
+    const who = b.scope === 'total' ? 'Gasto total' : b.name;
+    return b.isNew
+      ? `${who}: gasto nuevo de ${fmtUSD(b.cost)} el ${b.weekday}`
+      : `${who}: ${fmtUSD(b.cost)} el ${b.weekday}, normal ~${fmtUSD(b.baseline)} (+${Math.round(b.deltaPct)}%)`;
+  }
   if (b.kind === 'group') return `${b.name} subió +${b.deltaPct}% (${fmtUSD(b.prevCost)} → ${fmtUSD(b.cost)})`;
   return `${b.name} (${b.group}) subió +${b.deltaPct}% (${fmtUSD(b.prevCost)} → ${fmtUSD(b.cost)})`;
 }

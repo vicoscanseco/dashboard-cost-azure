@@ -57,6 +57,15 @@ Además de lo de siempre, el workflow agrega:
 - `pipeline`: versión del workflow, día hasta el que hay datos, resultado del sync con
   Azure (filas, intentos, región) y si Hermes respondió. Lo usa "Salud del pipeline". Si
   falta, el dashboard avisa que la versión publicada en n8n es anterior.
+- `projectBudgets` + `budgetMeta` (versión 2026-10-13): por proyecto, lo que va del mes, la
+  proyección de cierre, el presupuesto (propio o de referencia) y su estado. Lo usa
+  "Presupuesto por proyecto" y la franja de alertas.
+- `dailyAnomalies` (versión 2026-10-13): picos del día contra el mismo día de la semana en las
+  últimas 4 semanas (total, proyecto, servicio). Van en la franja de alertas.
+- `historyByGroup` / `historyByService` ahora son costo **real de cada día** (antes eran sumas
+  móviles de 7 días).
+
+Operación (vigilante, respaldos, presupuestos y umbrales): ver `docs/OPERACION.md`.
 
 ## Datos del Radar (resource-data.json)
 Lo publica cada lunes el workflow "Azure - Monitor de uso de recursos". Desde la versión
@@ -109,5 +118,6 @@ Los gráficos tienen `role="img"` y `aria-label` con un resumen. La tabla de rec
 ## Formato de data.json
 Campos que usa el dashboard: `generatedAt`, `snapshotDate`, `total`, `monthlyBudget`,
 `monthToDate`, `dailyHistory`, `monthlyFinals`, `monthByResource`, `byResourceGroup`,
-`byService`, `byResource`, `resourceComparisons`, `historyByGroup`, `historyByService`.
+`byService`, `byResource`, `resourceComparisons`, `historyByGroup`, `historyByService`,
+`projectBudgets`, `budgetMeta`, `dailyAnomalies`, `pipeline`, `monthlyDetail`.
 Hay un ejemplo en `public/data.json`.

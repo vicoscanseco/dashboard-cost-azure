@@ -192,8 +192,20 @@ export function buildHeatmapData(rows, keyField, topN = 8) {
 }
 
 // ---- franja de anomalías: presupuesto proyectado + grupos/recursos con subida fuerte ----
-export function buildAnomalyBadges(groups, resources, history, monthlyBudget, monthToDateSoFar, monthlyFinals) {
+// extra.dailyAnomalies / extra.projectBudgets vienen del workflow (versión 2026-10-13+)
+export function buildAnomalyBadges(groups, resources, history, monthlyBudget, monthToDateSoFar, monthlyFinals, extra = {}) {
   const badges = [];
+
+  // proyectos que ya se pasaron o se van a pasar de su presupuesto (primero: es dinero seguro)
+  (extra.projectBudgets || [])
+    .filter((p) => p.status === 'excedido' || p.status === 'en_riesgo')
+    .slice(0, 3)
+    .forEach((p) => badges.push({ kind: 'project', critical: p.status === 'excedido', name: p.resource_group, status: p.status, mtd: p.mtd, projection: p.projection, budget: p.budget }));
+
+  // picos diarios contra el mismo día de la semana (máx. 3, ya vienen ordenados por impacto)
+  (extra.dailyAnomalies || [])
+    .slice(0, 3)
+    .forEach((a) => badges.push({ kind: 'daily', critical: a.scope === 'total' || (a.deltaPct !== null && a.deltaPct >= 100), scope: a.scope, name: a.key, date: a.date, weekday: a.weekday, cost: a.cost, baseline: a.baseline, deltaPct: a.deltaPct, isNew: a.kind === 'nuevo' }));
 
   if (monthlyBudget) {
     const fc = computeMonthForecast(history, monthToDateSoFar, monthlyFinals);
@@ -221,6 +233,8 @@ export function buildAnomalyBadges(groups, resources, history, monthlyBudget, mo
     .slice(0, 4)
     .map((r) => ({ kind: 'resource', critical: r.deltaPct >= 40, name: r.resource_name, group: r.resource_group, deltaPct: r.deltaPct, prevCost: r.prevCost, cost: r.cost }));
 
+  const rank = { budget: 0, project: 1, daily: 2 };
+  badges.sort((x, y) => rank[x.kind] - rank[y.kind]);
   return [...badges, ...flaggedGroups, ...flaggedResources];
 }
 

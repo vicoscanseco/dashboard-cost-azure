@@ -169,6 +169,31 @@ describe('buildAnomalyBadges', () => {
   });
 });
 
+describe('buildAnomalyBadges: presupuesto por proyecto y picos diarios', () => {
+  it('agrega proyectos en riesgo y picos, después del presupuesto global', () => {
+    const extra = {
+      projectBudgets: [
+        { resource_group: 'rg-a', status: 'en_riesgo', mtd: 16, projection: 38, budget: 25 },
+        { resource_group: 'rg-b', status: 'ok', mtd: 5, projection: 10, budget: 20 },
+        { resource_group: 'rg-c', status: 'excedido', mtd: 50, projection: 80, budget: 45 }
+      ],
+      dailyAnomalies: [
+        { date: '2026-10-09', scope: 'proyecto', key: 'rg-a', kind: 'pico', cost: 16, baseline: 1.63, deltaPct: 882.9, weekday: 'viernes' },
+        { date: '2026-10-08', scope: 'servicio', key: 'Azure OpenAI', kind: 'nuevo', cost: 4.2, baseline: 0, deltaPct: null, weekday: 'jueves' }
+      ]
+    };
+    const b = buildAnomalyBadges([], [], [], null, null, {}, extra);
+    expect(b.map((x) => x.kind + ':' + x.name)).toEqual(['project:rg-a', 'project:rg-c', 'daily:rg-a', 'daily:Azure OpenAI']);
+    expect(b[1].critical).toBe(true);
+    expect(b[3].isNew).toBe(true);
+    expect(b[3].critical).toBe(false);
+  });
+  it('sin datos nuevos se comporta como antes', () => {
+    expect(buildAnomalyBadges([], [], [], null, null, {})).toEqual([]);
+  });
+});
+
+
 describe('buildZeroResources', () => {
   it('excluye los sitios web que Azure factura siempre en $0', () => {
     const out = buildZeroResources([
